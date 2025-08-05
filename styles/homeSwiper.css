@@ -1,0 +1,13 @@
+:root {
+  --next-prev-border-color-hero : white;
+  --next-prev-border-shadow-hero : 0px 0px 3px rgb(243, 243, 243);
+  --next-prev-after-color-hero :  rgb(243, 243, 243);
+}
+.hero-swiper .swiper-button-prev, .hero-swiper .swiper-button-next {
+  border: 1px solid var(--next-prev-border-color-hero);
+  box-shadow: var(--next-prev-border-shadow-hero);
+}
+.hero-swiper .swiper-button-prev::after, .hero-swiper .swiper-button-next::after {
+  font-size: large;
+  color: var(--next-prev-after-color-hero);
+}

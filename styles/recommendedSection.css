@@ -1,0 +1,4 @@
+.swiper-section.recommended-section .swiper-button-prev, 
+.swiper-section.recommended-section .swiper-button-next {
+    top: 30px !important;
+}

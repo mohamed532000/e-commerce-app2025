@@ -1,0 +1,18 @@
+:root {
+  --next-prev-border-color : rgb(35, 35, 35);
+  --next-prev-border-shadow : 0px 0px 3px rgb(26, 26, 26);
+  --next-prev-after-color :  rgb(22, 22, 22);
+}
+.dark {
+  --next-prev-border-color : white;
+  --next-prev-border-shadow : 0px 0px 3px rgb(243, 243, 243);
+  --next-prev-after-color :  rgb(243, 243, 243);
+}
+.swiper-section .swiper-button-prev, .swiper-section .swiper-button-next {
+  border: 1px solid var(--next-prev-border-color);
+  box-shadow: var(--next-prev-border-shadow);
+}
+.swiper-section .swiper-button-prev::after, .swiper-section .swiper-button-next::after {
+  font-size: large;
+  color: var(--next-prev-after-color);
+}

@@ -1,0 +1,16 @@
+{
+    "home" : {
+        "title" : "title",
+        "Login / Register" : "Login / Register",
+        "login" : "login",
+        "register" : "register",
+        "home" : "home",
+        "about" : "about",
+        "contact" : "contact",
+        "Shop Now" : "Shop Now",
+        "/" : "home"
+    },
+    "contactPage" : {
+        "contact us" : "contact us"
+    }
+}
