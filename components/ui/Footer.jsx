@@ -79,17 +79,17 @@ function Footer() {
                     <FaPhone/>
                     <span>01124485518</span>
                 </Link>
-                <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
+                <Link href={`mailto:Sochialyzer@gmail.com`} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
                     <MdAlternateEmail/>
                     <span>Sochialyzer@gmail.com</span>
                 </Link>
                 <div className='fowllow-us relative flex flex-col gap-y-1.5 pt-2 mt-2'>
                     <h2 className='font-bold'>Follow Us</h2>
                     <div className='icons relative flex gap-x-1.5'>
-                        <Link href={"https://www.facebook.com"} className='opacity-70 transition-all duration-300 hover:opacity-100'>
+                        <Link href={"https://www.facebook.com"} aria-label='facebook' className='opacity-70 transition-all duration-300 hover:opacity-100'>
                             <FaFacebook className='text-2xl'/>
                         </Link>
-                        <Link href={"https://www.facebook.com"} className='opacity-70 transition-all duration-300 hover:opacity-100'>
+                        <Link href={"https://www.instagram.com"} aria-label='instagram'  className='opacity-70 transition-all duration-300 hover:opacity-100'>
                             <FaInstagram className='text-2xl'/>
                         </Link>
                     </div>

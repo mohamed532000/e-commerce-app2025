@@ -60,7 +60,7 @@ function HeroSliders() {
                                             <p className={`text-center text-stone-50 ${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[70px]"} transition-all duration-800`}>{item.description}</p>
                                             <MainButton
                                             className={`${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[100px]"} delay-100 transition-all duration-800`}
-                                                href={'/shop'}
+                                                href={'/'}
                                             >
                                                 <HandleTranslate page={"home"} word={"Shop Now"} />
                                             </MainButton>

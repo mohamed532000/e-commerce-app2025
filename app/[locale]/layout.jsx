@@ -1,13 +1,11 @@
 import "../globals.css";
 import { Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/Navbar";
-import {Montserrat} from "next/font/google";
 import AppThemeProvider from "@/components/theme/ThemeProvider";
 import { NextIntlClientProvider , hasLocale } from "next-intl";
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import Footer from "@/components/ui/Footer";
-const montserratFront = Montserrat({subsets: ['latin']})
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
