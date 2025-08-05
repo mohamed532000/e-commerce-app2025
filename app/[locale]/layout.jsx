@@ -5,7 +5,7 @@ import AppThemeProvider from "@/components/theme/ThemeProvider";
 import { NextIntlClientProvider , hasLocale } from "next-intl";
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
-import Footer from "@/components/ui/Footer";
+// import Footer from "@/components/ui/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,7 +38,7 @@ export default async function LocaleLayout({ children , params}) {
            <AppThemeProvider>
              <Navbar/>
              {children}
-             <Footer/>
+             {/* <Footer/> */}
            </AppThemeProvider>
          </NextIntlClientProvider>
       </body>
