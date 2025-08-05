@@ -12,5 +12,8 @@ export const config = {
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
   // matcher: '/((?!|trpc|_next|_vercel|.*\\..*).*)'
-  matcher: ['/', '/(en|ar)/:path*']
+  matcher: [
+    '/((?!api|_next|_vercel|.*\\..*).*)' // Catch everything except API, _next, etc.
+  ]
+  // matcher: ['/', '/(en|ar)/:path*']
 };
