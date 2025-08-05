@@ -63,7 +63,7 @@ function Footer() {
                 {
                     categories?.length >= 1
                     ?
-                    categories.map((item , index) => <Link href={`/${item.name}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.name}</Link>)
+                    categories.map((item , index) => <Link href={`/`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.name}</Link>)
                     :
                     <span>Will Add Data Soon.</span>
                 }
