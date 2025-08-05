@@ -6,7 +6,7 @@ function SectionTitle({title , subText , className}) {
         <h1 className={`section-title text-center text-section-title-color ${className}`}>
             {title?.split("").map((letter , index) => <span key={index} className='transition-all duration-200 opacity-60 hover:opacity-100'>{letter}</span>)}
         </h1>
-        <p className='section-subtext'>{subText}</p>
+        <p className=' text-slate-800 dark:text-stone-50'>{subText}</p>
     </div>
   )
 }

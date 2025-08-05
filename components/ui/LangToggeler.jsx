@@ -46,7 +46,13 @@ function LangToggeler({className}) {
                                 handleSwitch(e , item.locale)
                             }}>
                                 <div className='relative flex items-center'>
-                                    <Image src={item.flag} alt='flag' title='flag' width={20} height={20}/>
+                                    <Image 
+                                        src={item.flag} 
+                                        alt='flag' 
+                                        title='flag' 
+                                        width={20} 
+                                        height={20}
+                                    />
                                     <div className='mx-2'>
                                         {item.locale.toUpperCase()}
                                     </div>

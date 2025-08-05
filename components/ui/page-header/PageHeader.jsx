@@ -6,7 +6,15 @@ import PageLettersParent from './PageLettersParent'
 function PageHeader({title , pageInfo}) {
   return (
     <div className='relative w-full h-[70vh]'>
-        <Image src={pageHeader} alt='image' title={title} fill className='absolute inset-0' />
+        <Image 
+        src={pageHeader} 
+        alt='page-header' 
+        title={title} 
+        fill 
+        className='absolute inset-0 object-cover' 
+        sizes='100vw'
+        quality={85}
+        />
         <span className='absolute inset-0 w-full h-full bg-slate-900 opacity-35'></span>
         <div className='relative container h-full flex flex-col gap-y-2.5 justify-center items-center'>
             <PageLettersParent title={title}/>
