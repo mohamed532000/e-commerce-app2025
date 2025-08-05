@@ -1,9 +1,7 @@
 import {defineRouting} from 'next-intl/routing';
-import usaFlag from "../app/media/images/flags/usa.png";
-import egyFlag from "../app/media/images/flags/egy.webp";
 export const locales = [
-  {locale : "ar" , flag : egyFlag},
-  {locale : "en" , flag : usaFlag}
+  {locale : "ar" , flag : `/flags/egy.webp`},
+  {locale : "en" , flag : `/flags/usa.png`}
 ]
 export const navList = [
   {label : "home" , href : "/"},
