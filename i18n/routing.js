@@ -16,8 +16,8 @@ export const routing = defineRouting({
   defaultLocale: 'en',
   pathnames : {
     "/" : {
-      en : "/home",
-      ar : "/الرئيسية"
+      en : "/",
+      ar : "/"
     },
     "/contact" : {
       en : "/contact",
