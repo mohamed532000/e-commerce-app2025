@@ -15,8 +15,12 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
                     <MobileNavLink key={index} item={item} active={active} index={index}/>
                 ))
             }
-            <ToggelerDarkMode/>
-            <LangToggeler className={"mt-2"}/>
+            <li>
+                <ToggelerDarkMode/>
+            </li>
+            <li className={"mt-2"}>
+                <LangToggeler/>
+            </li>
         </ul>
     </div>
   )
