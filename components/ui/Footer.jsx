@@ -1,4 +1,3 @@
-
 import NewsLetterForm from '@/app/forms/newsletter/NewsLetterForm';
 import React from 'react'
 import SiteLogo from './SiteLogo';

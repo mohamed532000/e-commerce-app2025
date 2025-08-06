@@ -1,10 +1,6 @@
 "use client"
 import CustomLink from "./ui/Link";
 import { BsListNested } from "react-icons/bs";
-import dynamic from "next/dynamic";
-const Client = dynamic(() => import("./ui/Client") , {ssr : false})
-// import Link from "next/link";
-import {Link} from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { MobileNavList } from "./ui/MobileNavList";
 import { usePathname } from 'next/navigation';
