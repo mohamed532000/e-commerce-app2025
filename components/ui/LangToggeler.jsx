@@ -49,9 +49,10 @@ function LangToggeler({className}) {
                                     <Image 
                                         src={item.flag} 
                                         alt='flag' 
-                                        title='flag' 
+                                        title={item.locale} 
                                         width={20} 
                                         height={20}
+                                        className='object-cover'
                                     />
                                     <div className='mx-2'>
                                         {item.locale.toUpperCase()}
