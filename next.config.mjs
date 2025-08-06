@@ -8,6 +8,17 @@ const withNextIntl = createNextIntlPlugin();
  
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    headers: async () => [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'CDN-Cache-Control',
+              value: 'public, max-age=3600'
+            }
+          ],
+        },
+    ],
     images : {
         remotePatterns : [
             {
