@@ -1,4 +1,8 @@
 {
+    "metadata": {
+        "title": "Sochialyzer Group",
+        "description": "Your social analytics platform"
+    },
     "home" : {
         "title" : "title",
         "Login / Register" : "Login / Register",
