@@ -1,5 +1,4 @@
-// import "../globals.css";
-import styles from "../globals.css";
+import "../globals.css";
 import { Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/Navbar";
 import AppThemeProvider from "@/components/theme/ThemeProvider";
@@ -32,7 +31,6 @@ export default async function LocaleLayout({ children , params}) {
   }
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning
-     dangerouslySetInnerHTML={{__html : styles}} // for Inline Critical CSS
     >
       <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
