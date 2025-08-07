@@ -28,8 +28,8 @@ function ProductCard({className , product}) {
                 <p className='font-bold line-clamp-1 text-foreground text-center md:text-start'>
                     {product.title}
                 </p>
-                <div aria-level={4} className='relative flex justify-center items-center md:justify-start gap-2'>
-                    <h4 className='font-bold text-center md:text-start'>{product.price}$</h4>
+                <div className='relative flex justify-center items-center md:justify-start gap-2'>
+                    <p className='font-bold text-center md:text-start'>{product.price}$</p>
                 </div>
                 <p className='text-center line-clamp-2 md:text-start'>
                     {product.info}
