@@ -29,9 +29,9 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                         {
                           showPass
                           ?
-                          <FaRegEyeSlash onClick={() => setShowPass(false)} className='absolute top-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
+                          <FaRegEyeSlash onClick={() => setShowPass(false)} className='absolute inset-y-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
                           :
-                          <FaRegEye onClick={() => setShowPass(true)} className='absolute top-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
+                          <FaRegEye onClick={() => setShowPass(true)} className='absolute inset-y-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
                         }
                       </div>
                     )

@@ -8,7 +8,7 @@ function RegisterPage() {
   return (
     <>
       <div className='w-full min-h-screen flex flex-col md:flex-row justify-between bg-light-bg'>
-        <Link href="/" className="relative md:absolute top-4 md:left-4 flex justify-center items-center gap-1 text-sm text-slate-700 md:text-slate-100 hover:text-primary transition z-40">
+        <Link href="/" className="relative md:absolute translate-y-4 md:left-4 flex justify-center items-center gap-1 text-sm text-slate-700 md:text-slate-100 hover:text-primary transition z-40">
           <Home className="w-4 h-4" />
           Home
         </Link>

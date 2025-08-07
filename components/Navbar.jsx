@@ -38,7 +38,7 @@ export default function Navbar() {
     if (noNav) return null
     return (
         <>
-            <header className={`fixed inset-x-0 top-0 z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}>
+            <header className={`fixed inset-x-0 inset-y-0 h-fit z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}>
                 <nav aria-label="Global" className="flex items-center justify-between container relative">
                     <div className="flex lg:flex-1">
                         <SiteLogo/>
