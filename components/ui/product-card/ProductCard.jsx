@@ -43,7 +43,7 @@ function ProductCard({className , product}) {
         {
             product.discount_amount >= 1
             &&
-            <h4 className={`absolute top-4 ${currentLocale == "ar" ? "right-3" : "left-3"} bg-red-600 text-center md:text-start text-white py-1 px-2`}>
+            <p className={`absolute top-4 ${currentLocale == "ar" ? "right-3" : "left-3"} bg-red-600 text-center md:text-start text-white py-1 px-2`}>
                 -
                 {
                     product.discount_type === "fixed"
@@ -52,7 +52,7 @@ function ProductCard({className , product}) {
                     :
                     `${product.discount_amount}%`
                 }
-            </h4>
+            </p>
         }
     </div>
   )
