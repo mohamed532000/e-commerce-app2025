@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <HeroSection/>
-      {/* <RecommendedSection/>
-      <BestSaleSection/> */}
+      <RecommendedSection/>
+      <BestSaleSection/>
     </>
   );
 }

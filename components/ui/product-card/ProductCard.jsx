@@ -4,14 +4,23 @@ import { useLocale } from 'next-intl';
 import React from 'react'
 import AddToCartBtn from '../AddToCartBtn';
 import AddToWhishlistBtn from '../AddToWhishlistBtn';
+import Image from 'next/image';
 
 function ProductCard({className , product}) {
     const currentLocale = useLocale();
   return (
     <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3`}>
-        <Link href={`/${product.id}`}>
-            <div className='image-div relative rounded-3xl overflow-hidden w-full'>
-                <img loading='lazy' src={product.image_url} className='relative w-full h-[200px] ' alt='image' title='product image'/>
+        <Link href={`/product-details/${product.id}`}>
+            <div className='image-div aspect-[4/3] relative rounded-3xl overflow-hidden w-full h-[170px]'>
+                <Image
+                    src={product.image_url}
+                    alt={`${product.title} product image`} 
+                    fill
+                    sizes='(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 250px'
+                    className='object-cover'
+                    quality={85}
+                    priority={false}
+                />
             </div>
         </Link>
         <div className='flex flex-col gap-1 px-2'>
