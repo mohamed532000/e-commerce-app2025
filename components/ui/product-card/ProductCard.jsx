@@ -25,10 +25,10 @@ function ProductCard({className , product}) {
         </Link>
         <div className='flex flex-col gap-1 px-2'>
             <div className='product-info relative flex flex-col gap-1'>
-                <h3 className='font-bold line-clamp-1 text-foreground text-center md:text-start'>
+                <p className='font-bold line-clamp-1 text-foreground text-center md:text-start'>
                     {product.title}
-                </h3>
-                <div className='relative flex justify-center items-center md:justify-start gap-2'>
+                </p>
+                <div aria-level={4} className='relative flex justify-center items-center md:justify-start gap-2'>
                     <h4 className='font-bold text-center md:text-start'>{product.price}$</h4>
                 </div>
                 <p className='text-center line-clamp-2 md:text-start'>
