@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "build:analyze": "cross-env ANALYZE=true next build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -32,7 +31,6 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^15.4.6",
     "@tailwindcss/postcss": "^4",
     "autoprefixer": "^10.4.21",
     "cross-env": "^10.0.0",

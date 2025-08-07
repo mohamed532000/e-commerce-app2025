@@ -7,7 +7,6 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getTranslations } from "next-intl/server";
 import Footer from "@/components/ui/Footer";
-import Head from "next/head";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,18 +32,6 @@ export default async function LocaleLayout({ children , params}) {
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning
     >
-      <Head>
-        {/* Preload critical CSS (non-blocking) */}
-        <link
-          rel="preload"
-          href="/styles/above-the-fold.css"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet';"
-        />
-        <noscript>
-          <link rel="stylesheet" href="/styles/above-the-fold.css" />
-        </noscript>
-      </Head>
       <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
