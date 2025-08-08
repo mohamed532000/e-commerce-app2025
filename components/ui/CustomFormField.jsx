@@ -4,6 +4,7 @@ import { Input } from './input'
 import {FormField , FormItem , FormMessage , FormLabel , FormControl} from "./form"
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { Textarea } from './textarea';
 
 function CustomFormField({className = "" , labelClassName = "" , label = "" , name = "" , icon , form , placeholder = "" , type = "text"}) {
   const [showPass , setShowPass] = useState(false);
@@ -39,6 +40,10 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                     type !== "file"
                     ?
                     (
+                      type === "textarea"
+                      ?
+                      <Textarea {...field} placeholder = {placeholder}/>
+                      :
                       <Input type={type} {...field} placeholder={placeholder}/>
                     )
                     :

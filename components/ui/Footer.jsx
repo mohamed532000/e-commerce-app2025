@@ -9,6 +9,20 @@ import { FaPhone } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
+
+export const FollowUsIcons = () => {
+    return (
+        <div className='icons relative flex gap-x-1.5'>
+            <Link href={"https://www.facebook.com"} aria-label='facebook' className='opacity-70 transition-all duration-300 hover:opacity-100'>
+                <FaFacebook className='text-2xl'/>
+            </Link>
+            <Link href={"https://www.instagram.com"} aria-label='instagram'  className='opacity-70 transition-all duration-300 hover:opacity-100'>
+                <FaInstagram className='text-2xl'/>
+            </Link>
+        </div>
+    )
+}
+
 const FooterColumn = ({children , title , className}) => {
     return (
         <div className={`relative col-span-4 md:col-span-2 lg:col-span-1 py-2 ${className}`}>
@@ -84,14 +98,7 @@ function Footer() {
                 </Link>
                 <div className='fowllow-us relative flex flex-col gap-y-1.5 pt-2 mt-2'>
                     <h2 className='font-bold'>Follow Us</h2>
-                    <div className='icons relative flex gap-x-1.5'>
-                        <Link href={"https://www.facebook.com"} aria-label='facebook' className='opacity-70 transition-all duration-300 hover:opacity-100'>
-                            <FaFacebook className='text-2xl'/>
-                        </Link>
-                        <Link href={"https://www.instagram.com"} aria-label='instagram'  className='opacity-70 transition-all duration-300 hover:opacity-100'>
-                            <FaInstagram className='text-2xl'/>
-                        </Link>
-                    </div>
+                    <FollowUsIcons/>
                 </div>
             </FooterColumn>
         </div>
