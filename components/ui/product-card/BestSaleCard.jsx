@@ -8,12 +8,12 @@ function BestSaleCard({className , product}) {
   return (
     <div className={`best-sale-card relatie flex flex-col md:flex-row md:justify-between ${className}`}>
         <div className='relative w-full md:w-[50%] flex justify-center'>
-          <div className='relative aspect-[3/4] w-full md:max-w-[300px] image rounded-3xl overflow-hidden'>
+          <div className='relative aspect-[4/4] md:aspect-auto-[3/4] w-full md:max-w-[300px] image rounded-3xl overflow-hidden'>
             <Image
             src={product.image_url}
             alt='image'
             title={product.title}
-            sizes='(max-width: 700px) 100vw, 300px'
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
             fill
             className='relative object-cover'
             quality={85}

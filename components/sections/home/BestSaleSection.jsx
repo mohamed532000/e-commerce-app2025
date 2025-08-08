@@ -109,7 +109,7 @@ function BestSaleSection() {
           pagination = {false}
           autoplay={true}
           children={products.map((item , index) => (
-            <SwiperSlide>
+            <SwiperSlide className='flex justify-center items-center'>
               <BestSaleCard key={index} product={item} />
             </SwiperSlide>
           ))}
