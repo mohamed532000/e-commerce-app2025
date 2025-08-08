@@ -8,18 +8,18 @@ import { FaPhone } from "react-icons/fa";
 import { IoIosTimer } from "react-icons/io";
 import { FollowUsIcons } from '@/components/ui/Footer';
 import ContactForm from '@/app/forms/contact/ContactForm';
-import MapboxMap from '@/components/ui/maps/Map';
+// import MapboxMap from '@/components/ui/maps/Map';
 
 function Contact() {
     const t = useTranslations("contactPage")
     return (
         <>
             <PageHeader title={"CONTACT US"} pageInfo={"Here you can contact us and send messages."}/>
-            <Section>
+            {/* <Section>
                 <div className=''>
                     <MapboxMap/>
                 </div>
-            </Section>
+            </Section> */}
             <Section
             title={"Contact Our Team"}
             subText={"We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us."}
