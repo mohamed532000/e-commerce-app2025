@@ -25,7 +25,7 @@ function Contact() {
             subText={"We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us."}
             >
                 <div className='relative grid grid-cols-3 gap-x-4'>
-                    <div className='contact-info relative flex flex-col gap-y-2 p-5 border border-slate-300 dark:border-slate-500 dark:border-slate-5 rounded-2xl'>
+                    <div className='contact-info relative flex flex-col gap-y-2 p-5 border border-slate-300 dark:border-slate-500 dark:border-slate-5 rounded-2xl col-span-3 md:col-span-1'>
                         <h1 className='font-bold text-2xl'>Contact Info</h1>
                         <div className='relative py-2'>
                             <h2 className='font-bold mb-2'>Location</h2>
@@ -57,7 +57,7 @@ function Contact() {
                             <FollowUsIcons/>
                         </div>
                     </div>
-                    <div className='contact-form col-span-2'>
+                    <div className='contact-form col-span-3 md:col-span-2'>
                         <ContactForm/>
                     </div>
                 </div>

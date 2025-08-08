@@ -22,7 +22,7 @@ function PageLettersParent({title}) {
         };
     },[])
     return (
-        <div className='relative flex justify-center items-center gap-x-14'>
+        <div className='relative flex flex-wrap justify-center items-center gap-x-14'>
             {
                 currentLocal !== "ar"
                 ?
