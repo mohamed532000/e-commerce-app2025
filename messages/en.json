@@ -3,6 +3,27 @@
         "title": "Sochialyzer Group",
         "description": "Your social analytics platform"
     },
+    "global" : {
+        "Name" : "Name",
+        "Email" : "Email",
+        "Phone" : "Phone",
+        "Message" : "Message",
+        "Submit" : "Submit",
+        "Your message her" : "Your message her",
+        "Location" : "Location",
+        "Follow us" : "Follow us",
+        "Sunday": "Sunday",
+        "Monday": "Monday",
+        "Tuesday": "Tuesday",
+        "Wednesday": "Wednesday",
+        "Thursday": "Thursday",
+        "Friday": "Friday",
+        "Saturday": "Saturday",
+        "Egypt" : "Egypt",
+        "Giza" : "Giza",
+        "El-Haram" : "El-Haram",
+        "Get in touch" : "Get in touch"
+    },
     "home" : {
         "title" : "title",
         "Login / Register" : "Login / Register",
@@ -15,6 +36,15 @@
         "/" : "home"
     },
     "contactPage" : {
-        "contact us" : "contact us"
+        "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us.",
+        "contactDescription" : "Here you can contact us and send messages.",
+        "Contact Our Team" : "Contact Our Team",
+        "CONTACT US" : "CONTACT US",
+        "contact us" : "contact us",
+        "Send us a message" : "Send us a message",
+        "Contact Info" : "Contact Info",
+        "Get in touch" : "Get in touch",
+        "Support hours" : "Support hours",
+        "Send message" : "Send message"
     }
 }

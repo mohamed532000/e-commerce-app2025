@@ -11,31 +11,32 @@ import ContactForm from '@/app/forms/contact/ContactForm';
 // import MapboxMap from '@/components/ui/maps/Map';
 
 function Contact() {
-    const t = useTranslations("contactPage")
+    const globalT = useTranslations("global")
+    const contactPT = useTranslations("contactPage")
     return (
         <>
-            <PageHeader title={"CONTACT US"} pageInfo={"Here you can contact us and send messages."}/>
+            <PageHeader title={contactPT("CONTACT US")} pageInfo={contactPT("contactDescription")}/>
             {/* <Section>
                 <div className=''>
                     <MapboxMap/>
                 </div>
             </Section> */}
             <Section
-            title={"Contact Our Team"}
-            subText={"We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us."}
+            title={contactPT("Contact Our Team")}
+            subText={contactPT("contactSubText")}
             >
                 <div className='relative grid grid-cols-3 gap-x-4'>
                     <div className='contact-info relative flex flex-col gap-y-2 p-5 border border-slate-300 dark:border-slate-500 dark:border-slate-5 rounded-2xl col-span-3 md:col-span-1'>
-                        <h1 className='font-bold text-2xl'>Contact Info</h1>
+                        <h1 className='font-bold text-2xl'>{contactPT("Contact info")}</h1>
                         <div className='relative py-2'>
-                            <h2 className='font-bold mb-2'>Location</h2>
+                            <h2 className='font-bold mb-2'>{globalT("Location")}</h2>
                             <div className='relative flex items-center gap-x-1.5'>
                                 <CiLocationOn/>
-                                <p>Egypt - Giza - Haram</p>
+                                <p>{globalT("Egypt")} - {globalT("Giza")} - {globalT("El-Haram")}</p>
                             </div>
                         </div>
                         <div className='relative py-2'>
-                            <h2 className='font-bold mb-2'>Get in touch</h2>
+                            <h2 className='font-bold mb-2'>{globalT("Get in touch")}</h2>
                             <div className='relative flex items-center gap-x-1.5'>
                                 <FaPhone/>
                                 <p>01124485518</p>
@@ -46,14 +47,14 @@ function Contact() {
                             </div>
                         </div>
                         <div className='relative py-2'>
-                            <h2 className='font-bold mb-2'>Support hours</h2>
+                            <h2 className='font-bold mb-2'>{contactPT("Support hours")}</h2>
                             <div className='relative flex items-center gap-x-1.5'>
                                 <IoIosTimer/>
-                                <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                                <p>{globalT("Monday")} - {globalT("Friday")}: 9:00 AM - 5:00 PM</p>
                             </div>
                         </div>
                         <div className='relative py-2'>
-                            <h2 className='font-bold mb-2'>Follow us</h2>
+                            <h2 className='font-bold mb-2'>{globalT("Follow us")}</h2>
                             <FollowUsIcons/>
                         </div>
                     </div>

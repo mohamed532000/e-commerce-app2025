@@ -34,7 +34,7 @@ function PageLettersParent({title}) {
                     >{letter}</span>
                 ))
                 :
-                title
+                <h1 className='font-bold text-[clamp(1.5rem,5vw,5rem)]'>{title}</h1>
             }
         </div>
     )
