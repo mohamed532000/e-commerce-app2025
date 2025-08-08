@@ -12,6 +12,7 @@ function PageHeader({title , pageInfo}) {
         title={title} 
         fill 
         priority
+        fetchPriority='high'
         className='absolute inset-0 object-cover' 
         sizes='100vw'
         quality={85}
