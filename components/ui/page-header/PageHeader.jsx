@@ -11,6 +11,7 @@ function PageHeader({title , pageInfo}) {
         alt='page-header' 
         title={title} 
         fill 
+        priority
         className='absolute inset-0 object-cover' 
         sizes='100vw'
         quality={85}
