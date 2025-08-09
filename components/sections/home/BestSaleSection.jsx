@@ -99,8 +99,8 @@ function BestSaleSection() {
   
   return (
     <Section 
-      title={"BEST SALE"}
-      subText={"These products are best sale of this month."}
+      title={"best sale"}
+      subText={"best sale section subtext"}
       className={"swiper-section best-sale-section"}
       >
         <CustomSwiperModule

@@ -22,7 +22,18 @@
         "Egypt" : "Egypt",
         "Giza" : "Giza",
         "El-Haram" : "El-Haram",
-        "Get in touch" : "Get in touch"
+        "Get in touch" : "Get in touch",
+        "Subscribe" : "Subscribe",
+        "Enter email address" : "Enter email address",
+        "Quick links" : "Quick links",
+        "Categories": "Categories",
+        "Electronics": "Electronics",
+        "Clothes": "Clothes",
+        "Sports & Outdoors": "Sports & Outdoors",
+        "Books": "Books",
+        "Home & Garden": "Home & Garden",
+        "contact us" : "contact us",
+        "All rights reserved" : "All rights reserved"
     },
     "home" : {
         "title" : "title",
@@ -46,5 +57,16 @@
         "Get in touch" : "Get in touch",
         "Support hours" : "Support hours",
         "Send message" : "Send message"
+    },
+    "sectionsTitles" : {
+        "best sale" : "best sale",
+        "recommended" : "recommended",
+        "best sale section subtext" : "sectionsTitles.These products are best sale of this month.",
+        "recommended section subtext" : "We Recommended These Products For You."
+    },
+    "footer" : {
+        "Join Our Newsletter" : "Join Our Newsletter",
+        "newsletter subtext": "Stay up-to-date with our latest products and promotions.",
+        "brand subtext" : "Everything you need in one place - quality and great prices."
     }
 }

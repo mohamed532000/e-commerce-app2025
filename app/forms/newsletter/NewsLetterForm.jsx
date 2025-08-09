@@ -3,6 +3,7 @@ import CustomFormField from '@/components/ui/CustomFormField';
 import { Form } from '@/components/ui/form';
 import SubmitButton from '@/components/ui/SubmitButton';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod';
@@ -10,6 +11,7 @@ const formValidation = z.object({
     email : z.string().email()
 })
 function NewsLetterForm() {
+    const globalT = useTranslations("global")
     const form = useForm({
         resolver : zodResolver(formValidation),
         defaultValues : {
@@ -28,12 +30,12 @@ function NewsLetterForm() {
             >
                 <CustomFormField
                     name='email'
-                    placeholder='Enter email address'
+                    placeholder={globalT('Enter email address')}
                     type='email'
                     form={form}
                 />
                 <SubmitButton form={"newsletter-form"}>
-                    Subscribe
+                    {globalT("Subscribe")}
                 </SubmitButton>
             </form>
         </Form>

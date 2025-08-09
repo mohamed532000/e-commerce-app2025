@@ -22,7 +22,18 @@
         "Egypt" : "مصر",
         "Giza" : "الحيزة",
         "El-Haram" : "الهرم",
-        "Get in touch" : "ابقى على تواصل"
+        "Get in touch" : "ابقى على تواصل",
+        "Subscribe" : "أشترك",
+        "Enter email address" : "ادخل البريد الالكتروني",
+        "Quick links" : "اختصارات سريعة",
+        "Categories": "الفئات",
+        "Electronics": "إلكترونيات",
+        "Clothes": "ملابس",
+        "Sports & Outdoors": "الرياضة والهواء الطلق",
+        "Books": "كتب",
+        "Home & Garden": "المنزل والحديقة",
+        "contact us" : "اتصل بنا",
+        "All rights reserved" : "جميع الحقوق محفوظة"
     },
     "home" : {
         "title" : "مرحبا",
@@ -45,5 +56,16 @@
         "Contact info" : "معلومات التواصل",
         "Support hours" : "اوقات الدعم الفني",
         "Send message" : "ارسال رسالة"
+    },
+    "sectionsTitles" : {
+        "best sale" : "افضل المبيعات",
+        "recommended" : "مقترح لك",
+        "best sale section subtext" : "هذه المنتجات هي الأفضل مبيعًا هذا الشهر.",
+        "recommended section subtext" : "منتجات مختارة خصيصًا لك."
+    },
+    "footer" : {
+        "Join Our Newsletter" : "لا تفوت آخر التحديثات - اشترك الآن",
+        "newsletter subtext" : "ابقَ على اطلاع بأحدث منتجاتنا وعروضنا الترويجية.",
+        "brand subtext" : "كل ما تحتاجه في مكان واحد - جودة وأسعار مميزة"
     }
 }

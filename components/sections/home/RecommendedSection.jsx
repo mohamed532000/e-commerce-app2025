@@ -135,8 +135,8 @@ function RecommendedSection() {
     <Section 
     className={"swiper-section recommended-section"} 
     containerClassName={""} 
-    title={"RECOMMENDED"}
-    subText={"We Recommended These Products For You."}>
+    title={"recommended"}
+    subText={"recommended section subtext"}>
       <CustomSwiperModule
         className=''
         breakpoints={breakpoints}
