@@ -31,7 +31,7 @@ function PageLettersParent({title}) {
                     style={{
                         transform: scrollY >= 1 ? `translateY(-${scrollY + index * 5}px)` : "none",
                     }}
-                    >{letter}</span>
+                    >{letter.toUpperCase()}</span>
                 ))
                 :
                 <h1 className='font-bold text-[clamp(1.5rem,5vw,5rem)]'>{title}</h1>

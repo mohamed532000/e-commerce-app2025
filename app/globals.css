@@ -155,6 +155,17 @@
   .bg-dark {
     @apply bg-slate-900
   }
+  @keyframes marquee {
+    0%,100% {
+      transform: translateX(0%);
+    }
+    50% {
+      transform: translateX(-100%);
+    }
+  }
+  .infinite-line-animate {
+    animation: marquee 60s linear infinite;
+  }
 }
 .container {
   width: 90%;
@@ -183,4 +194,16 @@
 .swiper-pagination {
   position: relative;
   margin-top: 20px;
+}
+.line-animate {
+  animation: animate_line linear 20s infinite;
+}
+
+@keyframes animate_line {
+  from {
+    transform: translateX(0%)
+  }
+  to {
+    transform: translateX(-100%),
+  }
 }

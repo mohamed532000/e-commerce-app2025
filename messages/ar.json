@@ -33,7 +33,14 @@
         "Books": "كتب",
         "Home & Garden": "المنزل والحديقة",
         "contact us" : "اتصل بنا",
-        "All rights reserved" : "جميع الحقوق محفوظة"
+        "All rights reserved" : "جميع الحقوق محفوظة",
+        "auth" : "مصادقة",
+        "You are not login" : "أنت غير مسجل الدخول",
+        "Logged in successfully" : "تم تسجيل الدخول بنجاح",
+        "login" : "تسجيل دخول",
+        "No data avilable" : "لايوجد بيانات لعرضها",
+        "Faild loading data" : "فشل تحميل البيانات",
+        "Retry" : "اعادة المحاولة"
     },
     "home" : {
         "title" : "مرحبا",
@@ -47,8 +54,6 @@
         "/" : "الرئيسية"
     },
     "contactPage" : {
-        "contactSubText" : "نحن هنا لمساعدتكم! سواء كان لديكم استفسارات عن منتجاتنا، تحتاجون دعمًا، أو حتى مجرد مشاركة ملاحظاتكم، لا تترددوا في التواصل معنا.",
-        "Contact Our Team" : "تواصل مع الفريق الخاص بنا",
         "contactDescription": "هنا يمكنكم التواصل معنا وإرسال الرسائل.",
         "CONTACT US" : "اتصل بنا",
         "contact us" : "اتصل بنا",
@@ -57,11 +62,25 @@
         "Support hours" : "اوقات الدعم الفني",
         "Send message" : "ارسال رسالة"
     },
+    "pagesHeader" : {
+        "about" : "عنا",
+        "aboutPageInfo" : "داخل هذه الصفحة يمكنك معرفة المزيد عنا والتحدث مع فريق خبرائنا",
+        "cart" : "سلة التسوق",
+        "cartPageInfo" : "هنا يمكنك إدارة منتجات سلة التسوق الخاصة بك",
+        "contact us" : "اتصل بنا",
+        "contactPageInfo" : "هنا يمكنكم التواصل معنا وإرسال الرسائل"
+    },
     "sectionsTitles" : {
         "best sale" : "افضل المبيعات",
         "recommended" : "مقترح لك",
         "best sale section subtext" : "هذه المنتجات هي الأفضل مبيعًا هذا الشهر.",
-        "recommended section subtext" : "منتجات مختارة خصيصًا لك."
+        "recommended section subtext" : "منتجات مختارة خصيصًا لك.",
+        "New arrivals" : "اخر المنتجات",
+        "new products section subtext" : "كن أول من يتسوق أحدث منتجاتنا.",
+        "team members" : "اعضاء الفريق",
+        "You can talk to our team now" : "تستطيع التحدث لاعضاء الفريق الان",
+        "Contact our team" : "تواصل مع الفريق الخاص بنا",
+        "contactSubText" : "نحن هنا لمساعدتكم! سواء كان لديكم استفسارات عن منتجاتنا، تحتاجون دعمًا، أو حتى مجرد مشاركة ملاحظاتكم، لا تترددوا في التواصل معنا."
     },
     "footer" : {
         "Join Our Newsletter" : "لا تفوت آخر التحديثات - اشترك الآن",

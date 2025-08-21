@@ -1,14 +1,14 @@
-import React from 'react'
-import loginPanner from "../../media/images/backgrounds/login.webp"
-import Link from 'next/link'
-import { Home } from 'lucide-react'
-import LoginForm from '../../forms/login/LoginForm'
+import React from 'react';
+import loginPanner from "../../../media/images/backgrounds/login.webp";
+import Link from 'next/link';
+import { Home } from 'lucide-react';
+import LoginForm from '@/app/forms/login/LoginForm';
 
 function LoginPage() {
   return (
     <>
       <div className='relative w-full min-h-screen flex flex-col md:flex-row justify-center md:justify-between items-center bg-slate-50'>
-        <Link href="/" className="relative md:absolute translate-y-4 md:right-4 flex justify-center items-center gap-1 text-sm text-slate-700 md:text-slate-100 hover:text-primary transition z-40">
+        <Link href="/" className="relative md:absolute h-fit inset-y-0 translate-y-4 md:right-4 flex justify-center items-center gap-1 text-sm text-slate-700 md:text-slate-100 hover:text-primary transition z-40">
           <Home className="w-4 h-4" />
           Home
         </Link>

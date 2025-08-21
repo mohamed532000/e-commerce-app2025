@@ -8,7 +8,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 
 export const FollowUsIcons = () => {
@@ -44,71 +44,75 @@ function Footer() {
         {id : 1 , name : "Home & Garden"},
     ]
     const currentYear = new Date().getFullYear()
-    const [globalT , footerT , homePT] = [useTranslations("global") , useTranslations("footer") , useTranslations("home")]
-  return (
-    <footer className='relative mt-[100px]'>
-        <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
-            <div className='news-letter-content relatie flex flex-col justify-center md:justify-center items-center md:items-start gap-y-1.5'>
-                <h1 className='font-bold text-2xl'>{footerT("Join Our Newsletter")}</h1>
-                <p>{footerT("newsletter subtext")}</p>
+    const [globalT , footerT , homePT] = [useTranslations("global") , useTranslations("footer") , useTranslations("home")];
+    // const currentLocale = useLocale();
+    // const removeFooterWhen = new Set([`/${currentLocale}/${encodeURI(t("register"))}` , `/${currentLocale}/${encodeURI(t("login"))}`]);
+    // const noFooter = removeFooterWhen.has(pathname);t("login");
+    // if(noFooter) return null
+    return (
+        <footer className='relative mt-[100px]'>
+            <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
+                <div className='news-letter-content relatie flex flex-col justify-center md:justify-center items-center md:items-start gap-y-1.5'>
+                    <h1 className='font-bold text-2xl'>{footerT("Join Our Newsletter")}</h1>
+                    <p>{footerT("newsletter subtext")}</p>
+                </div>
+                <NewsLetterForm/>
             </div>
-            <NewsLetterForm/>
-        </div>
-        <div className='container relative grid grid-cols-4 py-5'>
-            <FooterColumn>
-                <div className="flex lg:flex-1">
-                    <SiteLogo/>
-                </div>
-                <p className='text-sm'>{footerT("brand subtext")}</p>
-            </FooterColumn>
-            <FooterColumn
-            title={"Quick links"}
-            >
-                {
-                    navList?.length >= 1
-                    ?
-                    navList.map((item , index) => <Link key={index} href={item.href} label={item.label} className='opacity-70 transition-all duration-300 hover:opacity-100'>{homePT(item.label)}</Link>)
-                    :
-                    <span>Will Add Data Soon.</span>
-                }
-            </FooterColumn>
-            <FooterColumn
-            title={"Categories"}
-            >
-                {
-                    categories?.length >= 1
-                    ?
-                    categories.map((item , index) => <Link href={`/`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{globalT(item.name)}</Link>)
-                    :
-                    <span>Will Add Data Soon.</span>
-                }
-            </FooterColumn>
-            <FooterColumn
-            title={"contact us"}
-            >
-                <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
-                    <CiLocationOn/>
-                    <span>{globalT("Egypt")} - {globalT("Giza")} - {globalT("El-Haram")}</span>
-                </Link>
-                <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
-                    <FaPhone/>
-                    <span>01124485518</span>
-                </Link>
-                <Link href={`mailto:Sochialyzer@gmail.com`} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
-                    <MdAlternateEmail/>
-                    <span>Sochialyzer@gmail.com</span>
-                </Link>
-                <div className='fowllow-us relative flex flex-col gap-y-1.5 pt-2 mt-2'>
-                    <h2 className='font-bold'>{globalT("Follow us")}</h2>
-                    <FollowUsIcons/>
-                </div>
-            </FooterColumn>
-        </div>
-        <div className='container border-t border-slate-400 dark:border-slate-200 flex justify-center items-center py-5'>
-            <p>© {currentYear} <span className='text-active-text-primary'>Sochyalizer</span>. {globalT("All rights reserved")}.</p>
-        </div>
-    </footer>
-  )
+            <div className='container relative grid grid-cols-4 py-5'>
+                <FooterColumn>
+                    <div className="flex lg:flex-1">
+                        <SiteLogo/>
+                    </div>
+                    <p className='text-sm'>{footerT("brand subtext")}</p>
+                </FooterColumn>
+                <FooterColumn
+                title={"Quick links"}
+                >
+                    {
+                        navList?.length >= 1
+                        ?
+                        navList.map((item , index) => <Link key={index} href={item.href} label={item.label} className='opacity-70 transition-all duration-300 hover:opacity-100'>{homePT(item.label)}</Link>)
+                        :
+                        <span>Will Add Data Soon.</span>
+                    }
+                </FooterColumn>
+                <FooterColumn
+                title={"Categories"}
+                >
+                    {
+                        categories?.length >= 1
+                        ?
+                        categories.map((item , index) => <Link href={`/`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{globalT(item.name)}</Link>)
+                        :
+                        <span>Will Add Data Soon.</span>
+                    }
+                </FooterColumn>
+                <FooterColumn
+                title={"contact us"}
+                >
+                    <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
+                        <CiLocationOn/>
+                        <span>{globalT("Egypt")} - {globalT("Giza")} - {globalT("El-Haram")}</span>
+                    </Link>
+                    <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
+                        <FaPhone/>
+                        <span>01124485518</span>
+                    </Link>
+                    <Link href={`mailto:Sochialyzer@gmail.com`} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
+                        <MdAlternateEmail/>
+                        <span>Sochialyzer@gmail.com</span>
+                    </Link>
+                    <div className='fowllow-us relative flex flex-col gap-y-1.5 pt-2 mt-2'>
+                        <h2 className='font-bold'>{globalT("Follow us")}</h2>
+                        <FollowUsIcons/>
+                    </div>
+                </FooterColumn>
+            </div>
+            <div className='container border-t border-slate-400 dark:border-slate-200 flex justify-center items-center py-5'>
+                <p>© {currentYear} <span className='text-active-text-primary'>Sochyalizer</span>. {globalT("All rights reserved")}.</p>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer

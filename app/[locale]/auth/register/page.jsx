@@ -1,6 +1,6 @@
 import React from 'react'
-import RegisterForm from '../../forms/register/RegisterForm'
-import registerPanner from "../../media/images/backgrounds/register.webp"
+import RegisterForm from '@/app/forms/register/RegisterForm'
+import registerPanner from "../../../media/images/backgrounds/register.webp"
 import Link from 'next/link'
 import { Home } from 'lucide-react'
 

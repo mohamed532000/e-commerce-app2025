@@ -4,21 +4,22 @@ import { BsListNested } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { MobileNavList } from "./ui/MobileNavList";
 import { usePathname } from 'next/navigation';
-import { MainButton } from "./ui/MainButton";
 import ToggelerDarkMode from "./ui/ToggelerDarkMode";
 import { useLocale, useTranslations } from "next-intl";
 import LangToggeler from "./ui/LangToggeler";
-import HandleTranslate from "@/helper/HandleTranslate";
 import { navList } from "@/i18n/routing";
 import SiteLogo from "./ui/SiteLogo";
+import NavAuthSide from "./ui/NavAuthSide";
+import { toast } from "sonner";
 
 export default function Navbar() {
     const t = useTranslations("home");
+    const globalT = useTranslations("global");
     const [isScrolling , setIsScrolling] = useState(false);
     const [activeMobileNav , setActiveMobileNav] = useState(false);
     const currentLocale = useLocale();
     const pathname = usePathname();
-    const removeNavWhen = new Set([`/${currentLocale}/${encodeURI(t("register"))}` , `/${currentLocale}/${encodeURI(t("login"))}`]);
+    const removeNavWhen = new Set([`/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("register"))}` , `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("login"))}`]);
     const noNav = removeNavWhen.has(pathname);t("login");
     useEffect(() => {
         window.onscroll = () => {
@@ -34,7 +35,6 @@ export default function Navbar() {
     useEffect(() => {
         handleCloseMobileNav()
     },[pathname])
-    
     if (noNav) return null
     return (
         <>
@@ -47,11 +47,9 @@ export default function Navbar() {
                         {
                             navList.map((item , index) => <CustomLink isScrolling={isScrolling} pathname={pathname} key={index} href={item.href} label={item.label} className={`relative py-1 px-2`} translationPage={"home"}/>)
                         }
-                        <MainButton href="/register">
-                            <HandleTranslate page={"home"} word={"Login / Register"} />
-                        </MainButton>
                         <ToggelerDarkMode/>
                         <LangToggeler/>
+                        <NavAuthSide/>                        
                     </div>
                     <BsListNested className="cursor-pointer text-4xl light-text lg:hidden" onClick={handleShowMobileNav}/>
                 </nav>

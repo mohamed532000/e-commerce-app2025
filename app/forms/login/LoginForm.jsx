@@ -58,7 +58,6 @@ function LoginForm() {
             <span className='mx-2 -translate-y-0.5'>or</span>
             <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
           </div>
-          <AuthWithGoogleBtn className={`mb-4`} title={"Login with Google"}/>
           <div className='relative flex items-center gap-x-1.5'>
             <SubmitButton form={"login-form"}>
                 Submit
@@ -69,6 +68,7 @@ function LoginForm() {
             </span>
           </div>
         </form>
+        <AuthWithGoogleBtn className={`mb-4`} title={"Login with Google"}/>
       </Form>
     </div>
     </>

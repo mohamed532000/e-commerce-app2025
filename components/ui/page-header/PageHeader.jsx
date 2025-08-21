@@ -2,8 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 import pageHeader from "../../../app/media/images/backgrounds/page-header.webp"
 import PageLettersParent from './PageLettersParent'
+import { useTranslations } from 'next-intl'
 
 function PageHeader({title , pageInfo}) {
+  const t = useTranslations("pagesHeader")
   return (
     <div className='relative w-full h-[70vh]'>
         <Image 
@@ -19,8 +21,8 @@ function PageHeader({title , pageInfo}) {
         />
         <span className='absolute inset-0 w-full h-full bg-slate-900 opacity-35'></span>
         <div className='relative container h-full flex flex-col gap-y-2.5 justify-center items-center'>
-            <PageLettersParent title={title}/>
-            <p className='text-xs text-stone-50'>{pageInfo}</p>
+            <PageLettersParent title={t(title)}/>
+            <p className='text-xs text-stone-50'>{t(pageInfo)}</p>
         </div>
         <span className='absolute bottom-0 w-full h-[30%] bg-gradient-to-t from-background to-transparent'></span>
     </div>

@@ -27,13 +27,17 @@ export const routing = defineRouting({
       en : "/about",
       ar : "/عنا"
     },
-    "/login" : {
-      en : "/login",
-      ar : "/تسجيل دخول"
+    "/auth/login" : {
+      en : "/auth/login",
+      ar : "/مصادقة/تسجيل دخول"
     },
-    "/register" : {
-      en : "/register",
-      ar : "/انشاء حساب"
+    "/auth/register" : {
+      en : "/auth/register",
+      ar : "/مصادقة/انشاء حساب"
+    },
+    "/profile" : {
+      en : "/profile",
+      ar : "/الملف الشخصي"
     },
   },
 });

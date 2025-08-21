@@ -17,7 +17,7 @@ function ProductCard({className , product}) {
                     alt={`${product.title} product image`} 
                     fill
                     sizes='(max-width: 768px) 50vw, (max-width: 1024px) 30vw, 250px'
-                    className='object-cover'
+                    className='object-cover hover:scale-105 hover:rotate-2 transition-all duration-300'
                     quality={85}
                     priority={false}
                 />
@@ -28,11 +28,20 @@ function ProductCard({className , product}) {
                 <p className='font-bold line-clamp-1 text-foreground text-center md:text-start'>
                     {product.title}
                 </p>
-                <div className='relative flex justify-center items-center md:justify-start gap-2'>
-                    <p className='font-bold text-center md:text-start'>{product.price}$</p>
-                </div>
+                {
+                    product.discount_amount >= 1
+                    ?
+                    <div className='relative flex justify-center items-center md:justify-start gap-2'>
+                        <p className='font-bold text-center md:text-start'>{product.price_after_discount}$</p>
+                        <p className='font-bold text-center md:text-start line-through text-red-500'>{product.price}$</p>
+                    </div>
+                    :
+                    <div className='relative flex justify-center items-center md:justify-start gap-2'>
+                        <p className='font-bold text-center md:text-start'>{product.price}$</p>
+                    </div>
+                }
                 <p className='text-center line-clamp-2 md:text-start'>
-                    {product.info}
+                    {product.description}
                 </p>
             </div>
             <div className='card-icons relative flex justify-between w-full'>

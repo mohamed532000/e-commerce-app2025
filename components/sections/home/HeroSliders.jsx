@@ -9,6 +9,7 @@ import {ImageOverlay} from '../../ui/ImageOverlay';
 import { MainButton } from '../../ui/MainButton';
 import "../../../styles/homeSwiper.css"
 import HandleTranslate from '@/helper/HandleTranslate';
+import { toast } from 'sonner';
 function HeroSliders() {
     const [activeSlideIndex , setActiveSlideIndex] = useState(0)
     const heroSlides = [

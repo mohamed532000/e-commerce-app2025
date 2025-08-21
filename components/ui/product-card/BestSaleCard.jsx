@@ -25,12 +25,13 @@ function BestSaleCard({className , product}) {
               {product.title}
             </h1>
             <div className='relative'>Category : <span className='text-active-text-primary font-bold'>{product.category}</span></div>
+            <div className='relative'>Sales : <span className='text-active-text-primary font-bold'>{product.sales}</span></div>
             <HandleShowPriceAndDiscount 
             price={product.price} 
             currency={"$"} 
             price_after_discount={product.price_after_discount} 
             discount_amount={product.discount_amount}/>
-            <p className='line-clamp-2'>{product.info}</p>
+            <p className='line-clamp-2'>{product.description}</p>
             <div className='flex items-center gap-1'>
               <AddToCartBtn/>
               <AddToWhishlistBtn/>

@@ -48,8 +48,8 @@ function TeamSection() {
   return (
     <Section
     className={"swiper-section "}
-    title={"TEAM MEMBERS"}
-    subText={"You can talk to our team now."}
+    title={"team members"}
+    subText={"You can talk to our team now"}
     >
         {
             teamMembers?.length <= 3

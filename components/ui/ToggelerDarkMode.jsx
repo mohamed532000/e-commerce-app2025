@@ -4,16 +4,13 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { useTheme } from 'next-themes';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import SpinLoading from './SpinLoading';
 
 function ToggelerDarkMode() {
   const [mounted , setMounted] = useState(false)
   const {resolvedTheme , setTheme} = useTheme()
   useEffect(() => setMounted(true) , []);
-  if (!mounted) return (
-    <div className={`relative flex justify-center items-center mx-4 text-base md:text-2xl`}>
-      <AiOutlineLoading3Quarters className=" animate-spin spin-in transition-all duration-300 opacity-40"/>
-    </div>
-  )
+  if (!mounted) return <SpinLoading/>
   return (
     <div className={`relative flex justify-center items-center mx-4 text-base md:text-2xl`}>
         {

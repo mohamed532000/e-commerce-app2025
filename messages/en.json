@@ -33,7 +33,14 @@
         "Books": "Books",
         "Home & Garden": "Home & Garden",
         "contact us" : "contact us",
-        "All rights reserved" : "All rights reserved"
+        "All rights reserved" : "All rights reserved",
+        "auth" : "auth",
+        "You are not login" : "You are not login",
+        "Logged in successfully" : "Logged in successfully",
+        "login" : "login",
+        "No data avilable" : "No data avilable",
+        "Faild loading data" : "Faild loading data",
+        "Retry" : "Retry"
     },
     "home" : {
         "title" : "title",
@@ -47,22 +54,34 @@
         "/" : "home"
     },
     "contactPage" : {
-        "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us.",
         "contactDescription" : "Here you can contact us and send messages.",
-        "Contact Our Team" : "Contact Our Team",
         "CONTACT US" : "CONTACT US",
         "contact us" : "contact us",
         "Send us a message" : "Send us a message",
-        "Contact Info" : "Contact Info",
+        "Contact info" : "Contact info",
         "Get in touch" : "Get in touch",
         "Support hours" : "Support hours",
         "Send message" : "Send message"
+    },
+    "pagesHeader" : {
+        "about" : "about",
+        "aboutPageInfo" : "Inside this page you can know more about us and talk to our expert team",
+        "cart" : "cart",
+        "cartPageInfo" : "Her you can manage your cart products",
+        "contact us" : "contact us",
+        "contactPageInfo" : "Here you can contact us and send messages"
     },
     "sectionsTitles" : {
         "best sale" : "best sale",
         "recommended" : "recommended",
         "best sale section subtext" : "sectionsTitles.These products are best sale of this month.",
-        "recommended section subtext" : "We Recommended These Products For You."
+        "recommended section subtext" : "We Recommended These Products For You.",
+        "New arrivals" : "New arrivals",
+        "new products section subtext" : "Be the first to shop our newest arrivals.",
+        "team members" : "team members",
+        "You can talk to our team now" : "You can talk to our team now",
+        "Contact our team" : "Contact Our Team",
+        "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us."
     },
     "footer" : {
         "Join Our Newsletter" : "Join Our Newsletter",

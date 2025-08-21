@@ -5,7 +5,7 @@ import React from 'react'
 function page() {
   return (
     <>
-      <PageHeader title={"ABOUT"} pageInfo={"Inside this page you can know more about us and talk to our expert team."} />
+      <PageHeader title={"about"} pageInfo={"aboutPageInfo"} />
       <TeamSection/>
     </>
   )

@@ -15,15 +15,10 @@ function Contact() {
     const contactPT = useTranslations("contactPage")
     return (
         <>
-            <PageHeader title={contactPT("CONTACT US")} pageInfo={contactPT("contactDescription")}/>
-            {/* <Section>
-                <div className=''>
-                    <MapboxMap/>
-                </div>
-            </Section> */}
+            <PageHeader title={"contact us"} pageInfo={"contactPageInfo"}/>
             <Section
-            title={contactPT("Contact Our Team")}
-            subText={contactPT("contactSubText")}
+            title={"Contact our team"}
+            subText={"contactSubText"}
             >
                 <div className='relative grid grid-cols-3 gap-x-4'>
                     <div className='contact-info relative flex flex-col gap-y-2 p-5 border border-slate-300 dark:border-slate-500 dark:border-slate-5 rounded-2xl col-span-3 md:col-span-1'>
