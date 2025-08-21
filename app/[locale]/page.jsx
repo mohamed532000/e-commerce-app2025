@@ -4,7 +4,7 @@ import BestSaleSection from "@/components/sections/home/BestSaleSection";
 import { recommendedProducts } from "@/helper/fucntions/recommendedProducts";
 import { bestSalePrducts } from "@/helper/fucntions/bestSaleProducts";
 import NewProductsSection from "@/components/sections/home/NewProductsSection";
-import { newProducts } from "@/helper/fucntions/NewProducts";
+import { newProducts } from "@/helper/fucntions/newProducts";
 export default async function Home() {
   const {data:recommendedData} = await recommendedProducts();
   const {data:newProductsData} =  await newProducts();
