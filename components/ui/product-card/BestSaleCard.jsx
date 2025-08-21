@@ -13,7 +13,8 @@ function BestSaleCard({className , product}) {
             src={product.image_url}
             alt='image'
             title={product.title}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+            sizes="300px"
             fill
             className='relative object-cover'
             quality={85}
