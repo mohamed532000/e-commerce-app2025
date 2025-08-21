@@ -33,7 +33,7 @@ function ProductCard({className , product}) {
                     ?
                     <div className='relative flex justify-center items-center md:justify-start gap-2'>
                         <p className='font-bold text-center md:text-start'>{product.price_after_discount}$</p>
-                        <p className='font-bold text-center md:text-start line-through text-red-500'>{product.price}$</p>
+                        <p className='font-bold text-center md:text-start line-through text-red-700'>{product.price}$</p>
                     </div>
                     :
                     <div className='relative flex justify-center items-center md:justify-start gap-2'>
