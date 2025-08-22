@@ -17,8 +17,7 @@ import Image from 'next/image'
 const HandleShowFlag = () => {
     const currentLocale = useLocale();
     const currentFlag = locales.find((item) => item.locale === currentLocale);
-    return <Image src={currentFlag.flag || ""} alt='flag' title='flag' width={20} height={20} className='object-cover'/>
-
+    return <Image src={currentFlag.flag || ""} alt='' aria-hidden="true" title='flag' width={20} height={20} className='object-cover'/>
 }
 function LangToggeler({className}) {
     const currentLocale = useLocale();
