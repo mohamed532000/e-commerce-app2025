@@ -8,7 +8,7 @@ function UserDropdown({className , data}) {
     return (
         <div className={`lang-toggeler-div relative flex justify-center items-center ${className} col-span-1`}>
             <DropdownMenu>
-                <DropdownMenuTrigger className="outline-0 flex items-center cursor-pointer">
+                <DropdownMenuTrigger aria-label="user drop down" className="outline-0 flex items-center cursor-pointer">
                     {
                     data?.user?.image
                     ? 
