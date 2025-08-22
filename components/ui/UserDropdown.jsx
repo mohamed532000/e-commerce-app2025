@@ -14,7 +14,7 @@ function UserDropdown({className , data}) {
                     ? 
                     <Image src={data?.user?.image} alt='user-image' title={data?.user.name} width={40} height={40} className='rounded-[50%] cursor-pointer'/> 
                     : 
-                    <FaRegUser className='text-2xl cursor-pointer'/>
+                    <FaRegUser className='text-2xl cursor-pointer' aria-hidden="true"/>
                     }
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
