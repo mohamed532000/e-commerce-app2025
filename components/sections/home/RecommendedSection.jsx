@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductCard from '../../ui/product-card/ProductCard';
 import Section from '../../ui/section/Section';
 import { SwiperSlide } from 'swiper/react';
@@ -8,10 +8,8 @@ import "../../../styles/recommendedSection.css";
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import dynamic from 'next/dynamic';
-import { recommendedProducts } from '@/helper/fucntions/recommendedProducts';
 const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
-function  RecommendedSection() {
-  const [products , setProducts] = useState([]);
+function  RecommendedSection({products}) {
   const breakpoints = {
     640: {
       slidesPerView: 1,
@@ -23,13 +21,6 @@ function  RecommendedSection() {
       slidesPerView: 4,
     },
   }
-  const fetchData = async () => {
-    const {data:recommendedData} = await recommendedProducts();
-    setProducts(recommendedData)
-  }
-  useEffect(() => {
-    fetchData()
-  },[])
   return (
     <Section 
     className={"swiper-section recommended-section"} 
