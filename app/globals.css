@@ -163,8 +163,19 @@
       transform: translateX(-100%);
     }
   }
+  @keyframes marqueeAr {
+    0%,100% {
+      transform: translateX(0%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+  }
   .infinite-line-animate {
     animation: marquee 60s linear infinite;
+  }
+  .infinite-line-animate-ar {
+    animation: marqueeAr 60s linear infinite;
   }
 }
 .container {

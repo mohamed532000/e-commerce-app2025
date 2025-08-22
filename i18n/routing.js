@@ -40,4 +40,5 @@ export const routing = defineRouting({
       ar : "/الملف الشخصي"
     },
   },
+  localePrefix : "always"
 });
