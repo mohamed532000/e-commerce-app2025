@@ -1,0 +1,11 @@
+id,title,category,price,description,image_url,discount_type,discount_amount,price_after_discount
+1,"Coffee Brown Crossbody","Crossbody",89.00,"Stylish coffee-brown leather crossbody bag shown flat-lay with accessories.","https://images.pexels.com/photos/167703/pexels-photo-167703.jpeg","percentage",10,80.10
+2,"Brown Messenger Bag","Bags",99.00,"Brown leather messenger bag with buckle and zip details.","https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg","fixed",15,84.00
+3,"Beige Studio Handbag","Everyday",120.00,"Chic beige handbag styled on a clean neutral background.","https://images.pexels.com/photos/8006405/pexels-photo-8006405.jpeg","percentage",15,102.00
+4,"Designer Shoulder Bag","Designer",150.00,"Elegant shoulder bag with refined structure and sleek finish.","https://images.pexels.com/photos/22432990/pexels-photo-22432990.jpeg","none",0,150.00
+5,"Minimalist Neutral Tote","Tote",95.00,"Minimalist neutral tote bag perfect for everyday errands.","https://images.pexels.com/photos/22434760/pexels-photo-22434760.jpeg","fixed",10,85.00
+6,"Pink Leather Handbag","Fashion",130.00,"Pastel pink leather handbag in studio lighting with gold-tone hardware.","https://images.pexels.com/photos/22432983/pexels-photo-22432983.jpeg","percentage",12,114.40
+7,"Vintage Travel Satchel","Travel",140.00,"Vintage style travel satchel with structured shape and leather trim.","https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg","percentage",20,112.00
+8,"Cassette Leather Bag","Classic",110.00,"Timeless leather bag with clean lines and minimalist aesthetic.","https://images.pexels.com/photos/8006405/pexels-photo-8006405.jpeg","fixed",20,90.00
+9,"Flat Lay Essentials Bag","Accessories",75.00,"Flat-lay shot of a leather bag with accessories like glasses, wallet.","https://i.pinimg.com/1200x/ad/92/9a/ad929a018ec2aa187bcf86e78daac3e5.jpg","percentage",15,63.75
+10,"Everyday Shoulder Handbag","Bags",105.00,"Everyday shoulder handbag photographed in clean studio settings.","https://images.pexels.com/photos/22434775/pexels-photo-22434775.jpeg","fixed",10,94.50
