@@ -19,8 +19,8 @@ export default async function Home() {
     <>
       <HeroSection/>
       <RecommendedSection products={[]}/>
-      <NewProductsSection products={[]}/>
-      <BestSaleSection products={[]}/>
+      {/* <NewProductsSection products={[]}/>
+      <BestSaleSection products={[]}/> */}
     </>
   );
 }
