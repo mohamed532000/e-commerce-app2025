@@ -7,7 +7,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getTranslations } from "next-intl/server";
 import Footer from "@/components/ui/Footer";
-import AuthProvider from "@/context/AuthProvider";
+// import AuthProvider from "@/context/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,7 +39,7 @@ export default async function LocaleLayout({ children , params}) {
       <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
+        {/* <AuthProvider> */}
           <NextIntlClientProvider>
            <AppThemeProvider>
              <Navbar/>
@@ -48,7 +48,7 @@ export default async function LocaleLayout({ children , params}) {
              <Toaster/>
            </AppThemeProvider>
          </NextIntlClientProvider>
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </body>
     </html>
   );
