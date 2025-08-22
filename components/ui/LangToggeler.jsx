@@ -32,10 +32,9 @@ function LangToggeler({className}) {
   return (
     <div className={`lang-toggeler-div relative flex justify-center items-center ${className}`}>
         <DropdownMenu>
-            <DropdownMenuTrigger className="outline-0 flex items-center cursor-pointer">
+            <DropdownMenuTrigger aria-label="Change language" className="outline-0 flex items-center cursor-pointer">
                 <IoLanguageSharp className='mx-1 dark:text-lime-50' aria-hidden="true"/>
                 {HandleShowFlag()}
-                <span className="sr-only">Change language</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
