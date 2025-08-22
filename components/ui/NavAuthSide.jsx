@@ -20,7 +20,7 @@ function NavAuthSide() {
     // if(status === "loading") return <SpinLoading/>
     // if(status === "unauthenticated") return <RegisterBtn/>
     // return <UserDropdown data={data}/>
-    return <h1>xs</h1>
+    return <UserDropdown/>
 }
 
 export default NavAuthSide
