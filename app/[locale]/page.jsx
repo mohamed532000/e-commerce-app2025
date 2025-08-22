@@ -7,7 +7,7 @@ import NewProductsSection from "@/components/sections/home/NewProductsSection";
 // import { newProducts } from "@/helper/fucntions/newProducts";
 
 export default async function Home() {
-  const {data:recommendedData} = await recommendedProducts();
+  // const {data:recommendedData} = await recommendedProducts();
   // const {data:newProductsData} =  await newProducts();
   // const {data:bestSaleData} =  await bestSalePrducts();
   // const [recommendedRes, bestSaleRes , newProductsRes] = await Promise.all([
@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection/>
-      <RecommendedSection products={recommendedData}/>
+      <RecommendedSection products={[]}/>
       <NewProductsSection products={[]}/>
       <BestSaleSection products={[]}/>
     </>
