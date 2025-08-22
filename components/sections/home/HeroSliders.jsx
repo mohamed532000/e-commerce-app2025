@@ -4,12 +4,13 @@ import {SwiperSlide} from "swiper/react";
 import slide1 from "../../../app/media/images/backgrounds/banner.webp"
 import slide2 from "../../../app/media/images/backgrounds/banner-2.webp"
 import slide3 from "../../../app/media/images/backgrounds/banner-3.webp"
-import {CustomSwiperModule} from '../../ui/CustomSwiperModule';
+// import {CustomSwiperModule} from '../../ui/CustomSwiperModule';
 import {ImageOverlay} from '../../ui/ImageOverlay';
 import { MainButton } from '../../ui/MainButton';
 import "../../../styles/homeSwiper.css"
 import HandleTranslate from '@/helper/HandleTranslate';
-import { toast } from 'sonner';
+import dynamic from 'next/dynamic';
+const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
 function HeroSliders() {
     const [activeSlideIndex , setActiveSlideIndex] = useState(0)
     const heroSlides = [

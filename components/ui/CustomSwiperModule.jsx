@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
-export const CustomSwiperModule = (
+const CustomSwiperModule = (
   { 
     children,
     className = "",
@@ -46,3 +46,4 @@ export const CustomSwiperModule = (
     </div>
   )
 }
+export default CustomSwiperModule

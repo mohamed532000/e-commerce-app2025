@@ -2,12 +2,14 @@
 import React from 'react';
 import ProductCard from '../../ui/product-card/ProductCard';
 import Section from '../../ui/section/Section';
-import { CustomSwiperModule } from '../../ui/CustomSwiperModule';
+// import { CustomSwiperModule } from '../../ui/CustomSwiperModule';
 import { SwiperSlide } from 'swiper/react';
 import "../../../styles/swiperSection.css";
 import "../../../styles/recommendedSection.css";
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import EmptyData from '@/components/ui/data-status/EmptyData';
+import dynamic from 'next/dynamic';
+const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
 function  RecommendedSection({products}) {
   const breakpoints = {
     640: {
