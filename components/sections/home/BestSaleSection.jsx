@@ -6,6 +6,8 @@ import BestSaleCard from '../../ui/product-card/BestSaleCard'
 import { SwiperSlide } from 'swiper/react'
 import "../../../styles/swiperSection.css";
 import dynamic from 'next/dynamic'
+import EmptyData from '@/components/ui/data-status/EmptyData'
+import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData'
 const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
 function BestSaleSection({products}) {
   return (
