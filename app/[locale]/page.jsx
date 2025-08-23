@@ -6,11 +6,11 @@ import { bestSalePrducts } from "@/helper/fucntions/bestSaleProducts";
 import NewProductsSection from "@/components/sections/home/NewProductsSection";
 import { newProducts } from "@/helper/fucntions/newProducts";
 
-export default async function Home() {
+export default async function Home({params : {locale}}) {
   const [recommendedRes, bestSaleRes , newProductsRes] = await Promise.all([
-    recommendedProducts(),
-    bestSalePrducts(),
-    newProducts(),
+    recommendedProducts(locale),
+    bestSalePrducts(locale),
+    newProducts(locale),
   ]);
   return (
     <>

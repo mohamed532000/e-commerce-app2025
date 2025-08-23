@@ -3,6 +3,7 @@ import AddToCartBtn from '../AddToCartBtn'
 import AddToWhishlistBtn from '../AddToWhishlistBtn'
 import HandleShowPriceAndDiscount from '@/helper/HandleShowPriceAndDiscount'
 import Image from 'next/image'
+import HandleTranslate from '@/helper/HandleTranslate'
 
 function BestSaleCard({className , product}) {
   return (
@@ -22,11 +23,11 @@ function BestSaleCard({className , product}) {
           </div>
         </div>
         <div className='product-info flex flex-col gap-y-2.5'>
-            <h1 className='text-6xl line-clamp-2'>
+            <h1 className='text-6xl line-clamp-2 py-2.5'>
               {product.title}
             </h1>
-            <div className='relative'>Category : <span className='text-active-text-primary font-bold'>{product.category}</span></div>
-            <div className='relative'>Sales : <span className='text-active-text-primary font-bold'>{product.sales}</span></div>
+            <div className='relative'><HandleTranslate word={"Category"} page={"global"} /> : <span className='text-active-text-primary font-bold'>{product.category}</span></div>
+            <div className='relative'><HandleTranslate word={"Sales"} page={"global"} /> : <span className='text-active-text-primary font-bold'>{product.sales}</span></div>
             <HandleShowPriceAndDiscount 
             price={product.price} 
             currency={"$"} 

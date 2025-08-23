@@ -1,10 +1,11 @@
 import { supabase } from "@/app/api/supabase/SupabaseClient";
+import { convertDataHelper } from "./convertDataHelper";
 
-export const bestSalePrducts = async () => {
+export const bestSalePrducts = async (locale) => {
     try {
-        const {data , error} = await supabase.from("products").select("*").order("sales" ,{ascending : false}).range(0,9);
+        const {data , error} = await supabase.from("products").select("*").order("sales" ,{ascending : false}).limit(10);
         if (error) throw error;
-        return {data}
+        return {data : convertDataHelper(data , locale)}
     }catch(error) {
         console.log("error fetching best sale data" , error)
     }

@@ -40,7 +40,9 @@
         "login" : "login",
         "No data avilable" : "No data avilable",
         "Faild loading data" : "Faild loading data",
-        "Retry" : "Retry"
+        "Retry" : "Retry",
+        "Sales" : "Sales",
+        "Category" : "Category"
     },
     "home" : {
         "title" : "title",

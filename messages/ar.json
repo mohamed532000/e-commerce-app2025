@@ -40,7 +40,9 @@
         "login" : "تسجيل دخول",
         "No data avilable" : "لايوجد بيانات لعرضها",
         "Faild loading data" : "فشل تحميل البيانات",
-        "Retry" : "اعادة المحاولة"
+        "Retry" : "اعادة المحاولة",
+        "Sales" : "مبيعات",
+        "Category" : "فئة"
     },
     "home" : {
         "title" : "مرحبا",
