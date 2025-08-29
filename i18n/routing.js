@@ -35,6 +35,10 @@ export const routing = defineRouting({
       en : "/auth/register",
       ar : "/مصادقة/انشاء حساب"
     },
+    "/products" : {
+      en : "/products",
+      ar : "/منتجات"
+    },
     "/profile" : {
       en : "/profile",
       ar : "/الملف الشخصي"

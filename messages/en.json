@@ -42,7 +42,9 @@
         "Faild loading data" : "Faild loading data",
         "Retry" : "Retry",
         "Sales" : "Sales",
-        "Category" : "Category"
+        "Category" : "Category",
+        "What do u need" : "What do u need",
+        "products" : "products"
     },
     "home" : {
         "title" : "title",
@@ -83,7 +85,9 @@
         "team members" : "team members",
         "You can talk to our team now" : "You can talk to our team now",
         "Contact our team" : "Contact Our Team",
-        "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us."
+        "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us.",
+        "Categories" : "Categories",
+        "categoriesSectionSubText" : "Explore our main categories"
     },
     "footer" : {
         "Join Our Newsletter" : "Join Our Newsletter",

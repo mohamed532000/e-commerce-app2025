@@ -8,7 +8,8 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { useLocale, useTranslations } from 'next-intl';
+import { categoriesData } from '@/helper/fucntions/categoriesData';
+import { getTranslations } from 'next-intl/server';
 
 
 export const FollowUsIcons = () => {
@@ -24,8 +25,8 @@ export const FollowUsIcons = () => {
     )
 }
 
-const FooterColumn = ({children , title , className}) => {
-    const globalT = useTranslations("global")
+const FooterColumn = async ({children , title , className , locale}) => {
+    const globalT = await getTranslations({ locale, namespace: "global" })
     return (
         <div className={`relative col-span-4 md:col-span-2 lg:col-span-1 py-2 ${className}`}>
             {title && <h2 className='relative mb-2 font-bold'>{globalT(title)}</h2>}
@@ -35,20 +36,14 @@ const FooterColumn = ({children , title , className}) => {
         </div>
     )
 }
-function Footer() {
-    const categories = [
-        {id : 1 , name : "Electronics"},
-        {id : 1 , name : "Clothes"},
-        {id : 1 , name : "Sports & Outdoors"},
-        {id : 1 , name : "Books"},
-        {id : 1 , name : "Home & Garden"},
-    ]
-    const currentYear = new Date().getFullYear()
-    const [globalT , footerT , homePT] = [useTranslations("global") , useTranslations("footer") , useTranslations("home")];
-    // const currentLocale = useLocale();
-    // const removeFooterWhen = new Set([`/${currentLocale}/${encodeURI(t("register"))}` , `/${currentLocale}/${encodeURI(t("login"))}`]);
-    // const noFooter = removeFooterWhen.has(pathname);t("login");
-    // if(noFooter) return null
+async function Footer({locale}) {
+    const currentYear = new Date().getFullYear();
+    const {data:categories} = await categoriesData(locale);
+    const [globalT , footerT , homePT] = await Promise.all([
+        getTranslations({ locale, namespace: "global" }),
+        getTranslations({ locale, namespace: "footer" }),
+        getTranslations({ locale, namespace: "home" })
+    ])
     return (
         <footer className='relative mt-[100px]'>
             <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
@@ -59,7 +54,7 @@ function Footer() {
                 <NewsLetterForm/>
             </div>
             <div className='container relative grid grid-cols-4 py-5'>
-                <FooterColumn>
+                <FooterColumn locale={locale}>
                     <div className="flex lg:flex-1">
                         <SiteLogo/>
                     </div>
@@ -67,6 +62,7 @@ function Footer() {
                 </FooterColumn>
                 <FooterColumn
                 title={"Quick links"}
+                locale={locale}
                 >
                     {
                         navList?.length >= 1
@@ -78,17 +74,19 @@ function Footer() {
                 </FooterColumn>
                 <FooterColumn
                 title={"Categories"}
+                locale={locale}
                 >
                     {
                         categories?.length >= 1
                         ?
-                        categories.map((item , index) => <Link href={`/`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{globalT(item.name)}</Link>)
+                        categories?.slice(0,6)?.map((item , index) => <Link href={`/products/${item.name}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.name}</Link>)
                         :
                         <span>Will Add Data Soon.</span>
                     }
                 </FooterColumn>
                 <FooterColumn
                 title={"contact us"}
+                locale={locale}
                 >
                     <Link href={"#"} className='relative flex items-center gap-x-1.5 opacity-70 transition-all duration-300 hover:opacity-100'>
                         <CiLocationOn/>

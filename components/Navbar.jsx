@@ -11,6 +11,7 @@ import { navList } from "@/i18n/routing";
 import SiteLogo from "./ui/SiteLogo";
 import NavAuthSide from "./ui/NavAuthSide";
 import { toast } from "sonner";
+import CategoriesList from "./ui/CategoriesList";
 
 export default function Navbar() {
     const t = useTranslations("home");
@@ -47,6 +48,7 @@ export default function Navbar() {
                         {
                             navList.map((item , index) => <CustomLink isScrolling={isScrolling} pathname={pathname} key={index} href={item.href} label={item.label} className={`relative py-1 px-2`} translationPage={"home"}/>)
                         }
+                        <CategoriesList/>
                         <ToggelerDarkMode/>
                         <LangToggeler/>
                         <NavAuthSide/>                        

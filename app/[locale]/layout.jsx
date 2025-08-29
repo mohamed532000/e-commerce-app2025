@@ -44,7 +44,7 @@ export default async function LocaleLayout({ children , params}) {
            <AppThemeProvider>
              <Navbar/>
              {children}
-             <Footer/>
+             <Footer locale={locale}/>
              <Toaster/>
            </AppThemeProvider>
          </NextIntlClientProvider>
