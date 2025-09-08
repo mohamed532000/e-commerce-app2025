@@ -9,8 +9,9 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import SubmitButton from '@/components/ui/SubmitButton';
 import FormHeading from '../FormHeading';
-import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn';
+// import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn';
 import { Link } from '@/i18n/navigation';
+import HandleTranslate from '@/helper/HandleTranslate';
 const formValidation = z.object({
   email : z.string().email(),
   password : z.any()
@@ -60,7 +61,7 @@ function LoginForm() {
           </div>
           <div className='relative flex items-center gap-x-1.5'>
             <SubmitButton form={"login-form"}>
-                Submit
+                <HandleTranslate word={"Submit"} page={"global"} />
             </SubmitButton>
             <span className='flex items-center gap-x-1 text-slate-400'>
                 don't have an account
@@ -68,7 +69,7 @@ function LoginForm() {
             </span>
           </div>
         </form>
-        <AuthWithGoogleBtn className={`mb-4`} title={"Login with Google"}/>
+        {/* <AuthWithGoogleBtn className={`mb-4`} title={"Login with Google"}/> */}
       </Form>
     </div>
     </>

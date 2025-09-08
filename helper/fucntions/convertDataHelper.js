@@ -3,7 +3,9 @@ export const convertDataHelper = (data , locale) => {
         ...item,
         title : item.title[locale],
         description : item.description[locale],
-        category : item.category[locale]
+        slug : item.slug[locale],
+        category : item.category[locale],
+        attributes : {...(Object.keys(item.attributes?.[locale]) ? item.attributes[locale] : {})}
     }))
     return finalData
 }

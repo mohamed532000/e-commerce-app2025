@@ -11,7 +11,7 @@ import {useForm} from "react-hook-form"
 import {z} from "zod"
 import SubmitButton from '@/components/ui/SubmitButton'
 import FormHeading from '../FormHeading'
-import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn'
+// import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn'
 import { Link } from '@/i18n/navigation'
 
 const formValidation = z.object({
@@ -111,7 +111,7 @@ function RegisterForm() {
                         <span className='mx-2 -translate-y-0.5'>or</span>
                         <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
                     </div>
-                    <AuthWithGoogleBtn className={""} title={"Sign up with Google"} />
+                    {/* <AuthWithGoogleBtn className={""} title={"Sign up with Google"} /> */}
                 </form>
             </Form>
         </div>

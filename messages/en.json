@@ -44,7 +44,28 @@
         "Sales" : "Sales",
         "Category" : "Category",
         "What do u need" : "What do u need",
-        "products" : "products"
+        "products" : "products",
+        "Sort with price" : "Sort with price",
+        "High to low" : "High to low",
+        "Low to High" : "Low to High",
+        "Filter with have discount" : "Filter with have discount",
+        "Have discount" : "Have discount",
+        "Not have discount" : "Not have discount",
+        "All" : "All",
+        "Explore our latest products" : "Explore our latest products",
+        "Search here" : "Search here",
+        "Search" : "Search",
+        "Next" : "Next",
+        "Prev" : "Prev",
+        "Loading" : "Loading",
+        "Price" : "Price",
+        "Add to whishlist" : "Add to whishlist",
+        "More" : "More",
+        "Attributes" : "Attributes",
+        "Stock" : "Stock",
+        "Out of stock" : "Out of stock",
+        "No attributes for this item" : "No attributes for this item",
+        "Description" : "Description"
     },
     "home" : {
         "title" : "title",
@@ -73,7 +94,9 @@
         "cart" : "cart",
         "cartPageInfo" : "Her you can manage your cart products",
         "contact us" : "contact us",
-        "contactPageInfo" : "Here you can contact us and send messages"
+        "contactPageInfo" : "Here you can contact us and send messages",
+        "shop" : "shop",
+        "shop page info" : "Here you can get which you want"
     },
     "sectionsTitles" : {
         "best sale" : "best sale",
@@ -87,11 +110,16 @@
         "Contact our team" : "Contact Our Team",
         "contactSubText": "We're here to help! Whether you have questions about our products, need support, or just want to give feedback, please reach out to us.",
         "Categories" : "Categories",
-        "categoriesSectionSubText" : "Explore our main categories"
+        "categoriesSectionSubText" : "Explore our main categories",
+        "Similer products" : "Similer products",
+        "similerProductsSubText" : "These products may be similer to this item"
     },
     "footer" : {
         "Join Our Newsletter" : "Join Our Newsletter",
         "newsletter subtext": "Stay up-to-date with our latest products and promotions.",
         "brand subtext" : "Everything you need in one place - quality and great prices."
+    },
+    "validations" : {
+        "Enter name at least 1 letter" : "Enter name at least 1 letter"
     }
 }

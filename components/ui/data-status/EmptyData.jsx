@@ -1,12 +1,21 @@
 import { useTranslations } from 'next-intl';
 import React from 'react'
 import { ImFilesEmpty } from "react-icons/im";
-function EmptyData() {
+function EmptyData({emptyText , className}) {
     const globalT = useTranslations("global")
+    console.log(emptyText)
   return (
-    <div className='relative flex flex-col justify-center items-center gap-y-4'>
+    <div className={`relative flex flex-col justify-center items-center gap-y-4 ${className}`}>
       <ImFilesEmpty className='text-4xl md:text-9xl' />
-      <p>{globalT("No data avilable")}</p>
+      <p>
+        {
+          emptyText && emptyText !== undefined
+          ?
+          globalT(emptyText)
+          :
+          globalT("No data avilable")
+        }
+      </p>
     </div>
   )
 }

@@ -44,7 +44,28 @@
         "Sales" : "مبيعات",
         "Category" : "فئة",
         "What do u need" : "بتدور علي اي",
-        "products" : "منتجات"
+        "products" : "منتجات",
+        "Sort with price" : "ترتيب بالسعر",
+        "High to low" : "من الاغلي للارخص",
+        "Low to High" : "من الارخص للاغلي",
+        "Filter with have discount" : "تصفية بالخصومات",
+        "Have discount" : "عليهم خصومات",
+        "Not have discount" : "ليس له خصم",
+        "All" : "الكل",
+        "Explore our latest products" : "تسوق ااخر تحديثاتنا",
+        "Search here" : "ابحث هنا",
+        "Search" : "بحث",
+        "Next" : "التالى",
+        "Prev" : "السابق",
+        "Loading" : "جاري التحميل",
+        "Price" : "السعر",
+        "Add to whishlist" : "اضافة للمفضلة",
+        "More" : "المزيد",
+        "Attributes" : "خصائص",
+        "Stock" : "مخزون",
+        "Out of stock" : "تم النفاذ",
+        "No attributes for this item" : "لا يوجد خصائص اخري لهذا المنتج",
+        "Description" : "الوصف"
     },
     "home" : {
         "title" : "مرحبا",
@@ -72,7 +93,9 @@
         "cart" : "سلة التسوق",
         "cartPageInfo" : "هنا يمكنك إدارة منتجات سلة التسوق الخاصة بك",
         "contact us" : "اتصل بنا",
-        "contactPageInfo" : "هنا يمكنكم التواصل معنا وإرسال الرسائل"
+        "contactPageInfo" : "هنا يمكنكم التواصل معنا وإرسال الرسائل",
+        "shop" : "تسوق",
+        "shop page info" : "تقدر تلاقي اللي تحتاجه هنا"
     },
     "sectionsTitles" : {
         "best sale" : "افضل المبيعات",
@@ -86,11 +109,16 @@
         "Contact our team" : "تواصل مع الفريق الخاص بنا",
         "contactSubText" : "نحن هنا لمساعدتكم! سواء كان لديكم استفسارات عن منتجاتنا، تحتاجون دعمًا، أو حتى مجرد مشاركة ملاحظاتكم، لا تترددوا في التواصل معنا.",
         "Categories" : "الفئات",
-        "categoriesSectionSubText" : "استكشف الفئات الرئيسيةهنا"
+        "categoriesSectionSubText" : "استكشف الفئات الرئيسيةهنا",
+        "Similer products" : "منتجات ذات صلة",
+        "similerProductsSubText" : "هذه المنتجات قد تكون شبيهه لهذا المنتج"
     },
     "footer" : {
         "Join Our Newsletter" : "لا تفوت آخر التحديثات - اشترك الآن",
         "newsletter subtext" : "ابقَ على اطلاع بأحدث منتجاتنا وعروضنا الترويجية.",
         "brand subtext" : "كل ما تحتاجه في مكان واحد - جودة وأسعار مميزة"
+    },
+    "validations" : {
+        "Enter name at least 1 letter" : "ادخل اسم المنتج علي الاقل حرف واحد"
     }
 }

@@ -4,15 +4,18 @@ import {SwiperSlide} from "swiper/react";
 import slide1 from "../../../app/media/images/backgrounds/banner.webp"
 import slide2 from "../../../app/media/images/backgrounds/banner-2.webp"
 import slide3 from "../../../app/media/images/backgrounds/banner-3.webp"
+import slide4 from "../../../app/media/images/backgrounds/banner-4.webp"
 // import {CustomSwiperModule} from '../../ui/CustomSwiperModule';
 import {ImageOverlay} from '../../ui/ImageOverlay';
 import { MainButton } from '../../ui/MainButton';
 import "../../../styles/homeSwiper.css"
 import HandleTranslate from '@/helper/HandleTranslate';
 import dynamic from 'next/dynamic';
+import { useTheme } from 'next-themes';
 const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
 function HeroSliders() {
-    const [activeSlideIndex , setActiveSlideIndex] = useState(0)
+    const [activeSlideIndex , setActiveSlideIndex] = useState(0);
+    const {theme} = useTheme()
     const heroSlides = [
         {
             bg : slide1 ,
@@ -38,41 +41,66 @@ function HeroSliders() {
             title : "Sustainable & Soulful",
             description : "Choose eco-conscious creations that blend natural materials with timeless design."
         },
+        {
+            bg : slide4 ,
+            headerText : "" ,
+            pargraph : '' ,
+            path : "",
+            title : "",
+            description : ""
+        },
     ]
   return (
     <div className='relative w-full h-screen'>
-            <CustomSwiperModule
-                className='h-screen w-full relative hero-swiper'
-                effect='fade'
-                autoplay={{ delay : 3000, disableOnInteraction: false }}
-                onSlideChange = {(swiper) => {
-                    setActiveSlideIndex(swiper.activeIndex);
-                }}
-                loop = {false}
-                children={
-                    heroSlides.map((item , index) => (
-                        <SwiperSlide key={index}>
-                                <div className={`relative w-full h-full flex justify-center items-center bg-no-repeat bg-cover`}
-                                style={{backgroundImage : `url('${item.bg.src}')`}}
-                                >
-                                    <ImageOverlay/>
-                                    <div className='relative container flex justify-center items-center'>
-                                        <div className={`relative flex flex-col justify-center items-center gap-3 transition-all duration-800 md:max-w-[50%]`}>
+        <CustomSwiperModule
+            className='h-screen w-full relative hero-swiper'
+            effect='fade'
+            autoplay={{ delay : 3000, disableOnInteraction: false }}
+            onSlideChange = {(swiper) => {
+                setActiveSlideIndex(swiper.activeIndex);
+            }}
+            loop = {false}
+            children={
+                heroSlides.map((item , index) => (
+                    <SwiperSlide key={index}>
+                            <div className={`relative w-full h-full flex justify-center items-center bg-no-repeat bg-cover`}
+                            style={{backgroundImage : `url('${item.bg.src}')`}}
+                            >
+                                <ImageOverlay/>
+                                <div className='relative container flex justify-center items-center'>
+                                    <div className={`relative flex flex-col justify-center items-center gap-3 transition-all duration-800 md:max-w-[50%]`}>
+                                        {
+                                            item.title
+                                            &&
                                             <h2 className={`font-bold text-4xl  text-center text-stone-50 ${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[-70px]"} transition-all duration-800`}>{item.title}</h2>
+                                        }
+                                        {
+                                            item.pargraph
+                                            &&
                                             <p className={`text-center text-stone-50 ${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[70px]"} transition-all duration-800`}>{item.description}</p>
+                                        }
+                                        {
+                                            item.path
+                                            &&
                                             <MainButton
                                             className={`${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[100px]"} delay-100 transition-all duration-800`}
                                                 href={'/'}
                                             >
                                                 <HandleTranslate page={"home"} word={"Shop Now"} />
                                             </MainButton>
-                                        </div>
+                                        }
                                     </div>
                                 </div>
-                        </SwiperSlide>
-                    ))
-                }
-            />
+                            </div>
+                            {
+                                theme == "dark"
+                                &&
+                                <span className={`absolute bottom-0 w-full h-[30%] bg-gradient-to-t from-background to-transparent`}></span>
+                            }
+                    </SwiperSlide>
+                ))
+            }
+        />
     </div>
   )
 }

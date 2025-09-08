@@ -2,7 +2,7 @@
 import { useLocale } from 'next-intl';
 import React, { useEffect, useState } from 'react'
 
-function PageLettersParent({title}) {
+function PageLettersParent({title , splitTitle}) {
     const [scrollY , setScrollY] = useState(0);
     const currentLocal = useLocale();
     useEffect(() => {
@@ -22,17 +22,23 @@ function PageLettersParent({title}) {
         };
     },[])
     return (
-        <div className='relative flex flex-wrap justify-center items-center gap-x-14'>
+        <div className={`relative flex flex-wrap justify-center items-center gap-x-14`}>
             {
                 currentLocal !== "ar"
                 ?
-                title.split("").map((letter , index) => (
-                    <span key={index} className={`font-bold text-[clamp(1.5rem,5vw,5rem)] text-stone-50 transition-all duration-500`}
-                    style={{
-                        transform: scrollY >= 1 ? `translateY(-${scrollY + index * 5}px)` : "none",
-                    }}
-                    >{letter.toUpperCase()}</span>
-                ))
+                (
+                    splitTitle === true
+                    ?
+                    <h1 className='font-bold text-[clamp(1.5rem,5vw,5rem)]'>{title}</h1>
+                    :
+                    title.split("").map((letter , index) => (
+                        <span key={index} className={`font-bold text-[clamp(1.5rem,5vw,5rem)] text-stone-50 transition-all duration-500`}
+                        style={{
+                            transform: scrollY >= 1 ? `translateY(-${scrollY + index * 5}px)` : "none",
+                        }}
+                        >{letter.toUpperCase()}</span>
+                    ))
+                )
                 :
                 <h1 className='font-bold text-[clamp(1.5rem,5vw,5rem)]'>{title}</h1>
             }

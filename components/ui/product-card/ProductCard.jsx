@@ -5,12 +5,13 @@ import React from 'react'
 import AddToCartBtn from '../AddToCartBtn';
 import AddToWhishlistBtn from '../AddToWhishlistBtn';
 import Image from 'next/image';
+import HandleOutOfStockActions from '@/helper/HandleOutOfStockActions';
 
 function ProductCard({className , product}) {
     const currentLocale = useLocale();
   return (
-    <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3`}>
-        <Link href={`/product-details/${product.id}`}>
+    <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3 max-w-[300px]`}>
+        <Link href={`/product-details/${product.slug}`}>
             <div className='image-div aspect-[4/3] relative rounded-3xl overflow-hidden w-full h-[170px]'>
                 <Image
                     src={product.image_url}
@@ -44,10 +45,18 @@ function ProductCard({className , product}) {
                     {product.description}
                 </p>
             </div>
-            <div className='card-icons relative flex justify-between w-full'>
-                <AddToCartBtn/>
-                <AddToWhishlistBtn/>
-            </div>
+            {
+                <HandleOutOfStockActions
+                className={"my-1"}
+                item={product}
+                elements={
+                    <div className='card-icons relative flex justify-between w-full'>
+                        <AddToCartBtn/>
+                        <AddToWhishlistBtn/>
+                    </div>
+                }
+                />
+            }
         </div>
         {
             product.discount_amount >= 1

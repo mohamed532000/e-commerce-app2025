@@ -93,6 +93,10 @@
   --next-prev-border-color : rgb(35, 35, 35);
   --next-prev-border-shadow : 0px 0px 3px rgb(26, 26, 26);
   --next-prev-after-color :  rgb(22, 22, 22);
+
+  --skeleton-start: rgb(240, 240, 240);
+  --skeleton-mid: rgb(220, 220, 220);
+  --span-loading-card-bg : rgba(255, 255, 255, 0.6);
 }
 
 .dark {
@@ -132,6 +136,11 @@
   --active-text-primary : #b3083f;
   --flexable-shadow: 2px 2px 15px black;
   --section-title-color: rgb(86, 86, 86);
+  
+  /* card loading style */
+  --skeleton-start: rgb(67, 67, 67);
+  --skeleton-mid: rgb(26, 26, 26);
+  --span-loading-card-bg : rgba(90, 90, 90, 0.6);
 
   --next-prev-border-color : white;
   --next-prev-border-shadow : 0px 0px 3px rgb(243, 243, 243);
@@ -171,11 +180,46 @@
       transform: translateX(100%);
     }
   }
+  @keyframes loadingCardAnimate {
+    0%, 100% {
+      background-color: var(--skeleton-start);
+    }
+    50% {
+      background-color: var(--skeleton-mid);
+    }
+  }
+  @keyframes loadingCardSpanAnimate {
+    0% {
+      transform: translate(-150%, 150%) rotate(-45deg);
+    }
+    100% {
+      transform: translate(150%, -150%) rotate(-45deg);
+    }
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(-1rem); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .fade-in {
+    animation: fadeSlideIn 0.3s ease both;
+  }
   .infinite-line-animate {
     animation: marquee 60s linear infinite;
   }
   .infinite-line-animate-ar {
     animation: marqueeAr 60s linear infinite;
+  }
+  .loading-card-animate {
+    animation: loadingCardAnimate 2s linear infinite;
+  }
+  .loading-card-span-animate {
+    animation: loadingCardSpanAnimate 4s linear infinite;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--span-loading-card-bg),
+      transparent
+    );
   }
 }
 .container {

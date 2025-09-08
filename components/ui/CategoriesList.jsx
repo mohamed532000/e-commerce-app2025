@@ -25,7 +25,7 @@ function HandleShowCategoriesList({data}) {
             item?.sub_categories?.length >= 1
             ?
             <DropdownMenuSub key={index}>
-                <DropdownMenuSubTrigger>{item.name}</DropdownMenuSubTrigger>
+                <DropdownMenuSubTrigger>{item.title}</DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                     <HandleShowCategoriesList  data={item?.sub_categories} key={index}/>
@@ -33,7 +33,7 @@ function HandleShowCategoriesList({data}) {
                 </DropdownMenuPortal>
             </DropdownMenuSub>
             :
-            <DropdownMenuItem key={index}>{item.name}</DropdownMenuItem>
+            <DropdownMenuItem key={index}>{item.title}</DropdownMenuItem>
         ))
     )
 }

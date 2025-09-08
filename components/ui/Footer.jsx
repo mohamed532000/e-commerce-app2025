@@ -79,7 +79,7 @@ async function Footer({locale}) {
                     {
                         categories?.length >= 1
                         ?
-                        categories?.slice(0,6)?.map((item , index) => <Link href={`/products/${item.name}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.name}</Link>)
+                        categories?.slice(0,6)?.map((item , index) => <Link href={`/shop/${item.title}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.title}</Link>)
                         :
                         <span>Will Add Data Soon.</span>
                     }
