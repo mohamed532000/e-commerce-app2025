@@ -30,7 +30,7 @@ function PageHeader({noTranslateTitle , title , noTranslatePageInfo , pageInfo})
           }
           <p className='text-xs text-stone-50 text-center'>{noTranslatePageInfo ? noTranslatePageInfo : t(pageInfo)}</p>
         </div>
-        <span className='absolute bottom-0 w-full h-[10%] md:h-[30%] bg-gradient-to-t from-background to-transparent'></span>
+        <span className='absolute bottom-0 w-full h-[10%] bg-gradient-to-t from-background to-transparent'></span>
     </div>
   )
 }
