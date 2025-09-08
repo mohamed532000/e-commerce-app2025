@@ -119,7 +119,7 @@ function ProductsFilteration({categoriesData , handleUpdateFilterData , laodingP
           <FilterTitle>
             <HandleTranslate word={"Category"} page={"global"} />
           </FilterTitle>
-          <h2>hello</h2>
+          <h2></h2>
           <Accordion
             type="single"
             collapsible
