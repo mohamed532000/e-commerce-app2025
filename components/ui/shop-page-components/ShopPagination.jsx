@@ -25,7 +25,7 @@ function ShopPagination({pagesCount , handleUpdatePageNum , loadingProducts}) {
     return (
         pagesCount >= 0 &&
         <div className='flex justify-end gap-x-1.5 mt-4'>
-            <Button className={`cursor-pointer ${(slicePagination.to <= pagesCount || loadingProducts) ? "pointer-events-none opacity-70 cursor-no-drop" : ""}`} onClick={() => handleDecrementSlice()}>
+            <Button aria-label="Prev page" className={`cursor-pointer ${(slicePagination.to <= pagesCount || loadingProducts) ? "pointer-events-none opacity-70 cursor-no-drop" : ""}`} onClick={() => handleDecrementSlice()}>
                 {
                    slicePagination.from > 0
                    &&
@@ -37,15 +37,15 @@ function ShopPagination({pagesCount , handleUpdatePageNum , loadingProducts}) {
                     <MdKeyboardDoubleArrowLeft/> 
                     )
                 }
-                <span className={`${slicePagination.from > 0 ? "-translate-y-[1px]" : ""}`}>{globalT("Prev")}</span>
+                <span aria-hidden="true" className={`${slicePagination.from > 0 ? "-translate-y-[1px]" : ""}`}>{globalT("Prev")}</span>
             </Button>
             {Array.from({ length: pagesCount }, (_, i) => i + 1) // [1, 2, 3, ...]
             .slice(slicePagination.from, slicePagination.to)
             .map((pageNum) => (
                 <Button key={pageNum} onClick={() => handleUpdatePageNum(pageNum)} className={`${loadingProducts ? "pointer-events-none opacity-70" : ""} cursor-pointer`}>{pageNum}</Button>
             ))}
-            <Button className={`cursor-pointer ${(slicePagination.to == pagesCount || loadingProducts) ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleIncrementSlice()}>
-                <span className={`${slicePagination.to < pagesCount ? "-translate-y-[1px]" : ""}`}>{globalT("Next")}</span>
+            <Button aria-label="Next page" className={`cursor-pointer ${(slicePagination.to == pagesCount || loadingProducts) ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleIncrementSlice()}>
+                <span aria-hidden="true" className={`${slicePagination.to < pagesCount ? "-translate-y-[1px]" : ""}`}>{globalT("Next")}</span>
                 {
                    slicePagination.to < pagesCount
                    &&
