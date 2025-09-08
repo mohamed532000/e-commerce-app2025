@@ -70,7 +70,7 @@ const HandleShowFilterPrice = ({updateFilterDataFunc , currentLocale , laodingPr
 const HandleShowCategories = ({data , updateFilterDataFunc , loadingCategory}) => {
     return (
       <>
-      <h1 className='hidden'></h1><h2 className='hidden'></h2>
+      <h1 className=''></h1><h2 className=''></h2>
       {loadingCategory && <h1 className='my-9'><HandleTranslate  word={"Loading"} page={"global"} />...</h1>}
         {
           data?.length >= 1
