@@ -70,7 +70,6 @@ const HandleShowFilterPrice = ({updateFilterDataFunc , currentLocale , laodingPr
 const HandleShowCategories = ({data , updateFilterDataFunc , loadingCategory}) => {
     return (
       <>
-      <h1 className=''></h1><h2 className=''></h2>
       {loadingCategory && <h1 className='my-9'><HandleTranslate  word={"Loading"} page={"global"} />...</h1>}
         {
           data?.length >= 1
@@ -87,7 +86,7 @@ const HandleShowCategories = ({data , updateFilterDataFunc , loadingCategory}) =
             :
             <AccordionItem key={index} value={`item-${item.id}`} className={"px-2"}>
               <AccordionTrigger>
-                <h1 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h1>
+                <h2 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h2>
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <HandleShowCategories data={sub_categories} updateFilterDataFunc={updateFilterDataFunc}/>
