@@ -119,6 +119,7 @@ function ProductsFilteration({categoriesData , handleUpdateFilterData , laodingP
           <FilterTitle>
             <HandleTranslate word={"Category"} page={"global"} />
           </FilterTitle>
+          <h2>hello</h2>
           <Accordion
             type="single"
             collapsible
@@ -126,7 +127,7 @@ function ProductsFilteration({categoriesData , handleUpdateFilterData , laodingP
           >
             <AccordionItem className={"px-2 py-4"}>
               <AccordionTrigger  nested={false}>
-                <h1 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleUpdateFilterData({category_id : ""})}><HandleTranslate word={"All"} page={"global"} /></h1>
+                <h2 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleUpdateFilterData({category_id : ""})}><HandleTranslate word={"All"} page={"global"} /></h2>
               </AccordionTrigger>
             </AccordionItem>
             {/* <HandleShowCategories
