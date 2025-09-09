@@ -119,6 +119,7 @@ function ProductsFilteration({categoriesData , handleUpdateFilterData , laodingP
           <FilterTitle>
             <HandleTranslate word={"Category"} page={"global"} />
           </FilterTitle>
+          {/* don't delete this empty element and i added it to handle accesabilaty */}
           <h2></h2>
           <Accordion
             type="single"
@@ -130,10 +131,10 @@ function ProductsFilteration({categoriesData , handleUpdateFilterData , laodingP
                 <h2 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleUpdateFilterData({category_id : ""})}><HandleTranslate word={"All"} page={"global"} /></h2>
               </AccordionTrigger>
             </AccordionItem>
-            {/* <HandleShowCategories
+            <HandleShowCategories
               data={categoriesData} 
               updateFilterDataFunc={handleUpdateFilterData} 
-              loadingCategory={loadingCategory}/> */}
+              loadingCategory={loadingCategory}/>
           </Accordion>
         </div>
       </div>

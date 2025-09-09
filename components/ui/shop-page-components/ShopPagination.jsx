@@ -25,7 +25,8 @@ function ShopPagination({pagesCount , handleUpdatePageNum , loadingProducts}) {
     return (
         pagesCount >= 0 &&
         <div className='flex justify-end gap-x-1.5 mt-4'>
-            <Button aria-label="Prev page" className={`cursor-pointer ${(slicePagination.to <= pagesCount || loadingProducts) ? "pointer-events-none opacity-70 cursor-no-drop" : ""}`} onClick={() => handleDecrementSlice()}>
+            {/* <Button aria-label="Prev page" className={`cursor-pointer ${(slicePagination.to <= pagesCount || loadingProducts) ? "pointer-events-none opacity-70 cursor-no-drop" : ""}`} onClick={() => handleDecrementSlice()}> */}
+            <Button aria-label="Prev page" className={`cursor-pointer`} onClick={() => handleDecrementSlice()}>
                 {
                    slicePagination.from > 0
                    &&
@@ -44,8 +45,9 @@ function ShopPagination({pagesCount , handleUpdatePageNum , loadingProducts}) {
             .map((pageNum) => (
                 <Button key={pageNum} onClick={() => handleUpdatePageNum(pageNum)} className={`${loadingProducts ? "pointer-events-none opacity-70" : ""} cursor-pointer`}>{pageNum}</Button>
             ))}
-            <Button aria-label="Next page" className={`cursor-pointer ${(slicePagination.to == pagesCount || loadingProducts) ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleIncrementSlice()}>
-                <span aria-hidden="true" className={`${slicePagination.to < pagesCount ? "-translate-y-[1px]" : ""}`}>{globalT("Next")}</span>
+            {/* <Button aria-label="Next page" className={`cursor-pointer ${(slicePagination.to == pagesCount || loadingProducts) ? "pointer-events-none opacity-70" : ""}`} onClick={() => handleIncrementSlice()}> */}
+            <Button aria-label="Next page" className={`cursor-pointer`} onClick={() => handleIncrementSlice()}>
+                <span aria-hidden="" className={`${slicePagination.to < pagesCount ? "-translate-y-[1px]" : ""}`}>{globalT("Next")}</span>
                 {
                    slicePagination.to < pagesCount
                    &&
