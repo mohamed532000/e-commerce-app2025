@@ -14,8 +14,11 @@ import { useLocale } from 'next-intl';
 import ShopPagination from '@/components/ui/shop-page-components/ShopPagination';
 import LoadingProducts from '@/components/ui/loading/LoadingProducts';
 import { CiFilter } from "react-icons/ci";
+import { useSearchParams } from 'next/navigation';
 
 function ShopContent() {
+    const searchParams = useSearchParams();
+    const category = searchParams.get("category")
     const locale = useLocale();
     const [data , setData] = useState([])
     const [categories , setCategories] = useState([])
@@ -80,6 +83,11 @@ function ShopContent() {
     useEffect(() => {
         handleSetNewFilterData({range : {from : (page - 1) * productsCountInOnePage , to : page * productsCountInOnePage - 1}})
     } , [page])
+    useEffect(() => {
+        if(category && category !== "") {
+            handleSetNewFilterData({category_id : category})
+        }
+    } , [category])
     return (
         <>
         <PageHeader title={"shop"} pageInfo={"shop page info"}/>

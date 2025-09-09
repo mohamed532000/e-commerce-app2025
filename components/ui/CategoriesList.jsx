@@ -18,6 +18,7 @@ import { categoriesData } from '@/helper/fucntions/categoriesData'
 import { useLocale } from 'next-intl'
 import { IoIosArrowDown } from "react-icons/io";
 import HandleTranslate from '@/helper/HandleTranslate'
+import { Link } from '@/i18n/navigation'
 
 function HandleShowCategoriesList({data}) {
     return (
@@ -25,7 +26,9 @@ function HandleShowCategoriesList({data}) {
             item?.sub_categories?.length >= 1
             ?
             <DropdownMenuSub key={index}>
-                <DropdownMenuSubTrigger>{item.title}</DropdownMenuSubTrigger>
+                <DropdownMenuSubTrigger>
+                  <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
+                </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                     <HandleShowCategoriesList  data={item?.sub_categories} key={index}/>
@@ -33,7 +36,9 @@ function HandleShowCategoriesList({data}) {
                 </DropdownMenuPortal>
             </DropdownMenuSub>
             :
-            <DropdownMenuItem key={index}>{item.title}</DropdownMenuItem>
+            <DropdownMenuItem key={index}>
+              <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
+            </DropdownMenuItem>
         ))
     )
 }

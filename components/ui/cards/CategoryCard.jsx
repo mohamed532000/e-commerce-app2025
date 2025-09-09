@@ -5,7 +5,7 @@ import HandleTranslate from '@/helper/HandleTranslate'
 import { Link } from '@/i18n/navigation'
 function CategoryCard({item}) {
   return (
-    <Link href={`/`} className='hover:-translate-y-1.5 transition-all duration-300 relative group'>
+    <Link href={`/shop?category=${item.id}`} className='hover:-translate-y-1.5 transition-all duration-300 relative group'>
         <div className='relative flex flex-col justify-center items-center gap-y-1.5 px-2 md:px-0 py-3 rounded-3xl dark:shadow-accent-foreground bg-white dark:bg-background shadow-flexable-shadow w-[150px] md:min-w-[200px]'>
             <Image 
             src={item?.image_url ? item.image_url : defaultSiteImage} 
