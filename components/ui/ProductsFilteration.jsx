@@ -80,13 +80,13 @@ const HandleShowCategories = ({data , updateFilterDataFunc , loadingCategory}) =
             ? 
             <AccordionItem key={index} className={"px-2 py-4"}>
               <AccordionTrigger  nested={false}>
-                <h1 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h1>
+                <h4 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h4>
               </AccordionTrigger>
             </AccordionItem>
             :
             <AccordionItem key={index} value={`item-${item.id}`} className={"px-2"}>
               <AccordionTrigger>
-                <h1 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h1>
+                <h4 className={`cursor-pointer ${loadingCategory ? "pointer-events-none opacity-70" : ""}`} onClick={() => updateFilterDataFunc({category_id : item.id})}>{item.title}</h4>
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <HandleShowCategories data={sub_categories} updateFilterDataFunc={updateFilterDataFunc}/>
