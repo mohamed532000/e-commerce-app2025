@@ -7,8 +7,10 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getTranslations } from "next-intl/server";
 import Footer from "@/components/ui/Footer";
-// import AuthProvider from "@/context/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/context/AuthProvider";
+import ReactQueryContext from "@/context/ReactQueryContext";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,18 +39,20 @@ export default async function LocaleLayout({ children , params}) {
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning
     >
       <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        {/* <AuthProvider> */}
-          <NextIntlClientProvider>
-           <AppThemeProvider>
-             <Navbar/>
-             {children}
-             <Footer locale={locale}/>
-             <Toaster/>
-           </AppThemeProvider>
-         </NextIntlClientProvider>
-        {/* </AuthProvider> */}
+        <ReactQueryContext>
+          <AuthProvider>
+            <NextIntlClientProvider>
+            <AppThemeProvider>
+              <Navbar/>
+              {children}
+              <Footer locale={locale}/>
+              <Toaster position={"top-center"}/>
+            </AppThemeProvider>
+          </NextIntlClientProvider>
+          </AuthProvider>
+        </ReactQueryContext>
       </body>
     </html>
   );

@@ -39,9 +39,9 @@ export const routing = defineRouting({
       en : "/shop",
       ar : "/تسوق"
     },
-    "/profile" : {
-      en : "/profile",
-      ar : "/الملف الشخصي"
+    "/user/profile" : {
+      en : "/user/profile",
+      ar : "/مستخدم/ملف شخصي"
     },
   },
   localePrefix : "always"

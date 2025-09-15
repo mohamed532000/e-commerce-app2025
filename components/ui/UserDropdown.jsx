@@ -1,29 +1,38 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { FaRegUser } from "react-icons/fa";
 import Image from 'next/image';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './dropdown-menu';
 import LogoutBtn from './LogoutBtn';
-function UserDropdown({className , data}) {
+import HandleTranslate from '@/helper/HandleTranslate';
+function UserDropdown({className , sessionData}) {
+    const [openDropDown , setOpenDropDown] = useState(false);
     return (
         <div className={`lang-toggeler-div relative flex justify-center items-center ${className} col-span-1`}>
-            <DropdownMenu>
+            <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
                 <DropdownMenuTrigger aria-label="user drop down" className="outline-0 flex items-center cursor-pointer">
                     {
-                    data?.user?.image
+                    sessionData?.user?.image
                     ? 
-                    <Image src={data?.user?.image} alt='user-image' title={data?.user.name} width={40} height={40} className='rounded-[50%] cursor-pointer'/> 
+                    <Image src={sessionData?.user?.image} alt='user-image' title={sessionData?.user.name} width={40} height={40} className='rounded-[50%] cursor-pointer'/> 
                     : 
                     <FaRegUser className='text-2xl cursor-pointer' aria-hidden="true"/>
                     }
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>
+                        <HandleTranslate word={"My account"} page={"global"}/>
+                    </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            {data?.user?.name}
+                            {sessionData?.user?.email}
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                        onSelect={(e) => {
+                            e.preventDefault();
+                            setOpenDropDown(true)
+                        }}
+                        >
                             <LogoutBtn/>
                         </DropdownMenuItem>
                 </DropdownMenuContent>

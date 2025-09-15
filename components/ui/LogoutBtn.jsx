@@ -1,20 +1,68 @@
 "use client"
-// import { signOut } from 'next-auth/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdLogout } from 'react-icons/md';
-import { Toaster } from './sonner';
+import HandleTranslate from '@/helper/HandleTranslate';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { useSignOut } from '@/helper/fucntions/auth/SignOut';
+import { toast } from 'sonner';
+
 
 function LogoutBtn() {
+  const [openConfirmation , setOpenConfirmation] = useState(false);
+  const {mutate:signOut , isPending , isSuccess} = useSignOut();
+  useEffect(() => {
+    if(isSuccess) {
+      toast.success("Logout successfully!")
+    }
+  } , [isSuccess])
   return (
     <>
-      <button
-          className='relative flex items-center gap-x-1.5 bg-transparent outline-0 border-0 cursor-pointer'
-          // onClick={() => signOut({redirect : false})}
-          >
+      <AlertDialog open={openConfirmation} onOpenChange={setOpenConfirmation}>
+        <AlertDialogTrigger
+        className="relative flex items-center gap-x-1.5 bg-transparent outline-0 border-0 cursor-pointer"
+        >
           <MdLogout/>
-          <span>Logout</span>
-      </button>
-      <Toaster/>
+          <span><HandleTranslate word={"Logout"} page={"global"}/></span>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your session data from our website until login again.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel
+            >
+              <HandleTranslate word={"Cancel"} page={"global"} />
+            </AlertDialogCancel>
+            <AlertDialogAction
+              disabled = {isPending}
+              onClick={() => {
+                signOut()
+              }}
+            >
+              {
+                isPending
+                ?
+                <><HandleTranslate word={"Loading"} page={"global"}/>..</>
+                :
+                <HandleTranslate word={"Continue"} page={"global"}/>
+              }
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }

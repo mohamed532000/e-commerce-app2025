@@ -1,6 +1,6 @@
 "use client"
 import { Form } from '@/components/ui/form';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -12,11 +12,20 @@ import FormHeading from '../FormHeading';
 // import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn';
 import { Link } from '@/i18n/navigation';
 import HandleTranslate from '@/helper/HandleTranslate';
+import { useLocale } from 'next-intl';
+import { useSignIn } from '@/helper/fucntions/auth/SignIn';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import FullScreenLoading from '@/components/ui/loading/FullScreenLoading';
 const formValidation = z.object({
   email : z.string().email(),
-  password : z.any()
+  password : z.string().min(1)
 })
 function LoginForm() {
+  const router = useRouter()
+  const currentLocale = useLocale()
+  const [redirect , setRedirect] = useState(false)
+  const {mutate:signIn , isPending:signInLoading , isError , error , isSuccess} = useSignIn()
   const form = useForm({
     resolver : zodResolver(formValidation),
     defaultValues : {
@@ -24,6 +33,18 @@ function LoginForm() {
       password : "",
     }
   })
+
+  const handleSignInUser = async (data) => {
+    signIn({email:data.email , password : data.password})
+  }
+  useEffect(() => {
+    if(isSuccess) {
+      toast.success(`redirect to your profile...`)
+      setRedirect(true)
+      router.push(`/${currentLocale}/user/profile`);
+    }
+    return () => setRedirect(false)
+  },[isSuccess])
   return (
     <>
     <div className='relative flex flex-col gap-y-2'>
@@ -34,11 +55,17 @@ function LoginForm() {
       <Form {...form}>
         <form
           id='login-form'
-          onSubmit={form.handleSubmit((data) => console.log(data))}
+          onSubmit={form.handleSubmit((data) => handleSignInUser(data))}
+          aria-disabled={redirect || signInLoading}
+          onKeyDown={(e) => {
+            if(signInLoading || redirect) {
+              e.preventDefault()
+            }
+          }}
         >
           <div className='flex flex-col gap-y-6'>
             <CustomFormField 
-            labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-light-bg text-xs px-1 text-slate-500 font-medium' 
+            labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-background text-xs px-1 text-slate-500 font-medium' 
             name='email'
             type='email'
             label='E-mail' 
@@ -46,8 +73,8 @@ function LoginForm() {
             form={form}
             />
             <CustomFormField 
-            labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-light-bg text-xs px-1 text-slate-500 font-medium' 
-            name='Password'
+            labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-background text-xs px-1 text-slate-500 font-medium' 
+            name='password'
             type='password'
             label='Password' 
             icon={<CiLock className=" text-gray-600 w-4 h-4" />} 
@@ -60,18 +87,27 @@ function LoginForm() {
             <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
           </div>
           <div className='relative flex items-center gap-x-1.5'>
-            <SubmitButton form={"login-form"}>
+            <SubmitButton disabled={signInLoading || isSuccess} form={"login-form"}>
+              {
+                signInLoading
+                ?
+                <><HandleTranslate word={"Loading"} page={"global"} />..</>
+                :
                 <HandleTranslate word={"Submit"} page={"global"} />
+              }
             </SubmitButton>
-            <span className='flex items-center gap-x-1 text-slate-400'>
-                don't have an account
-                <Link href={"/register"} className='underline text-slate-700'>Register</Link>
+            <span className='flex items-center gap-x-1'>
+                <HandleTranslate word={"Don't have an account"} page={"global"} />
+                <Link href={"/auth/register"} className='underline '>
+                  <HandleTranslate word={"Register"} page={"global"} />
+                </Link>
             </span>
           </div>
         </form>
         {/* <AuthWithGoogleBtn className={`mb-4`} title={"Login with Google"}/> */}
       </Form>
     </div>
+    {redirect && <FullScreenLoading/>}
     </>
   )
 }

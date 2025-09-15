@@ -20,8 +20,12 @@ export default function Navbar() {
     const [activeMobileNav , setActiveMobileNav] = useState(false);
     const currentLocale = useLocale();
     const pathname = usePathname();
-    const removeNavWhen = new Set([`/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("register"))}` , `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("login"))}`]);
-    const noNav = removeNavWhen.has(pathname);t("login");
+    const removeNavWhen = new Set([
+        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("register"))}` , 
+        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("login"))}`,
+        `/${currentLocale}/${encodeURI(globalT("user"))}/${encodeURI(globalT("profile"))}`,
+    ]);
+    const noNav = removeNavWhen.has(pathname);
     useEffect(() => {
         window.onscroll = () => {
             window.scrollY >= 10 ? setIsScrolling(true) : setIsScrolling(false)

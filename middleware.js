@@ -1,12 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
-// import { NextResponse } from 'next/server';
 import { routing } from './i18n/routing'; // your next-intl routing config
-// import { getToken } from 'next-auth/jwt'; // if using NextAuth
-
-export const middleware = createMiddleware({
-  ...routing,
-  localeDetection: false
-});
+import { NextResponse } from "next/server";
+// import { createSupabaseServerClient } from "@/app/api/supabase/server";
+import {createMiddlewareClient} from "@supabase/auth-helpers-nextjs";
+// export const middleware = createMiddleware({
+//   ...routing,
+//   localeDetection: false
+// });
 
 // export default async function middleware(request) {
 //   const intlResponse = intlMiddleware(request);
@@ -32,6 +32,28 @@ export const middleware = createMiddleware({
 //   }
 //   return NextResponse.next();
 // }
+
+const intlMiddleware = createMiddleware({
+  ...routing,
+  localeDetection: false
+});
+
+
+export async function middleware(req) { 
+  const pathesNames = req.nextUrl.pathname.split("/").filter(item => item !== "");
+  const currentLocale = pathesNames[0];
+
+  const intlResponse = intlMiddleware(req);
+  const supabase = createMiddlewareClient({ req , res:intlResponse}); 
+
+  const { data: { user } } = await supabase.auth.getUser(); 
+
+  if (!user && req.nextUrl.pathname.startsWith(`/${currentLocale}/user`)) { 
+    return NextResponse.redirect(new URL(`/${currentLocale}/auth/login`, req.url));
+  }   
+  return intlResponse; 
+}
+
 
 export const config = {
   matcher: [

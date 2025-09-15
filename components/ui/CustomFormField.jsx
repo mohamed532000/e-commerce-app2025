@@ -5,9 +5,11 @@ import {FormField , FormItem , FormMessage , FormLabel , FormControl} from "./fo
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { Textarea } from './textarea';
+import { useLocale } from 'next-intl';
 
 function CustomFormField({className = "" , labelClassName = "" , label = "" , name = "" , icon , form , placeholder = "" , type = "text"}) {
   const [showPass , setShowPass] = useState(false);
+  const currentLocale = useLocale()
   return (
     <div className={`${className} flex flex-col gap-y-1`}>
         <FormField
@@ -30,9 +32,9 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                         {
                           showPass
                           ?
-                          <FaRegEyeSlash onClick={() => setShowPass(false)} className='absolute inset-y-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
+                          <FaRegEyeSlash onClick={() => setShowPass(false)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70`}/>
                           :
-                          <FaRegEye onClick={() => setShowPass(true)} className='absolute inset-y-[50%] -translate-y-[50%] right-2 cursor-pointer opacity-70'/>
+                          <FaRegEye onClick={() => setShowPass(true)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70`}/>
                         }
                       </div>
                     )

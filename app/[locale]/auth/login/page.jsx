@@ -7,7 +7,7 @@ import LoginForm from '@/app/forms/login/LoginForm';
 function LoginPage() {
   return (
     <>
-      <div className='relative w-full min-h-screen flex flex-col md:flex-row justify-center md:justify-between items-center bg-slate-50'>
+      <div className='relative w-full min-h-screen flex flex-col md:flex-row justify-center md:justify-between items-center bg-background'>
         <Link href="/" className="relative md:absolute h-fit inset-y-0 translate-y-4 md:right-4 flex justify-center items-center gap-1 text-sm text-slate-700 md:text-slate-100 hover:text-primary transition z-40">
           <Home className="w-4 h-4" />
           Home
