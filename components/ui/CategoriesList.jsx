@@ -14,7 +14,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { categoriesData } from '@/helper/fucntions/categoriesData'
+import { categoriesData } from '@/services/categoriesData'
 import { useLocale } from 'next-intl'
 import { IoIosArrowDown } from "react-icons/io";
 import HandleTranslate from '@/helper/HandleTranslate'

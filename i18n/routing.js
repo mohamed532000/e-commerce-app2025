@@ -35,6 +35,14 @@ export const routing = defineRouting({
       en : "/auth/register",
       ar : "/مصادقة/انشاء حساب"
     },
+    "/auth/insert-mail-to-reset-password" : {
+      en : "/auth/insert-mail-to-reset-password",
+      ar : "/مصادقة/ادخال البريد لتغيير كلمة المرور"
+    },
+    "/auth/reset-password" : {
+      en : "/auth/reset-password",
+      ar : "/مصادقة/تغيير كلمة المرور"
+    },
     "/shop" : {
       en : "/shop",
       ar : "/تسوق"

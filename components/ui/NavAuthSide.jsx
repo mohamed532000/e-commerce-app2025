@@ -13,10 +13,10 @@ import SpinLoading from './SpinLoading';
 
 function NavAuthSide() {
     const [isMounted , setIsMounted] = useState(false)
-    const {session:sessionData} = UserAuth();
+    const {session:sessionData , getSessionLoading} = UserAuth();
     useEffect(() => setIsMounted(true) , [])
     if(!isMounted) return <SpinLoading/>
-    if(!sessionData) return <RegisterBtn/>
+    if(!sessionData && !getSessionLoading) return <RegisterBtn/>
     return <UserDropdown sessionData={sessionData}/>
 }
 

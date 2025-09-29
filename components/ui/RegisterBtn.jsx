@@ -1,12 +1,12 @@
 import React from 'react'
-import { MainButton } from './MainButton'
+import { MainLink } from './MainLink'
 import HandleTranslate from '@/helper/HandleTranslate'
 
 function RegisterBtn() {
   return (
-    <MainButton href="/auth/register">
+    <MainLink href="/auth/register">
         <HandleTranslate page={"home"} word={"Login / Register"} />
-    </MainButton>
+    </MainLink>
   )
 }
 

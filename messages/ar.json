@@ -83,7 +83,17 @@
         "Text copied successfully" : "تم نسخ النص بنجاح",
         "user" : "مستخدم",
         "profile" : "ملف شخصي",
-        "Updated successfully" : "تم التحديث بنجاح"
+        "Updated successfully" : "تم التحديث بنجاح",
+        "Changing your email will require confirmation" : "عند تغيير بريدك الإلكتروني، سيتم إرسال رابط تأكيد إلى البريد الجديد",
+        "Note" : "ملاحظة",
+        "Security" : "الامان",
+        "Password" : "كلمة المرور",
+        "reset-password" : "تغيير كلمة المرور",
+        "insert-mail-to-reset-password" : "ادخال البريد لتغيير كلمة المرور",
+        "New password" : "كلمة المرور الحديدة",
+        "success change password" : "تم تغيير كلمة المرور بنجاح",
+        "We send confirm link to your email" : "تم ارسال رابط التاكيد لعنوان البريد الجديد",
+        "Info" : "عن"
     },
     "home" : {
         "title" : "مرحبا",

@@ -22,7 +22,7 @@ function CopyIcon({className , text , successText}) {
     return (
         isCopied
         ?
-        <IoMdCheckmark className={`${className}`}/>
+        <IoMdCheckmark className={`${className} text-green-600`}/>
         :
         <IoCopyOutline className={`${className}`} onClick={handleCopy}/>
     )

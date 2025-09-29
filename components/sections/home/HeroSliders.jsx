@@ -7,7 +7,7 @@ import slide3 from "../../../app/media/images/backgrounds/banner-3.webp"
 import slide4 from "../../../app/media/images/backgrounds/banner-4.webp"
 // import {CustomSwiperModule} from '../../ui/CustomSwiperModule';
 import {ImageOverlay} from '../../ui/ImageOverlay';
-import { MainButton } from '../../ui/MainButton';
+import { MainLink } from '../../ui/MainLink';
 import "../../../styles/homeSwiper.css"
 import HandleTranslate from '@/helper/HandleTranslate';
 import dynamic from 'next/dynamic';
@@ -82,12 +82,12 @@ function HeroSliders() {
                                         {
                                             item.path
                                             &&
-                                            <MainButton
+                                            <MainLink
                                             className={`${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[100px]"} delay-100 transition-all duration-800`}
                                                 href={'/'}
                                             >
                                                 <HandleTranslate page={"home"} word={"Shop Now"} />
-                                            </MainButton>
+                                            </MainLink>
                                         }
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@ import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import InfinitItemsLine from '@/components/ui/InfinitItemsLine';
 import ProductCard from '@/components/ui/product-card/ProductCard';
 import Section from '@/components/ui/section/Section';
-import { productsData } from '@/helper/fucntions/productsData'
+import { productsData } from '@/services/productsData'
 import React from 'react'
 
 async function SimilerProductsSection({productData , locale}) {

@@ -12,11 +12,11 @@ const handleCreateNewUser = async ({signUpData , user}) => {
             image_url : "https://i.pinimg.com/1200x/b0/0f/ab/b00fabb62602ae0746f7dd13a1ee8f61.jpg"
         })
         if(error) {
-            toast.error(error.message);
+            throw error
         }
     }catch (error) {
         if(error) {
-            toast.error(error.message);
+            throw error
         }
         return {error}
     }

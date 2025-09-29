@@ -1,6 +1,6 @@
 import { supabase } from "@/app/api/supabase/SupabaseClient";
 import { cache } from "react";
-import { convertDataHelper } from "./convertDataHelper";
+import { convertDataHelper } from "@/helper/fucntions/convertDataHelper";
 
 export const productDetails = cache(async (params) => {
     const {slug , locale} = await params

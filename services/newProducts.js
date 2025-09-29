@@ -1,5 +1,5 @@
 import { supabase } from "@/app/api/supabase/SupabaseClient"
-import { convertDataHelper } from "./convertDataHelper"
+import { convertDataHelper } from "@/helper/fucntions/convertDataHelper"
 
 export const newProducts = async (locale) => {
     try {

@@ -8,7 +8,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
-import { categoriesData } from '@/helper/fucntions/categoriesData';
+import { categoriesData } from '@/services/categoriesData';
 import { getTranslations } from 'next-intl/server';
 
 

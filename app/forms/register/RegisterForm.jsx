@@ -16,11 +16,13 @@ import { Link } from '@/i18n/navigation'
 import { UserAuth } from '@/context/AuthProvider'
 import HandleTranslate from '@/helper/HandleTranslate'
 import { useLocale } from 'next-intl'
-import { useSignUp } from '@/helper/fucntions/auth/SignUp'
-import { useRouter } from 'next/navigation';
+import { useSignUp } from '@/services/auth/SignUp'
+import { useRouter } from '@/i18n/navigation';
 import { toast } from 'sonner'
-import { useRedirectToProfile } from '@/helper/fucntions/auth/useRedirectToProfile'
+import { useRedirectToProfile } from '@/services/auth/useRedirectToProfile'
 
+
+// need translation here
 const formValidation = z.object({
     name : z.string().min(3 , {message : "Name must be more than 3 letters"}),
     email : z.string().email(),

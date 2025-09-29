@@ -1,45 +1,40 @@
 "use client"
 import CustomFormField from '@/components/ui/CustomFormField';
 import { Form } from '@/components/ui/form';
-import { MainButton } from '@/components/ui/MainButton';
+import MainBtn from '@/components/ui/MainBtn';
 import SubmitButton from '@/components/ui/SubmitButton';
-import { updateUserData, useUpdateUserData } from '@/helper/fucntions/auth/updateUserData';
-import { useUserProfileData } from '@/helper/fucntions/userProfile';
 import HandleTranslate from '@/helper/HandleTranslate';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useUpdateUserGlobalData } from '@/services/auth/useUpdateUserGlobalData';
 
-function UserInformationForm({className , profileData}) {
+function UserInformationForm({className , profileData , style}) {
     const globalT = useTranslations("global");
-    const {refetch:reftechProfileData} = useUserProfileData();
-    const {mutate:updataDataFunc , isPending:updateDataLoading , isSuccess:updateSuccess} = useUpdateUserData(globalT("Updated successfully"));
+    const {mutate:updataDataFunc , isPending:updateDataLoading} = useUpdateUserGlobalData();
     const currentLocale = useLocale()
     const form = useForm({
         defaultValues : {
             name : "",
-            email : "",
             phone : "",
         }
     })
     useEffect(() => {
         if(profileData) {
-            form.setValue("name" , profileData?.user_metadata?.name)
-            form.setValue("email" , profileData.email)
-            form.setValue("phone" , profileData?.user_metadata?.phone)
+            form.setValue("name" , profileData?.name);
+            form.setValue("phone" , profileData?.phone);
         }
     },[profileData])
     const handleUpdateData = async (data) => {
-        updataDataFunc({newData : data})
+        updataDataFunc({newData : data , translate : globalT , userId : profileData.id});
     }
-    useEffect(() => {
-        if(updateSuccess) {
-            reftechProfileData();
-        }
-    },[updateSuccess])
+    const handleCanselProfileChanges = () => {
+        form.setValue("name" , profileData?.name);
+        form.setValue("phone" , profileData?.phone);
+    }
     if(!profileData) return <h1>Please login and trye</h1>
     return (
-        <div className={`relative rounded-2xl border border-slate-300 p-4 ${className}`} dir={currentLocale === "ar" ? "rtl" : "ltr"}>
+        <div style={{...style}} className={`relative rounded-2xl border border-slate-300 p-4 ${className}`} dir={currentLocale === "ar" ? "rtl" : "ltr"}>
             <div className='form-title relative flex flex-col mb-3 md:mb-5'>
                 <h1 className='font-bold'>User details</h1>
                 <p>Update your persolnal information and contact details</p>
@@ -56,15 +51,7 @@ function UserInformationForm({className , profileData}) {
                         label={globalT('Name')}
                         placeholder='Jouhn Nader'
                         form={form}
-                        className='col-span-2 md:col-span-1'
-                    />
-                    <CustomFormField
-                        type='email'
-                        name='email'
-                        label={globalT('Email')}
-                        placeholder='example@gmail.com'
-                        form={form}
-                        className='col-span-2 md:col-span-1'
+                        className='col-span-1'
                     />
                     <CustomFormField
                         type='text'
@@ -72,7 +59,7 @@ function UserInformationForm({className , profileData}) {
                         label={globalT('Phone number')}
                         placeholder='01XXXXXXXXX'
                         form={form}
-                        className='col-span-2'
+                        className='col-span-1'
                     />
                     <div className='relative col-span-2 my-4 flex items-center gap-x-1.5 pt-3 border-t border-slate-300'>
                         <SubmitButton
@@ -86,9 +73,11 @@ function UserInformationForm({className , profileData}) {
                                 <HandleTranslate word={"Save changes"} page={"global"} />
                             }
                         </SubmitButton>
-                        <MainButton>
+                        <MainBtn
+                            onClick = {handleCanselProfileChanges}
+                        >
                             <HandleTranslate word={"Cancel"} page={"global"} />
-                        </MainButton>
+                        </MainBtn>
                     </div>
                 </form>
             </Form>

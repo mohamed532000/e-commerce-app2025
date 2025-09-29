@@ -1,5 +1,5 @@
 import React from 'react';
-import { productDetails } from '@/helper/fucntions/productDetails';
+import { productDetails } from '@/services/productDetails';
 import PageHeader from '@/components/ui/page-header/PageHeader';
 import Section from '@/components/ui/section/Section';
 import ImagesSide from '../../../../components/ui/product-details-page/ImagesSide';

@@ -13,7 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { useSignOut } from '@/helper/fucntions/auth/SignOut';
+import { useSignOut } from '@/services/auth/SignOut';
 import { toast } from 'sonner';
 
 

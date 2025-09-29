@@ -5,19 +5,19 @@ import { CiViewList } from "react-icons/ci";
 import ToggelerDarkMode from '@/components/ui/ToggelerDarkMode';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import LogoutBtn from '../LogoutBtn';
-import { MainButton } from '../MainButton';
+import { MainLink } from '../MainLink';
 import HandleTranslate from '@/helper/HandleTranslate';
 
 
 export const EditPassAndImageBtns = () => {
     return (
         <div className='actions-btns relative flex items-center gap-x-2.5'>
-            <MainButton>
+            <MainLink>
                 <HandleTranslate word={"Edit profile picture"} page={"global"} />
-            </MainButton>
-            <MainButton>
+            </MainLink>
+            <MainLink>
                 <HandleTranslate word={"Change password"} page={"global"} />
-            </MainButton>
+            </MainLink>
         </div>
     )
 }

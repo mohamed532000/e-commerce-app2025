@@ -24,6 +24,8 @@ export default function Navbar() {
         `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("register"))}` , 
         `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("login"))}`,
         `/${currentLocale}/${encodeURI(globalT("user"))}/${encodeURI(globalT("profile"))}`,
+        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(globalT("insert-mail-to-reset-password"))}`,
+        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(globalT("reset-password"))}`
     ]);
     const noNav = removeNavWhen.has(pathname);
     useEffect(() => {

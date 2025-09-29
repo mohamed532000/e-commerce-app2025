@@ -5,11 +5,12 @@ import {FormField , FormItem , FormMessage , FormLabel , FormControl} from "./fo
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { Textarea } from './textarea';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
-function CustomFormField({className = "" , labelClassName = "" , label = "" , name = "" , icon , form , placeholder = "" , type = "text"}) {
+function CustomFormField({className = "" , labelClassName = "" , label = "" , name = "" , icon , form , placeholder = "" , type = "text" , warningText = ""}) {
   const [showPass , setShowPass] = useState(false);
-  const currentLocale = useLocale()
+  const currentLocale = useLocale();
+  const globalT = useTranslations("global")
   return (
     <div className={`${className} flex flex-col gap-y-1`}>
         <FormField
@@ -54,6 +55,11 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                     )
                   }
                 </FormControl>
+                {
+                  warningText
+                  &&
+                  <span className='mt-1 block text-sm opacity-70 transition-all duration-300 hover:opacity-100'><span className='text-red-600 font-bold'>{globalT("Note")}</span>: {warningText}</span>
+                }
                 <FormMessage/>
               </FormItem>
             )}

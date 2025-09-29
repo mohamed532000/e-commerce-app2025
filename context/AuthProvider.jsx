@@ -1,40 +1,41 @@
 "use client"
 import { supabase } from "@/app/api/supabase/SupabaseClient";
-import { useUserProfileData } from "@/helper/fucntions/userProfile";
-// import { userProfile } from "@/helper/fucntions/userProfile";
+import { useUserData } from "@/services/auth/useUserData";
 import { createContext , useContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const authContext = createContext();
 
 export const AuthProvider = ({children}) => {
-    const [session , setSession] = useState(null);
-    // const [profile , setProfile] = useState(null);
-    // const {data:profileData , isLoading:getProfileLoading} = useUserProfileData(session?.user?.id);
-    const {data:profileData} = useUserProfileData();
-    const [profileLoading , setProfileLoading] = useState(true);
+    const [session , setSession] = useState();
+    const {data:profileData , isPending:getProfileLoading} = useUserData(session?.user?.id);
+    const [getSessionLoading , setGetSessionLoading] = useState(true);
+    const getSession = async () => {
+        try {
+            supabase.auth.getSession().then(({data : {session}}) => {
+                if(session) {
+                    setSession(session)
+                }
+            })
+        }catch (error) {
+            toast.error(error)
+        }finally {
+            setGetSessionLoading(false)
+        }
+    }
     useEffect(() => {
-        supabase.auth.getSession().then(({data : {session}}) => {
-            if(session) {
-                setSession(session)
-                const {user} = session;
-                console.log(user)
-            }else {
-                console.log("there is no session")
-            }
-        })
+        getSession();
         const {data:authListener} = supabase.auth.onAuthStateChange((_e , session) => {
             setSession(session)
         })
         return () => {authListener.subscription.unsubscribe()}
     },[])
-    // useEffect(() => {
-    //     getProfileLoading ? setProfileLoading(true) : setProfileLoading(false);
-    // },[getProfileLoading])
     return (
         <authContext.Provider value={
             {
+                getSessionLoading,
                 session,
-                // profileLoading,
+                getProfileLoading,
                 profile:profileData,
             }
             }>

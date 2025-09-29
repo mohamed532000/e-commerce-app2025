@@ -13,10 +13,11 @@ import FormHeading from '../FormHeading';
 import { Link } from '@/i18n/navigation';
 import HandleTranslate from '@/helper/HandleTranslate';
 import { useLocale } from 'next-intl';
-import { useSignIn } from '@/helper/fucntions/auth/SignIn';
-import { useRouter } from 'next/navigation';
+import { useSignIn } from '@/services/auth/SignIn';
+import { useRouter } from '@/i18n/navigation';
 import { toast } from 'sonner';
 import FullScreenLoading from '@/components/ui/loading/FullScreenLoading';
+import { useRedirectToProfile } from '@/services/auth/useRedirectToProfile';
 const formValidation = z.object({
   email : z.string().email(),
   password : z.string().min(1)
@@ -40,8 +41,8 @@ function LoginForm() {
   useEffect(() => {
     if(isSuccess) {
       toast.success(`redirect to your profile...`)
-      setRedirect(true)
-      router.push(`/${currentLocale}/user/profile`);
+      setRedirect(true);
+      useRedirectToProfile(router)
     }
     return () => setRedirect(false)
   },[isSuccess])
@@ -81,6 +82,9 @@ function LoginForm() {
             form={form}
             />
           </div>
+          <Link href={"/auth/insert-mail-to-reset-password"} className='text-sm'>
+            Forgot your password ?
+          </Link>
           <div className='relative flex items-center justify-center my-4 opacity-50'>
             <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
             <span className='mx-2 -translate-y-0.5'>or</span>

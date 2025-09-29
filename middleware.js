@@ -50,7 +50,10 @@ export async function middleware(req) {
 
   if (!user && req.nextUrl.pathname.startsWith(`/${currentLocale}/user`)) { 
     return NextResponse.redirect(new URL(`/${currentLocale}/auth/login`, req.url));
-  }   
+  }
+  if(user && req.nextUrl.pathname.startsWith(`/${currentLocale}/auth`)) {
+    return NextResponse.redirect(new URL(`/${currentLocale}/user/profile` , req.url))
+  }
   return intlResponse; 
 }
 

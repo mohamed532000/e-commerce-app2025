@@ -83,7 +83,17 @@
         "Text copied successfully" : "Text copied successfully",
         "user" : "user",
         "profile" : "profile",
-        "Updated successfully" : "Updated successfully"
+        "Updated successfully" : "Updated successfully",
+        "Changing your email will require confirmation" : "Changing your email will require confirmation",
+        "Note" : "Note",
+        "Security" : "Security",
+        "Password" : "Password",
+        "reset-password" : "reset-password",
+        "insert-mail-to-reset-password" : "insert-mail-to-reset-password",
+        "New password" : "New password",
+        "success change password" : "Password updated successfully",
+        "We send confirm link to your email" : "We send confirm link to your email",
+        "Info" : "Info"
     },
     "home" : {
         "title" : "title",

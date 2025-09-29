@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './dropdown-menu';
 import LogoutBtn from './LogoutBtn';
 import HandleTranslate from '@/helper/HandleTranslate';
+import { Link } from '@/i18n/navigation';
 function UserDropdown({className , sessionData}) {
     const [openDropDown , setOpenDropDown] = useState(false);
     return (
@@ -25,7 +26,7 @@ function UserDropdown({className , sessionData}) {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            {sessionData?.user?.email}
+                            <Link href={`/user/profile`}>{sessionData?.user?.email}</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                         onSelect={(e) => {
