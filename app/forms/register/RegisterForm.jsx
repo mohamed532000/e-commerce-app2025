@@ -137,15 +137,15 @@ function RegisterForm() {
                         </SubmitButton>
                         <span className='flex items-center gap-x-1 text-slate-400  mt-2'>
                             <HandleTranslate word={"I have an account"} page={"global"}/>
-                            <Link href={"/auth/login"} className='underline text-slate-700'>
+                            <Link href={"/auth/login"} className='underline'>
                                 <HandleTranslate word={"Login"} page={"global"} />
                             </Link>
                         </span>
                     </div>
-                    <div className='relative flex items-center justify-center my-1 opacity-50'>
-                        <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
+                    <div className='relative flex items-center justify-center my-1'>
+                        <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md opacity-50'></span>
                         <span className='mx-2 -translate-y-0.5'>or</span>
-                        <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
+                        <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md opacity-50'></span>
                     </div>
                     {/* <AuthWithGoogleBtn className={""} title={"Sign up with Google"} /> */}
                 </form>

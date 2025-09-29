@@ -82,13 +82,13 @@ function LoginForm() {
             form={form}
             />
           </div>
-          <Link href={"/auth/insert-mail-to-reset-password"} className='text-sm'>
+          <Link href={"/auth/insert-mail-to-reset-password"} className='text-sm mt-2'>
             Forgot your password ?
           </Link>
-          <div className='relative flex items-center justify-center my-4 opacity-50'>
-            <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
+          <div className='relative flex items-center justify-center my-4'>
+            <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md opacity-50'></span>
             <span className='mx-2 -translate-y-0.5'>or</span>
-            <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md'></span>
+            <span className='relative w-[50%] h-[.5px] bg-slate-800 rounded-md opacity-50'></span>
           </div>
           <div className='relative flex items-center gap-x-1.5'>
             <SubmitButton disabled={signInLoading || isSuccess} form={"login-form"}>
