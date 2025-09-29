@@ -135,7 +135,7 @@ function RegisterForm() {
                                 <HandleTranslate word={"Submit"} page={"global"}/>
                             }
                         </SubmitButton>
-                        <span className='flex items-center gap-x-1 text-slate-400  mt-2'>
+                        <span className='flex items-center gap-x-1 mt-2'>
                             <HandleTranslate word={"I have an account"} page={"global"}/>
                             <Link href={"/auth/login"} className='underline'>
                                 <HandleTranslate word={"Login"} page={"global"} />
