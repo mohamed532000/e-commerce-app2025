@@ -11,7 +11,7 @@ import { IoInformationCircle } from "react-icons/io5";
 function BestSaleCard({className , product}) {
   return (
     <div className={`best-sale-card my-2 relatie flex flex-col md:flex-row md:justify-between ${className}`}>
-        <div className='relative w-full md:w-[50%] flex justify-center'>
+        <div className='relative w-full md:w-[40%] flex justify-center'>
           <div className='relative aspect-[4/4] md:aspect-auto-[3/4] w-full md:max-w-[300px] image rounded-3xl overflow-hidden'>
             <Image
             src={product.image_url}
@@ -25,8 +25,8 @@ function BestSaleCard({className , product}) {
             />
           </div>
         </div>
-        <div className='product-info flex flex-col gap-y-2.5'>
-            <Link href={`/product-details/${product.slug}`}>
+        <div className='product-info flex flex-col gap-y-2.5 md:w-[60%]'>
+            <Link href={`/product-details/${product.slug}`} className='line-clamp-2'>
               <h1 className='text-6xl line-clamp-2 py-2.5'>
                 {product.title}
               </h1>

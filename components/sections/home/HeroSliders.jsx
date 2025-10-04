@@ -72,7 +72,7 @@ function HeroSliders() {
                                         {
                                             item.title
                                             &&
-                                            <h2 className={`font-bold text-4xl  text-center text-stone-50 ${activeSlideIndex == index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[-70px]"} transition-all duration-800`}>{item.title}</h2>
+                                            <h2 className={`font-bold text-4xl  text-center text-stone-50 ${activeSlideIndex == index ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-[-70px] scale-170"} transition-all duration-800`}>{item.title}</h2>
                                         }
                                         {
                                             item.pargraph

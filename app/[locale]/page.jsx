@@ -5,7 +5,6 @@ import { recommendedProducts } from "@/services/recommendedProducts";
 import { bestSalePrducts } from "@/services/bestSaleProducts";
 import NewProductsSection from "@/components/sections/home/NewProductsSection";
 import { newProducts } from "@/services/newProducts";
-
 export default async function Home({params : {locale}}) {
   const [recommendedRes, bestSaleRes , newProductsRes] = await Promise.all([
     recommendedProducts(locale),

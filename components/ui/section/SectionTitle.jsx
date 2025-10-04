@@ -1,22 +1,42 @@
-import { useLocale } from 'next-intl'
-import React from 'react'
+"use client"
+import React from 'react';
+import { useLocale } from 'next-intl';
 
+
+import SplitText from "@/components/ui/split-text/SplitText"
 function SectionTitle({title , subText , className}) {
   const currentLocal = useLocale();
   return (
     <div className='relative flex flex-col justify-center items-center my-11 max-w-[50vw] mx-auto'>
-        {
-          currentLocal !== "ar"
-          ?
-          <h1 className={`section-title text-center text-section-title-color  ${className}`}>
-              {title?.split("").map((letter , index) => <span key={index} className='transition-all duration-200 opacity-60 hover:opacity-100 text-[clamp(2rem,5vw,5rem)]'>{letter.toUpperCase()}</span>)}
-          </h1>
-          :
-          <h1 className={`section-title text-center text-section-title-color  ${className}`}>
-              {title}
-          </h1>
-        }
-        <p className='text-center text-slate-800 dark:text-stone-50 md:text-sm mt-2'>{subText}</p>
+      <div className={`relative w-fit after:absolute after:w-[50px] after:h-[2px] after:bg-active-text-primary after:inset-y-[100%] after:rounded-3xl after:transition-all after:duration-500 ${currentLocal !== "ar" ? "after:inset-x-[50%] after:-translate-x-[50%]" : "after:inset-x-[50%] after:translate-x-[50%]"} after:mb-2`}>
+        <SplitText
+        text={title}
+        className="text-section-title-color transition-all duration-300 font-bold opacity-60 hover:opacity-100 text-[clamp(2rem,5vw,5rem)] text-center"
+        delay={100}
+        duration={0.6}
+        ease="power3.out"
+        splitType={currentLocal !== "ar" ? "chars" : "words"}
+        from={{ opacity: 0, y: 40 }}
+        to={{ opacity: 1, y: 0 }}
+        threshold={0.1}
+        rootMargin="-100px"
+        textAlign="center"
+        />
+      </div>
+      <SplitText
+      text={subText}
+      className="md:text-sm mt-4"
+      delay={100}
+      duration={0.6}
+      ease="power3.out"
+      splitType="words"
+      from={{ opacity: 0, y: 40 }}
+      to={{ opacity: 1, y: 0 }}
+      threshold={0.1}
+      rootMargin="-100px"
+      textAlign="center"
+      tag='p'
+      />
     </div>
   )
 }

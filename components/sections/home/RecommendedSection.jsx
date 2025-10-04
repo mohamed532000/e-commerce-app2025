@@ -43,7 +43,8 @@ function  RecommendedSection({products}) {
             <ProductCard key={index} product={item} />
           </SwiperSlide>
         ))}
-      />}
+      />
+      }
       {!products && <FaildLoadingData/>}
       {products?.length < 1 && <EmptyData/>}
     </Section>
