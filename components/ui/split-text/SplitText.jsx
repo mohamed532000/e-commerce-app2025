@@ -99,6 +99,7 @@ const SplitText = ({
               onComplete: () => {
                 animationCompletedRef.current = true;
                 onLetterAnimationComplete?.();
+                ref.current.removeAttribute("aria-label")
               },
               willChange: 'transform, opacity',
               force3D: true
