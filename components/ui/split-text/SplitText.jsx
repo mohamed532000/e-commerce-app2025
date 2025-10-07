@@ -81,6 +81,7 @@ const SplitText = ({
         reduceWhiteSpace: false,
         onSplit: self => {
           assignTargets(self);
+          ref.current.removeAttribute("aria-label")
           return gsap.fromTo(
             targets,
             { ...from },
@@ -111,6 +112,7 @@ const SplitText = ({
       el._rbsplitInstance = splitInstance;
 
       return () => {
+        ref.current.removeAttribute("aria-label")
         ScrollTrigger.getAll().forEach(st => {
           if (st.trigger === el) st.kill();
         });
@@ -186,7 +188,7 @@ const SplitText = ({
         );
       default:
         return (
-          <p aria-label='heading text' ref={ref} style={style} className={classes}>
+          <p ref={ref} style={style} className={classes}>
             {upperCase ? text?.toUpperCase() : text}
           </p>
         );
