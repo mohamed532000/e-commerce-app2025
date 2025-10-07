@@ -105,6 +105,7 @@ const SplitText = ({
               force3D: true
             }
           );
+          
         }
       });
       el._rbsplitInstance = splitInstance;
@@ -185,7 +186,7 @@ const SplitText = ({
         );
       default:
         return (
-          <p ref={ref} style={style} className={classes}>
+          <p aria-label='heading text' ref={ref} style={style} className={classes}>
             {upperCase ? text?.toUpperCase() : text}
           </p>
         );
