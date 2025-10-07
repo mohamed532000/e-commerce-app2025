@@ -56,7 +56,7 @@ export default function CategoriesList() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={"group flex items-center justify-center cursor-pointer !bg-transparent !shadow-none !ring-0 !outline-none !border-none relative hover:!bg-transparent text-2xl italic"}>
+        <Button variant="outline" className={"group flex items-center justify-center cursor-pointer !bg-transparent !shadow-none !ring-0 !outline-none !border-none relative hover:!bg-transparent text-2xl md:text-base italic md:font-normal"}>
           <HandleTranslate word={"Categories"} page={"global"} />
           <IoIosArrowDown className='transition-all duration-500 group-data-[state=open]:rotate-180 group-data-[state=open]:translate-y-1.5 translate-y-2.5 -translate-x-1'/>
         </Button>

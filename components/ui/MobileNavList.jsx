@@ -17,6 +17,10 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
     useGSAP(() => {
         if(mounted) {
             tl.current = gsap.timeline({ paused: true })
+            .from(".close-nav-list-icon" , {
+                opacity : 0,
+                y : -100
+            })
             .from(".mobile-nav-link", {
                 x: -20,
                 scale : .2,
@@ -36,7 +40,7 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
                 y : 50,
                 ease : "elastic.out(0.7,0.7)" ,
                 stagger : .3
-            })
+            },"<.5")
         }
     }, { scope: mobileListRef , dependencies : [mounted]})
     useEffect(() => {
@@ -50,7 +54,7 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
     }, [active])
   return (
     <div ref={mobileListRef} className={`fixed inset-y-0 ${active ? "w-full md:w-[200px]" : "w-0"} h-screen bg-background/70 backdrop-blur-md transition-all duration-300 flex flex-col overflow-hidden justify-center items-center lg:hidden`}>
-        <div className='w-full absolute inset-y-0'>
+        <div className='w-full absolute inset-y-0 close-nav-list-icon'>
             <IoCloseOutline className='cursor-pointer text-2xl m-2 dark:text-stone-100' onClick={closeMobileNav}/>
         </div>
         <ul className='flex flex-col justify-center items-center h-fit gap-2'>

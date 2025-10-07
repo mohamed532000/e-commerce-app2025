@@ -17,7 +17,7 @@ function CustomLink({label , href , className , pathname , translationPage , isS
   } , [pathname , currentLocale])
   useEffect(() => setMounted(true) , [])
   return (
-    <Link href={href} className={`${className} tracking-wide ${active ? `text-active-text-primary after:w-full` : `after:w-0 ${mounted &&  theme == "dark" && !isScrolling ? "text-white" : ""}`} after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-active-text-primary after:transition-all after:duration-300`}>
+    <Link href={href} className={`${className} tracking-wide ${active ? `text-active-text-primary after:w-full` : `after:w-0 ${mounted &&  theme == "dark" && !isScrolling ? "text-white" : ""}`} after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-active-text-primary after:transition-all after:duration-300 italic text-2xl md:text-base`}>
       <HandleTranslate page={translationPage} word={label}/>
     </Link>
   )

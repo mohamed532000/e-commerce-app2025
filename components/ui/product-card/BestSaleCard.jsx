@@ -42,7 +42,7 @@ function BestSaleCard({className , product}) {
             <div className='flex items-center gap-1'>
               <AddToCartBtn/>
               <AddToWhishlistBtn/>
-              <Link href={`/product-details/${product.slug}`} className={`cursor-pointer rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
+              <Link href={`/product-details/${product.slug}`} aria-label='Show product details' className={`cursor-pointer rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
                   <IoInformationCircle className='text-2xl'/>
               </Link>
             </div>
