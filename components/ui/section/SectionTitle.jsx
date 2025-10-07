@@ -9,7 +9,7 @@ function SectionTitle({title , subText , className}) {
   return (
     <div className='relative flex flex-col justify-center items-center my-11 max-w-[50vw] mx-auto'>
       <div className={`relative w-fit after:absolute after:w-[50px] after:h-[2px] after:bg-active-text-primary after:inset-y-[100%] after:rounded-3xl after:transition-all after:duration-500 ${currentLocal !== "ar" ? "after:inset-x-[50%] after:-translate-x-[50%]" : "after:inset-x-[50%] after:translate-x-[50%]"} after:mb-2`}>
-        <SplitText
+        {/* <SplitText
         text={title}
         className="text-section-title-color transition-all duration-300 font-bold opacity-60 hover:opacity-100 text-[clamp(2rem,5vw,5rem)] text-center"
         delay={100}
@@ -21,9 +21,9 @@ function SectionTitle({title , subText , className}) {
         threshold={0.1}
         rootMargin="-100px"
         textAlign="center"
-        />
+        /> */}{title}
       </div>
-      <SplitText
+      {/* <SplitText
       text={subText}
       className="md:text-sm mt-4"
       delay={100}
@@ -37,7 +37,8 @@ function SectionTitle({title , subText , className}) {
       textAlign="center"
       tag='p'
       upperCase = {false}
-      />
+      /> */}
+      {subText}
     </div>
   )
 }
