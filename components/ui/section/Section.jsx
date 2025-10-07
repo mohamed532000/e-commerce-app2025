@@ -2,12 +2,12 @@ import React from 'react'
 import SectionTitle from './SectionTitle'
 import { useTranslations } from 'next-intl'
 
-function Section({title , subText , children , className , containerClassName}) {
+function Section({title , subText , children , className , containerClassName , sectionId , containerId , sectionRef , containerRef}) {
   const t = useTranslations("sectionsTitles")
   return (
-    <section className={`${className} mt-9 py-5 relative`}>
+    <section className={`${className} mt-9 py-5 relative`} ref={sectionRef} id={sectionId}>
         {title && <SectionTitle title={t(title)} subText={t(subText)}/>}
-        <div className={`container ${containerClassName} mt-7`}>
+        <div className={`container ${containerClassName} mt-7`} ref={containerRef} id={containerId}>
             {children}
         </div>
     </section>

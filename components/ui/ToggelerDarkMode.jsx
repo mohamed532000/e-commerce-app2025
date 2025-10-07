@@ -3,12 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { useTheme } from 'next-themes';
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import SpinLoading from './SpinLoading';
 
-function ToggelerDarkMode({showWord , className}) {
+function ToggelerDarkMode({showWord , className , toggeleThemRef}) {
   const [mounted , setMounted] = useState(false)
-  const {resolvedTheme , setTheme ,} = useTheme()
+  const {resolvedTheme , setTheme} = useTheme()
   useEffect(() => setMounted(true) , []);
   const handleSetTheme = () => {
     if(resolvedTheme === "dark") {
@@ -17,9 +15,9 @@ function ToggelerDarkMode({showWord , className}) {
       setTheme("dark")
     }
   }
-  if (!mounted) return <SpinLoading/>
+  if (!mounted) return;
   return (
-    <div className={`relative flex ${showWord && showWord !== undefined ? "justify-start w-full" : "justify-center"} items-center text-base md:text-2xl ${className} cursor-pointer`}
+    <div ref={toggeleThemRef} className={`relative flex ${showWord && showWord !== undefined ? "justify-start w-full" : "justify-center"} items-center text-base md:text-2xl cursor-pointer ${className}`}
     onClick={handleSetTheme}
     >
         {

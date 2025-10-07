@@ -36,6 +36,7 @@ function SectionTitle({title , subText , className}) {
       rootMargin="-100px"
       textAlign="center"
       tag='p'
+      upperCase = {false}
       />
     </div>
   )

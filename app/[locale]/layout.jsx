@@ -10,6 +10,7 @@ import Footer from "@/components/ui/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthProvider";
 import ReactQueryContext from "@/context/ReactQueryContext";
+import SmootherProvider from "@/context/SmootherProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,13 +45,15 @@ export default async function LocaleLayout({ children , params}) {
         <ReactQueryContext>
           <AuthProvider>
             <NextIntlClientProvider>
-            <AppThemeProvider>
-              <Navbar/>
-              {children}
-              <Footer locale={locale}/>
-              <Toaster position={"top-center"}/>
-            </AppThemeProvider>
-          </NextIntlClientProvider>
+              <AppThemeProvider>
+                <Navbar/>
+                <SmootherProvider>
+                  {children}
+                  <Footer locale={locale}/>
+                  <Toaster position={"top-center"}/>
+                </SmootherProvider>
+              </AppThemeProvider>
+            </NextIntlClientProvider>
           </AuthProvider>
         </ReactQueryContext>
       </body>

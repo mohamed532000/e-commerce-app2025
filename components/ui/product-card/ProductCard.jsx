@@ -1,7 +1,7 @@
 "use client"
+import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
-import React from 'react'
 import AddToCartBtn from '../AddToCartBtn';
 import AddToWhishlistBtn from '../AddToWhishlistBtn';
 import Image from 'next/image';

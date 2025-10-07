@@ -20,6 +20,7 @@ const SplitText = ({
   rootMargin = '-100px',
   textAlign = 'center',
   tag = 'p',
+  upperCase = true,
   onLetterAnimationComplete
 }) => {
   const ref = useRef(null);
@@ -148,43 +149,43 @@ const SplitText = ({
       case 'h1':
         return (
           <h1 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h1>
         );
       case 'h2':
         return (
           <h2 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h2>
         );
       case 'h3':
         return (
           <h3 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h3>
         );
       case 'h4':
         return (
           <h4 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h4>
         );
       case 'h5':
         return (
           <h5 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h5>
         );
       case 'h6':
         return (
           <h6 ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </h6>
         );
       default:
         return (
           <p ref={ref} style={style} className={classes}>
-            {text?.toUpperCase()}
+            {upperCase ? text?.toUpperCase() : text}
           </p>
         );
     }

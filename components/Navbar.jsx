@@ -1,7 +1,7 @@
 "use client"
 import CustomLink from "./ui/Link";
 import { BsListNested } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MobileNavList } from "./ui/MobileNavList";
 import { usePathname } from 'next/navigation';
 import ToggelerDarkMode from "./ui/ToggelerDarkMode";
@@ -12,12 +12,16 @@ import SiteLogo from "./ui/SiteLogo";
 import NavAuthSide from "./ui/NavAuthSide";
 import { toast } from "sonner";
 import CategoriesList from "./ui/CategoriesList";
-
+import gsap from "gsap";
+import {ScrollTrigger , ScrollSmoother} from "gsap/all"
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger)
 export default function Navbar() {
     const t = useTranslations("home");
     const globalT = useTranslations("global");
     const [isScrolling , setIsScrolling] = useState(false);
     const [activeMobileNav , setActiveMobileNav] = useState(false);
+    const navRef = useRef(null)
     const currentLocale = useLocale();
     const pathname = usePathname();
     const removeNavWhen = new Set([
@@ -29,9 +33,23 @@ export default function Navbar() {
     ]);
     const noNav = removeNavWhen.has(pathname);
     useEffect(() => {
-        window.onscroll = () => {
-            window.scrollY >= 10 ? setIsScrolling(true) : setIsScrolling(false)
-        }
+        const trigger = ScrollTrigger.create({
+            onUpdate : (self) => {
+                const scrollY = self.scroll();
+                if(scrollY >= 10) {
+                    navRef.current.classList.add(
+                        "bg-background",
+                        "shadow-[2px_3px_10px_#c4c4c4]",
+                        "dark:shadow-[2px_3px_10px_black]",)
+                }else {
+                    navRef.current.classList.remove(
+                        "bg-background",
+                        "shadow-[2px_3px_10px_#c4c4c4]",
+                        "dark:shadow-[2px_3px_10px_black]",)
+                }
+            }
+        })
+        return () => trigger.kill();
     },[])
     const handleShowMobileNav = () => {
         setActiveMobileNav(true)
@@ -45,7 +63,8 @@ export default function Navbar() {
     if (noNav) return null
     return (
         <>
-            <header className={`fixed inset-x-0 inset-y-0 h-fit z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}>
+            {/* <header ref={navRef} className={`fixed inset-x-0 inset-y-0 h-fit z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}> */}
+            <header ref={navRef} className={`navbar fixed inset-x-0 inset-y-0 h-fit z-40 transition-all duration-300`}>
                 <nav aria-label="Global" className="flex items-center justify-between container relative">
                     <div className="flex lg:flex-1">
                         <SiteLogo/>
