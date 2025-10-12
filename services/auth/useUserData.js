@@ -4,9 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 const getUserDataFunc = async (userIdFromSession) => {
     try {
         const {data , error} = await supabase.from("users").select("*").eq("id" , userIdFromSession).single();
-        if(error) throw error
-        console.log(data)
-        return data
+        if(error) throw error;
+        return data;
     }catch (error) {
         throw error
     }

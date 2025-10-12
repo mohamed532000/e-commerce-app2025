@@ -5,19 +5,24 @@ import Section from '@/components/ui/section/Section'
 import InfinitItemsLine from '@/components/ui/InfinitItemsLine';
 import ProductCard from '@/components/ui/product-card/ProductCard';
 
-function NewProductsSection({products}) {
+function NewProductsSection({products , convertedProducts}) {
     return (
         <Section
             title={"New arrivals"}
             subText={"new products section subtext"}
             containerClassName={"overflow-hidden"}
         >
-            {!products && <FaildLoadingData/>}
-            {products?.length < 1 && <EmptyData/>}
+            {!convertedProducts && <FaildLoadingData/>}
+            {convertedProducts?.length < 1 && <EmptyData/>}
             {
-            products?.length >= 1 &&
+            convertedProducts?.length >= 1 &&
             <InfinitItemsLine
-                children={products.map((item , index) => <ProductCard key={index} product={item}/>)}
+                children={convertedProducts.map((item , index) => 
+                    <ProductCard 
+                    key={index}
+                    product={products[index]} 
+                    productAfterConvert={item} />
+                )}
             />
             }
         </Section>

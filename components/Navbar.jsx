@@ -13,8 +13,7 @@ import NavAuthSide from "./ui/NavAuthSide";
 import { toast } from "sonner";
 import CategoriesList from "./ui/CategoriesList";
 import gsap from "gsap";
-import {ScrollTrigger , ScrollSmoother} from "gsap/all"
-import { useGSAP } from "@gsap/react";
+import {ScrollTrigger} from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 export default function Navbar() {
     const t = useTranslations("home");
@@ -37,12 +36,12 @@ export default function Navbar() {
             onUpdate : (self) => {
                 const scrollY = self.scroll();
                 if(scrollY >= 10) {
-                    navRef.current.classList.add(
+                    navRef?.current?.classList.add(
                         "bg-background",
                         "shadow-[2px_3px_10px_#c4c4c4]",
                         "dark:shadow-[2px_3px_10px_black]",)
                 }else {
-                    navRef.current.classList.remove(
+                    navRef?.current?.classList.remove(
                         "bg-background",
                         "shadow-[2px_3px_10px_#c4c4c4]",
                         "dark:shadow-[2px_3px_10px_black]",)

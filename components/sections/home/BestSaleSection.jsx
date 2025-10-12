@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Section from '../../ui/section/Section'
 // import { CustomSwiperModule } from '../../ui/CustomSwiperModule'
 import BestSaleCard from '../../ui/product-card/BestSaleCard'
@@ -11,7 +11,7 @@ import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
-function BestSaleSection({products}) {
+function BestSaleSection({products , convertedProducts}) {
   const sectionRef = useRef(null)
   useGSAP((context) => {
     const bestSaleContainer = context.selector(".best-sale-container");
@@ -33,20 +33,24 @@ function BestSaleSection({products}) {
       containerClassName={"best-sale-container"}
       sectionRef={sectionRef}
       >
-        {products?.length >= 1 && 
+        {convertedProducts?.length >= 1 && 
         <CustomSwiperModule
           className='relative mt-4'
           slidesPerView={1}
           pagination = {false}
           autoplay={true}
-          children={products.map((item , index) => (
+          children={convertedProducts.map((item , index) => (
             <SwiperSlide className='flex justify-center items-center'>
-              <BestSaleCard key={index} product={item} />
+              <BestSaleCard 
+              key={index} 
+              product={products[index]}
+              productAfterConvert={item} 
+              />
             </SwiperSlide>
           ))}
         />}
-        {!products && <FaildLoadingData/>}
-        {products?.length < 1 && <EmptyData/>}
+        {!convertedProducts && <FaildLoadingData/>}
+        {convertedProducts?.length < 1 && <EmptyData/>}
     </Section>
   )
 }

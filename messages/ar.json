@@ -94,6 +94,7 @@
         "success change password" : "تم تغيير كلمة المرور بنجاح",
         "We send confirm link to your email" : "تم ارسال رابط التاكيد لعنوان البريد الجديد",
         "Info" : "عن"
+        
     },
     "home" : {
         "title" : "مرحبا",
@@ -148,5 +149,14 @@
     },
     "validations" : {
         "Enter name at least 1 letter" : "ادخل اسم المنتج علي الاقل حرف واحد"
+    },
+    "shopping" : {
+        "Your shopping cart" : "عربة التسوق",
+        "Continue Shop" : "متابعة التسوق",
+        "Order Summary" : "ملخص الطلب",
+        "Item is already exist" : "هذا المنتج موجود بالفعل",
+        "Added successfully" : "تمت الاضافة بنجاح",
+        "Already in cart" : "فالعربة بالفعل",
+        "Already in whishlist" : "فالمفضلة"
     }
 }

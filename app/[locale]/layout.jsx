@@ -43,18 +43,18 @@ export default async function LocaleLayout({ children , params}) {
       className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <ReactQueryContext>
-          <AuthProvider>
-            <NextIntlClientProvider>
+          <NextIntlClientProvider>
+            <AuthProvider>
               <AppThemeProvider>
                 <Navbar/>
                 <SmootherProvider>
                   {children}
                   <Footer locale={locale}/>
-                  <Toaster position={"top-center"}/>
                 </SmootherProvider>
+                <Toaster position={"top-center"}/>
               </AppThemeProvider>
-            </NextIntlClientProvider>
-          </AuthProvider>
+            </AuthProvider>
+          </NextIntlClientProvider>
         </ReactQueryContext>
       </body>
     </html>

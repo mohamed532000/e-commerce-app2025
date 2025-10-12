@@ -5,6 +5,7 @@ import { recommendedProducts } from "@/services/recommendedProducts";
 import { bestSalePrducts } from "@/services/bestSaleProducts";
 import NewProductsSection from "@/components/sections/home/NewProductsSection";
 import { newProducts } from "@/services/newProducts";
+import { convertDataHelper } from "@/helper/fucntions/convertDataHelper";
 export default async function Home({params : {locale}}) {
   const [recommendedRes, bestSaleRes , newProductsRes] = await Promise.all([
     recommendedProducts(locale),
@@ -14,9 +15,17 @@ export default async function Home({params : {locale}}) {
   return (
     <>
       <HeroSection/>
-      <RecommendedSection products={recommendedRes.data}/>
-      <NewProductsSection products={newProductsRes.data}/>
-      <BestSaleSection products={bestSaleRes.data}/>
+      <RecommendedSection 
+      products={recommendedRes.data} 
+      convertedProducts = {convertDataHelper(recommendedRes.data , locale)} 
+      locale={locale}/>
+      <NewProductsSection 
+      products={newProductsRes.data} 
+      convertedProducts={convertDataHelper(newProductsRes.data , locale)}/>
+      <BestSaleSection 
+      products={bestSaleRes.data}
+      convertedProducts = {convertDataHelper(bestSaleRes.data , locale)} 
+      />
     </>
   );
 }

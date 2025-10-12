@@ -94,6 +94,7 @@
         "success change password" : "Password updated successfully",
         "We send confirm link to your email" : "We send confirm link to your email",
         "Info" : "Info"
+        
     },
     "home" : {
         "title" : "title",
@@ -149,5 +150,14 @@
     },
     "validations" : {
         "Enter name at least 1 letter" : "Enter name at least 1 letter"
+    },
+    "shopping" : {
+        "Your shopping cart" : "Your shopping cart",
+        "Continue Shop" : "Continue Shop",
+        "Order Summary" : "Order Summary",
+        "Item is already exist" : "Item is already exist",
+        "Added successfully" : "Added successfully",
+        "Already in cart" : "Already in cart",
+        "Already in whishlist" : "Already in whishlist"
     }
 }

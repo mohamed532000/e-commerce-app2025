@@ -15,12 +15,14 @@ import ShopPagination from '@/components/ui/shop-page-components/ShopPagination'
 import LoadingProducts from '@/components/ui/loading/LoadingProducts';
 import { CiFilter } from "react-icons/ci";
 import { useSearchParams } from 'next/navigation';
+import { convertDataHelper } from '@/helper/fucntions/convertDataHelper';
 
 function ShopContent() {
     const searchParams = useSearchParams();
     const category = searchParams.get("category")
     const locale = useLocale();
-    const [data , setData] = useState([])
+    const [data , setData] = useState([]);
+    const [convertedData , setConvertedData] = useState([]);
     const [categories , setCategories] = useState([])
     const [count , setCount] = useState();
     const productsCountInOnePage = 9; // count of products in one page
@@ -51,8 +53,9 @@ function ShopContent() {
     const handleGetProducts = async () => {
         try {
             setLoadingProducts(true);
-            const {data} = await productsData(locale , filterData);
+            const {data} = await productsData(filterData);
             setData(data);
+            setConvertedData(convertDataHelper(data , locale))
             setLoadingProducts(false);
         }catch (error) {
             setLoadingProducts(false);
@@ -117,14 +120,20 @@ function ShopContent() {
                 </div>
                 <div className={`grid col-span-12 md:grid-cols-3 gap-2.5`}>
                     {loadingProducts && <LoadingProducts />}
-                    {!data && !loadingProducts && <div className='col-span-3 flex justify-center items-center my-16'><FaildLoadingData/></div>}
-                    {data?.length < 1 && !loadingProducts && <div className='col-span-3 flex justify-center items-center my-16'><EmptyData/></div>}
+                    {!convertedData && !loadingProducts && <div className='col-span-3 flex justify-center items-center my-16'><FaildLoadingData/></div>}
+                    {convertedData?.length < 1 && !loadingProducts && <div className='col-span-3 flex justify-center items-center my-16'><EmptyData/></div>}
                     {
-                    data?.length >= 1
+                    convertedData?.length >= 1
                     &&
                     !loadingProducts
                     &&
-                    data.map((item , index) => <ProductCard key={index} product={item} className={"col-span-3 md:col-span-1 mx-auto md:mx-0"}/>)
+                    convertedData.map((item , index) => (
+                        <ProductCard 
+                        key={index} 
+                        product={data[index]} 
+                        productAfterConvert={item} 
+                        className={"col-span-3 md:col-span-1 mx-auto md:mx-0"}/>
+                    ))
                     }
                 </div>
                 {
