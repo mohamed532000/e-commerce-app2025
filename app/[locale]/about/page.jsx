@@ -6,11 +6,11 @@ import { categoriesData } from '@/services/categoriesData';
 
 export default async function page({params}) {
   const {locale} = await params
-  const {data} = await categoriesData(locale)
+  const res = await categoriesData(locale)
   return (
     <>
       <PageHeader title={"about"} pageInfo={"aboutPageInfo"} />
-      <CategoriesSection categories={data}/>
+      <CategoriesSection categories={res?.data}/>
       <TeamSection/>
     </>
   )

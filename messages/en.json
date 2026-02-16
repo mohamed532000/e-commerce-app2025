@@ -95,7 +95,9 @@
         "We send confirm link to your email" : "We send confirm link to your email",
         "Info" : "Info",
         "Logout successfully" : "Logout successfully",
-        "Should login" : "Should login"
+        "Should login" : "Should login",
+        "Something went wrong" :"Something went wrong",
+        "Try again" : "Try again"
     },
     "home" : {
         "title" : "title",

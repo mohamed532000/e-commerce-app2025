@@ -95,7 +95,9 @@
         "We send confirm link to your email" : "تم ارسال رابط التاكيد لعنوان البريد الجديد",
         "Info" : "عن",
         "Logout successfully" : "تم تسجيل الخروج",
-        "Should login" : "يجب تسجيل الدخول"
+        "Should login" : "يجب تسجيل الدخول",
+        "Something went wrong" : "حدث خطأ ما",
+        "Try again" : "اعادة المحاولة"
         
     },
     "home" : {

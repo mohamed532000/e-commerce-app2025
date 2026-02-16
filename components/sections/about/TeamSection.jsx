@@ -1,6 +1,6 @@
 "use client"
 import TeamMemberCard from '@/components/ui/cards/TeamMemberCard';
-import { CustomSwiperModule } from '@/components/ui/CustomSwiperModule';
+import CustomSwiperModule from '@/components/ui/CustomSwiperModule';
 import Section from '@/components/ui/section/Section';
 import React from 'react'
 import { SwiperSlide } from 'swiper/react';

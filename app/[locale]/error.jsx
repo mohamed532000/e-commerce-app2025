@@ -6,7 +6,7 @@ export default function Error({ error, reset }) {
   const globalT = useTranslations("global")
   return (
     <div>
-      <h2>{globalT("Something went wrong!")}</h2>
+      <h2>{globalT("Something went wrong")}</h2>
       <button
         onClick={() => reset()}
       >
