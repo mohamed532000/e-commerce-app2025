@@ -15,45 +15,47 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { categoriesData } from '@/services/categoriesData'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { IoIosArrowDown } from "react-icons/io";
 import HandleTranslate from '@/helper/HandleTranslate'
 import { Link } from '@/i18n/navigation'
 
 function HandleShowCategoriesList({data}) {
-    return (
-        data?.map((item , index) => (
-            item?.sub_categories?.length >= 1
-            ?
-            <DropdownMenuSub key={index}>
-                <DropdownMenuSubTrigger>
-                  <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                    <HandleShowCategoriesList  data={item?.sub_categories} key={index}/>
-                </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-            </DropdownMenuSub>
-            :
-            <DropdownMenuItem key={index}>
-              <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
-            </DropdownMenuItem>
-        ))
-    )
+  const globalT = useTranslations("global");
+  if(data?.length < 1) return <span className='p-2'>{globalT("No data avilable")}!</span>
+  return (
+      data?.map((item , index) => (
+          item?.sub_categories?.length >= 1
+          ?
+          <DropdownMenuSub key={index}>
+              <DropdownMenuSubTrigger>
+                <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                  <HandleShowCategoriesList  data={item?.sub_categories} key={index}/>
+              </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+          </DropdownMenuSub>
+          :
+          <DropdownMenuItem key={index}>
+            <Link href={`/shop?category=${item.id}`}>{item.title}</Link>
+          </DropdownMenuItem>
+      ))
+  )
 }
 
 export default function CategoriesList() {
-    const [categories , setCategories] = useState([])
-    const currentLocale = useLocale()
-    const fetchCategories = async () => {
-        const {data} = await categoriesData(currentLocale);
-        console.log("categories data is " , data)
-        data && setCategories(data)
-    }
-    useEffect(() => {
-        fetchCategories()
-    },[])
+  const [categories , setCategories] = useState([])
+  const currentLocale = useLocale();
+  const fetchCategories = async () => {
+      const res = await categoriesData(currentLocale);
+      if(!res?.data) return;
+      setCategories(res.data)
+  }
+  useEffect(() => {
+      fetchCategories()
+  },[])
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
