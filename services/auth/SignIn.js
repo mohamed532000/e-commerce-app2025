@@ -1,6 +1,5 @@
 import { supabase } from "@/app/api/supabase/SupabaseClient";
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 export const signInUser = async ({email , password}) => {
     try {

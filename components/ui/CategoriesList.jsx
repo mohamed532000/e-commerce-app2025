@@ -48,6 +48,7 @@ export default function CategoriesList() {
     const currentLocale = useLocale()
     const fetchCategories = async () => {
         const {data} = await categoriesData(currentLocale);
+        console.log("categories data is " , data)
         data && setCategories(data)
     }
     useEffect(() => {

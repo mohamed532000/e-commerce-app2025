@@ -93,7 +93,9 @@
         "New password" : "كلمة المرور الحديدة",
         "success change password" : "تم تغيير كلمة المرور بنجاح",
         "We send confirm link to your email" : "تم ارسال رابط التاكيد لعنوان البريد الجديد",
-        "Info" : "عن"
+        "Info" : "عن",
+        "Logout successfully" : "تم تسجيل الخروج",
+        "Should login" : "يجب تسجيل الدخول"
         
     },
     "home" : {
@@ -157,6 +159,9 @@
         "Item is already exist" : "هذا المنتج موجود بالفعل",
         "Added successfully" : "تمت الاضافة بنجاح",
         "Already in cart" : "فالعربة بالفعل",
-        "Already in whishlist" : "فالمفضلة"
+        "Already in whishlist" : "فالمفضلة",
+        "Cart" : "عربة التسوق",
+        "My cart" : "عربة التسوق",
+        "Something went wrong" : "حدث خطأ ما"
     }
 }

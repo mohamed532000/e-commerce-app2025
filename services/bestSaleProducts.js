@@ -9,4 +9,4 @@ export const bestSalePrducts = async () => {
     }catch(error) {
         console.log("error fetching best sale data" , error)
     }
-} 
+}

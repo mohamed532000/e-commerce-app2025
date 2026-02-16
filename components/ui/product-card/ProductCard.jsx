@@ -10,27 +10,25 @@ import { useAddToCart } from '@/services/shopping/useAddToCart';
 import { UserAuth } from '@/context/AuthProvider';
 import HandleTranslate from '@/helper/HandleTranslate';
 import { Spinner } from '../spinner';
+import { useCartStore } from '@/services/client/useCartStore';
+import { convertDataHelper } from '@/helper/fucntions/convertDataHelper';
+import { toast } from 'sonner';
+import SelecktonLoading from '../loading/SelecktonLoading';
 
 function ProductCard({className , product , productAfterConvert}) {
     const currentLocale = useLocale();
-    const shoppingT = useTranslations("shopping");
     const {profile , cart:cartData , cartLoading} = UserAuth();
-    const {mutate:addTocart , isPending:addTocartLoading , isSuccess} = useAddToCart(profile?.id);
+    const {data : {id:cart_id , items , total_price} , deleteItem} = useCartStore()
+    // const {mutate:addTocart , isPending:addTocartLoading} = useAddToCart(profile?.id);
     const [alreadyInCart , setAlreadyInCart] = useState();
     const [alreadyInShishlist , setAlreadyInShishlist] = useState();
-    const handleAddToCart = () => {
-        addTocart({
-            prevItems : cartData?.products ,
-            newItem : product , 
-            translate : shoppingT
-        })
-    }
+
     useEffect(() => {
-        if(cartData) {
-            const alreadyInCart = cartData?.products?.find(item => item.id == product.id)
+        if(items) {
+            const alreadyInCart = items?.find(item => item.products.id == product.id)
             alreadyInCart ? setAlreadyInCart(true) : setAlreadyInCart(false)
         }
-    },[cartData])
+    },[items])
     return (
         <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3 max-w-[300px]`}>
             <Link href={`/product-details/${productAfterConvert.slug}`}>
@@ -74,8 +72,9 @@ function ProductCard({className , product , productAfterConvert}) {
                     elements={
                         cartLoading
                         ?
-                        <div className='relative flex justify-center items-center w-full my-2'>
-                            <Spinner className="size-4 my-2" />
+                        <div className='card-icons relative flex justify-between w-full my-2'>
+                            <SelecktonLoading className={"w-[70px] rounded-md"}/>
+                            <SelecktonLoading className={"w-[70px] rounded-md"}/>
                         </div>
                         :
                         <div className='card-icons relative flex justify-between w-full my-2'>
@@ -85,8 +84,9 @@ function ProductCard({className , product , productAfterConvert}) {
                                 <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in cart"} page={"shopping"} /></h1>
                                 :
                                 <AddToCartBtn 
-                                addingFunc = {handleAddToCart}
-                                loading = {addTocartLoading}
+                                // addingFunc = {handleAddToCart}
+                                item={product}
+                                // loading = {addTocartLoading || cartLoading}
                                 />
                             }
                             {
@@ -96,7 +96,6 @@ function ProductCard({className , product , productAfterConvert}) {
                                 :
                                 <AddToWhishlistBtn/>
                             }
-                            
                         </div>
                     }
                     />

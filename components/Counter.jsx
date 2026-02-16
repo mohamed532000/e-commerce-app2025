@@ -63,7 +63,7 @@ export default function Counter({
   containerStyle,
   counterStyle,
   digitStyle,
-  gradientHeight = 16,
+  gradientHeight = "16px",
   gradientFrom = 'black',
   gradientTo = 'transparent',
   topGradientStyle,
@@ -125,12 +125,14 @@ export default function Counter({
       </div>
       <div style={gradientContainerStyle}>
         <div 
+          style={{height : gradientHeight}}
           // style={topGradientStyle ? topGradientStyle : defaultTopGradientStyle} 
-          className={`w-full h-[${gradientHeight}px] absolute top-0 dark:bg-gradient-to-b from-background to-transparent`}
+          className={`w-full absolute top-0 dark:bg-gradient-to-b from-background to-transparent`}
         />
         <div
+          style={{height : gradientHeight}}
           // style={bottomGradientStyle ? bottomGradientStyle : defaultBottomGradientStyle} 
-          className={`w-full h-[${gradientHeight}px] absolute bottom-0 dark:bg-gradient-to-t from-background to-transparent`}
+          className={`w-full absolute bottom-0 dark:bg-gradient-to-t from-background to-transparent`}
         />
       </div>
     </div>

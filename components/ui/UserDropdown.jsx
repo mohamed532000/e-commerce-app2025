@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import LogoutBtn from './LogoutBtn';
 import HandleTranslate from '@/helper/HandleTranslate';
 import { Link } from '@/i18n/navigation';
+import CartIcon from './CartIcon';
 function UserDropdown({className , sessionData}) {
     const [openDropDown , setOpenDropDown] = useState(false);
     return (
@@ -27,6 +28,9 @@ function UserDropdown({className , sessionData}) {
                     <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <Link href={`/user/profile`}>{sessionData?.user?.email}</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <CartIcon/>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                         onSelect={(e) => {

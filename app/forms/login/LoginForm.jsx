@@ -12,7 +12,6 @@ import FormHeading from '../FormHeading';
 // import AuthWithGoogleBtn from '@/components/ui/AuthWithGoogleBtn';
 import { Link } from '@/i18n/navigation';
 import HandleTranslate from '@/helper/HandleTranslate';
-import { useLocale } from 'next-intl';
 import { useSignIn } from '@/services/auth/SignIn';
 import { useRouter } from '@/i18n/navigation';
 import { toast } from 'sonner';
@@ -24,7 +23,6 @@ const formValidation = z.object({
 })
 function LoginForm() {
   const router = useRouter()
-  const currentLocale = useLocale()
   const [redirect , setRedirect] = useState(false)
   const {mutate:signIn , isPending:signInLoading , isError , error , isSuccess} = useSignIn()
   const form = useForm({

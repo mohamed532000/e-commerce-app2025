@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react';
-import { MdLogout } from 'react-icons/md';
 import HandleTranslate from '@/helper/HandleTranslate';
 import {
   AlertDialog,
@@ -13,29 +12,29 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { useSignOut } from '@/services/auth/SignOut';
+import { GoTrash } from 'react-icons/go';
 
 
-function LogoutBtn() {
+function DeleteItemFromCartBtn({deleteFunc}) {
   const [openConfirmation , setOpenConfirmation] = useState(false);
-  const {mutate:signOut , isPending} = useSignOut();
-  const handleSignOut = () => {
-    signOut();
+//   const {mutate:signOut , isPending} = useSignOut();
+    const isPending= false
+  const handleDelete = () => {
+    deleteFunc();
   }
   return (
     <>
       <AlertDialog open={openConfirmation} onOpenChange={setOpenConfirmation}>
         <AlertDialogTrigger
-        className="relative flex items-center gap-x-1.5 bg-transparent outline-0 border-0 cursor-pointer"
+        className="relative bg-transparent outline-0 border-0 cursor-pointer"
         >
-          <MdLogout/>
-          <span><HandleTranslate word={"Logout"} page={"global"}/></span>
+          <GoTrash className='inline-block cursor-pointer'/>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your session data from our website until login again.
+              This action cannot be undone. This will permanently delete your Item data from Cart.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -44,8 +43,8 @@ function LogoutBtn() {
               <HandleTranslate word={"Cancel"} page={"global"} />
             </AlertDialogCancel>
             <AlertDialogAction
-              disabled = {isPending}
-              onClick={handleSignOut}
+            //   disabled = {isPending}
+              onClick={handleDelete}
             >
               {
                 isPending
@@ -62,4 +61,4 @@ function LogoutBtn() {
   )
 }
 
-export default LogoutBtn
+export default DeleteItemFromCartBtn

@@ -32,14 +32,30 @@ import {createMiddlewareClient} from "@supabase/auth-helpers-nextjs";
 //   }
 //   return NextResponse.next();
 // }
-
+// import {cookies} from "next/headers";
+// import {getCookie , setCookie} from "cookies-next/server";
 const intlMiddleware = createMiddleware({
   ...routing,
   localeDetection: false
 });
 
 
-export async function middleware(req) { 
+export async function middleware(req) {
+  // const cookiesStore = cookies()
+  // const visitor_id = await cookiesStore.get("visitor_id")?.value;
+  // const avilable_guests = await cookiesStore.get("avilable_guests")
+  // if(!visitor_id) {
+  //   const visitor_id = crypto.randomUUID();
+  //   cookiesStore.set("visitor_id" , visitor_id)
+  // }else {
+  //   console.log("visitor_id is :" , visitor_id)
+  // }
+  // if(avilable_guests == true) {
+  //   console.log("guests can add to cart and can do orders")
+  // }else {
+  //   console.log("sorry, guests can not do any orders")
+  // }
+
   const pathesNames = req.nextUrl.pathname.split("/").filter(item => item !== "");
   const currentLocale = pathesNames[0];
 
@@ -54,6 +70,8 @@ export async function middleware(req) {
   if(user && req.nextUrl.pathname.startsWith(`/${currentLocale}/auth`)) {
     return NextResponse.redirect(new URL(`/${currentLocale}/user/profile` , req.url))
   }
+  // console.log("request is : " , req.cookies.get("__next_hmr_refresh_hash__"))
+  // console.log(intlResponse)
   return intlResponse; 
 }
 

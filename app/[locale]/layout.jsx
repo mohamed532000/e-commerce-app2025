@@ -11,6 +11,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthProvider";
 import ReactQueryContext from "@/context/ReactQueryContext";
 import SmootherProvider from "@/context/SmootherProvider";
+import axios from "axios";
+import GenerateUUID from "@/helper/GenerateUUID";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +38,8 @@ export default async function LocaleLayout({ children , params}) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  // const settings = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/settings` , {withCredentials : true});
+
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning
     >
@@ -46,12 +50,13 @@ export default async function LocaleLayout({ children , params}) {
           <NextIntlClientProvider>
             <AuthProvider>
               <AppThemeProvider>
-                <Navbar/>
-                <SmootherProvider>
-                  {children}
-                  <Footer locale={locale}/>
-                </SmootherProvider>
-                <Toaster position={"top-center"}/>
+                  <Navbar/>
+                  {/* <SmootherProvider> */}
+                    {children}
+                    {/* <Footer locale={locale}/> */}
+                  {/* </SmootherProvider> */}
+                  {/* <GenerateUUID/> */}
+                  <Toaster position={"top-center"}/>
               </AppThemeProvider>
             </AuthProvider>
           </NextIntlClientProvider>

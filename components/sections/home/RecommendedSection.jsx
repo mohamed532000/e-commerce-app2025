@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import ProductCard from '../../ui/product-card/ProductCard';
 import Section from '../../ui/section/Section';
 import { SwiperSlide } from 'swiper/react';

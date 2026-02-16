@@ -93,8 +93,9 @@
         "New password" : "New password",
         "success change password" : "Password updated successfully",
         "We send confirm link to your email" : "We send confirm link to your email",
-        "Info" : "Info"
-        
+        "Info" : "Info",
+        "Logout successfully" : "Logout successfully",
+        "Should login" : "Should login"
     },
     "home" : {
         "title" : "title",
@@ -158,6 +159,9 @@
         "Item is already exist" : "Item is already exist",
         "Added successfully" : "Added successfully",
         "Already in cart" : "Already in cart",
-        "Already in whishlist" : "Already in whishlist"
+        "Already in whishlist" : "Already in whishlist",
+        "Cart" : "Cart",
+        "My cart" : "My cart",
+        "Something went wrong" : "Something went wrong"
     }
 }

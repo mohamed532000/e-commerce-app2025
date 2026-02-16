@@ -4,7 +4,6 @@ import React from 'react';
 import CartContent from './CartContent';
 
 async function page() {
-  // const {data:cartData} = await useCartData();
   return (
     <>
         <PageHeader title={"cart"} pageInfo={"cartPageInfo"}/>

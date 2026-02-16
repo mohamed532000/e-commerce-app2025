@@ -10,11 +10,11 @@ const getUserDataFunc = async (userIdFromSession) => {
         throw error
     }
 }
-export const useUserData = (userIdFromSession) => {
+export const useUserData = ({userIdFromSession , userEmail}) => {
     return useQuery({
       queryKey: ["getUserDataFunc"],
       queryFn: () => getUserDataFunc(userIdFromSession),
       refetchOnWindowFocus: false,
-      enabled : !!userIdFromSession
+      enabled : !!userIdFromSession && !!userEmail
     });
   };

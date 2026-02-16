@@ -10,12 +10,13 @@ import LangToggeler from "./ui/LangToggeler";
 import { navList } from "@/i18n/routing";
 import SiteLogo from "./ui/SiteLogo";
 import NavAuthSide from "./ui/NavAuthSide";
-import { toast } from "sonner";
 import CategoriesList from "./ui/CategoriesList";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/all"
+import { useCartStore } from "@/services/client/useCartStore";
 gsap.registerPlugin(ScrollTrigger)
 export default function Navbar() {
+    const {data , addItem , deleteItem , updateItem} = useCartStore()
     const t = useTranslations("home");
     const globalT = useTranslations("global");
     const [isScrolling , setIsScrolling] = useState(false);
@@ -47,7 +48,7 @@ export default function Navbar() {
                         "dark:shadow-[2px_3px_10px_black]",)
                 }
             }
-        })
+        });
         return () => trigger.kill();
     },[])
     const handleShowMobileNav = () => {
@@ -65,7 +66,8 @@ export default function Navbar() {
             {/* <header ref={navRef} className={`fixed inset-x-0 inset-y-0 h-fit z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}> */}
             <header ref={navRef} className={`navbar fixed inset-x-0 inset-y-0 h-fit z-40 transition-all duration-300`}>
                 <nav aria-label="Global" className="flex items-center justify-between container relative">
-                    <div className="flex lg:flex-1">
+                    <div className="flex lg:flex-1"
+                    >
                         <SiteLogo/>
                     </div>
                     <div className="hidden lg:flex lg:gap-x-4">
