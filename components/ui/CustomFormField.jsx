@@ -29,13 +29,13 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                     ?
                     (
                       <div className='flex items-center relative z-10'>
-                        <Input aria-label='input' type={`${showPass ? "text" : "password"}`} {...field} placeholder={placeholder}/>
+                        <Input className={"text-black"} aria-label='input' type={`${showPass ? "text" : "password"}`} {...field} placeholder={placeholder}/>
                         {
                           showPass
                           ?
-                          <FaRegEyeSlash onClick={() => setShowPass(false)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70`}/>
+                          <FaRegEyeSlash onClick={() => setShowPass(false)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70 text-slate-700`}/>
                           :
-                          <FaRegEye onClick={() => setShowPass(true)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70`}/>
+                          <FaRegEye onClick={() => setShowPass(true)} className={`absolute inset-y-[50%] -translate-y-[50%] ${currentLocale === "ar" ? "left-2" : "right-2"} cursor-pointer opacity-70 text-slate-700`}/>
                         }
                       </div>
                     )
@@ -47,11 +47,11 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                       ?
                       <Textarea aria-label='text area' {...field} placeholder = {placeholder}/>
                       :
-                      <Input aria-label='input' type={type} {...field} placeholder={placeholder}/>
+                      <Input className={"text-black"} aria-label='input' type={type} {...field} placeholder={placeholder}/>
                     )
                     :
                     (
-                      <Input aria-label='input' type={"file"} onChnage = {(e) => form.setValue(name , e.target.files[0])}/>
+                      <Input className={"text-black"} aria-label='input' type={"file"} onChnage = {(e) => form.setValue(name , e.target.files[0])}/>
                     )
                   }
                 </FormControl>
