@@ -1,18 +1,21 @@
 "use client"
 import React, { useRef } from 'react';
-import ProductCard from '../../ui/product-card/ProductCard';
-import Section from '../../ui/section/Section';
+import ProductCard from "@/components/ui/cards/ProductCard";
+import Section from '@/components/ui/section/Section';
 import { SwiperSlide } from 'swiper/react';
-import "../../../styles/swiperSection.css";
-import "../../../styles/recommendedSection.css";
+import "../../../../styles/swiperSection.css";
+import "../../../../styles/recommendedSection.css";
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import dynamic from 'next/dynamic';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
-function  RecommendedSection({products , convertedProducts}) {
+import { UserAuth } from '@/context/AuthProvider';
+const CustomSwiperModule = dynamic(() => import("@/components/ui/CustomSwiperModule"), { ssr: false });
+function  ShowData({items}) {
   const containerRef = useRef(null);
+  const {session} = UserAuth();
+  // const {data:cartData , isRefetching:cartReftechLoading , isPending:cartLoading } = useCartData({userId: session?.user?.id});
   const breakpoints = {
     640: {
       slidesPerView: 1,
@@ -39,6 +42,7 @@ function  RecommendedSection({products , convertedProducts}) {
       }
     })
   }, { scope: containerRef })
+
   return (
     <Section 
     className={"swiper-section recommended-section"} 
@@ -47,16 +51,16 @@ function  RecommendedSection({products , convertedProducts}) {
     title={"recommended"}
     containerRef={containerRef}
     subText={"recommended section subtext"}>
-      {convertedProducts?.length >= 1 && convertedProducts?.length < 5
+      {items?.length >= 1 && items?.length < 5
       ?
       <div className='relative flex flex-wrap justify-center items-center gap-2.5' id='smoother-content'>
         {
         
-        convertedProducts.map((item , index) => {
+        items.map((item , index) => {
           return (
             <ProductCard 
             key={index} 
-            product={products[index]} 
+            product={items[index]} 
             productAfterConvert={item} 
             className={"recommended-card"}
             />
@@ -69,12 +73,12 @@ function  RecommendedSection({products , convertedProducts}) {
         breakpoints={breakpoints}
         spaceBetween={20}
         pagination = {false}
-        children={convertedProducts?.map((item , index) => {
+        children={items?.map((item , index) => {
           return (
             <SwiperSlide className='!flex justify-center items-center my-7'>
               <ProductCard 
               key={index} 
-              product={products[index]} 
+              product={items[index]} 
               productAfterConvert={item} 
               className={"recommended-card"}
               />
@@ -84,10 +88,10 @@ function  RecommendedSection({products , convertedProducts}) {
         )}
       />
       }
-      {!products && <FaildLoadingData/>}
-      {products?.length < 1 && <EmptyData/>}
+      {!items && <FaildLoadingData/>}
+      {items?.length < 1 && <EmptyData/>}
     </Section>
   )
 }
 
-export default RecommendedSection
+export default ShowData

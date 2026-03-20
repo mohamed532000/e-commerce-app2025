@@ -97,7 +97,8 @@
         "Logout successfully" : "Logout successfully",
         "Should login" : "Should login",
         "Something went wrong" :"Something went wrong",
-        "Try again" : "Try again"
+        "Try again" : "Try again",
+        "What do you want" : "What do you want"
     },
     "home" : {
         "title" : "title",
@@ -128,12 +129,14 @@
         "contact us" : "contact us",
         "contactPageInfo" : "Here you can contact us and send messages",
         "shop" : "shop",
-        "shop page info" : "Here you can get which you want"
+        "shop page info" : "Here you can get which you want",
+        "Wishlist" : "Wishlist",
+        "wishlistPageSubText" : "about wishlist page"
     },
     "sectionsTitles" : {
         "best sale" : "best sale",
         "recommended" : "recommended",
-        "best sale section subtext" : "sectionsTitles.These products are best sale of this month.",
+        "best sale section subtext" : "These products are best sale of this month.",
         "recommended section subtext" : "We Recommended These Products For You.",
         "New arrivals" : "New arrivals",
         "new products section subtext" : "Be the first to shop our newest arrivals.",
@@ -145,6 +148,7 @@
         "categoriesSectionSubText" : "Explore our main categories",
         "Similer products" : "Similer products",
         "similerProductsSubText" : "These products may be similer to this item"
+        
     },
     "footer" : {
         "Join Our Newsletter" : "Join Our Newsletter",
@@ -164,6 +168,11 @@
         "Already in whishlist" : "Already in whishlist",
         "Cart" : "Cart",
         "My cart" : "My cart",
-        "Something went wrong" : "Something went wrong"
+        "Something went wrong" : "Something went wrong",
+        "Wishlist" : "Wishlist",
+        "Your cart is empty" : "Your cart is empty",
+        "Your wishlist is empty" : "Your wishlist is empty",
+        "Your wishlist" : "Your wishlist",
+        "wishlistPageDescription" : "All the things you love, waiting just for you"
     }
 }

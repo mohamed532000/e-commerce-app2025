@@ -53,7 +53,7 @@ export default async function LocaleLayout({ children , params}) {
                   <Navbar/>
                   {/* <SmootherProvider> */}
                     {children}
-                    {/* <Footer locale={locale}/> */}
+                    <Footer locale={locale}/>
                   {/* </SmootherProvider> */}
                   {/* <GenerateUUID/> */}
                   <Toaster position={"top-center"}/>

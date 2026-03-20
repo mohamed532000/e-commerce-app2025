@@ -6,33 +6,58 @@ import CartSummarySide from './CartSummarySide';
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import { MainLink } from '@/components/ui/MainLink';
 import { UserAuth } from '@/context/AuthProvider';
-import { useCartStore } from '@/services/client/useCartStore';
 import MainBtn from '@/components/ui/MainBtn';
+import { useCartData } from '@/services/shopping/cart/useCartData';
+import { useLocale, useTranslations } from 'next-intl';
+import { useAppSettings } from '@/services/settings/useAppSettings';
+import EmptyData from '@/components/ui/data-status/EmptyData';
+import ClearUserCartBtn from '@/components/ui/ClearUserCartBtn';
+import { CiShoppingCart } from "react-icons/ci";
 
 function CartContent() {
-    const {cartLoading } = UserAuth();
-    const [isMounted , setIsMounted] = useState(false);
-    const {data:{items} , clearCart} = useCartStore();
-    useEffect(() => {setIsMounted(true)} ,[])
+    const {session} = UserAuth();
+    const currentLocale = useLocale()
+    const shoppingT = useTranslations("shopping")
+    const {data , isPending:cartLoading , isRefetching , refetch , isError} = useCartData({userId : session?.user?.id , local : currentLocale});
+    const {data: appSettingsData , isLoading: settingsLoading} = useAppSettings();
+    
+
+    if(!cartLoading && isError) return <FaildLoadingData/>
+    if(data?.products?.length < 1) return <EmptyData 
+    emptyText={"Your cart is empty"} 
+    translate={shoppingT}
+    icon={
+      <div className='relative flex justify-center items-center p-10 bg-slate-200 rounded-[50%]'>
+        <CiShoppingCart className='text-[80px] dark:text-slate-900'/>
+      </div>
+    }
+    className={"md:my-[100px]"}
+    />
     return (
         <>
           <div className='relative w-full grid grid-cols-12 gap-6'>
-            <div className={`table-side col-span-12 ${items?.length < 1 ? "md:col-span-12" : "md:col-span-8"} flex flex-col gap-y-4.5`}>
+            <div className={`table-side col-span-12 ${data?.products?.length < 1 ? "md:col-span-12" : "md:col-span-8"} flex flex-col gap-y-4.5`}>
                 <h1 className='relative md:text-3xl font-bold'><HandleTranslate word={"Your shopping cart"} page={"shopping"} /></h1>
-                <CartProductsTable loading={cartLoading}/>
-                <div className='relative grid grid-cols-2 gap-x-1.5'>
-                  <MainLink href='/shop' className={"border border-active-text-primary hover:bg-active-text-primary text-fexable"}>
-                    <HandleTranslate word={"Continue Shop"} page={"shopping"}/>
-                  </MainLink>
-                  <MainBtn className={"col-span-1"}>Clear cart</MainBtn>
+                <CartProductsTable 
+                products={data?.products} 
+                cartLoading={cartLoading}
+                appSettingsData = {appSettingsData}
+                />
+                <div className='relative'>
+                  <ClearUserCartBtn cartId={data?.id} cartLoading={cartLoading || isRefetching}/>
                 </div>
             </div>
             <div className='summary-side relative col-span-12 md:col-span-4'>
-                <CartSummarySide loading={cartLoading}/>
+                <CartSummarySide 
+                products = {data?.products} 
+                sub_total = {data?.sub_total} 
+                total_price = {data?.total_price} 
+                cartLoading = {cartLoading || isRefetching}
+                appSettingsData = {appSettingsData}
+                tax = {data?.tax}
+                />
             </div>
           </div>
-          {!items && !cartLoading && isMounted &&  <FaildLoadingData/>}
-          {/* {items?.length < 1 && isMounted &&  <EmptyData/>} */}
         </>
     )
 }

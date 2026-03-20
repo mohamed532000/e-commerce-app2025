@@ -3,7 +3,7 @@ import EmptyData from '@/components/ui/data-status/EmptyData';
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import Section from '@/components/ui/section/Section'
 import InfinitItemsLine from '@/components/ui/InfinitItemsLine';
-import ProductCard from '@/components/ui/product-card/ProductCard';
+import ProductCard from '@/components/ui/cards/ProductCard';
 
 function NewProductsSection({products , convertedProducts}) {
     return (

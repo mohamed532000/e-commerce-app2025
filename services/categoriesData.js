@@ -10,11 +10,11 @@ const convertDataHelper = (data , locale) => {
     ))
 }
 export const categoriesData = cache(async (locale) => {
-    try {
-        const {data , error} = await supabase.from("categories").select("*");
-        if(error) throw error
-        return {data : convertDataHelper(data , locale)}
-    }catch (error) {
-        console.log("error fetching data" , error)
-    }
+    const {data , error} = await supabase.from("categories").select("*");
+    if(error) throw error
+    return {data : convertDataHelper(data , locale)}
+    // try {
+    // }catch (error) {
+    //     console.log("error fetching data" , error)
+    // }
 })

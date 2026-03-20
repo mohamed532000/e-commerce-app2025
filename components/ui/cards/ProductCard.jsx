@@ -1,34 +1,27 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { Link } from '@/i18n/navigation';
-import { useLocale, useTranslations } from 'next-intl';
-import AddToCartBtn from '../AddToCartBtn';
-import AddToWhishlistBtn from '../AddToWhishlistBtn';
+import { useLocale } from 'next-intl';
+import AddToCartBtn from '../../shared/buttons/AddToCartBtn';
+import AddToWhishlistBtn from '../../shared/buttons/AddToWhishlistBtn';
 import Image from 'next/image';
 import HandleOutOfStockActions from '@/helper/HandleOutOfStockActions';
-import { useAddToCart } from '@/services/shopping/useAddToCart';
 import { UserAuth } from '@/context/AuthProvider';
 import HandleTranslate from '@/helper/HandleTranslate';
-import { Spinner } from '../spinner';
-import { useCartStore } from '@/services/client/useCartStore';
-import { convertDataHelper } from '@/helper/fucntions/convertDataHelper';
-import { toast } from 'sonner';
-import SelecktonLoading from '../loading/SelecktonLoading';
+// import { useDeleteItemFromCart } from '@/services/shopping/cart/useDeleteItem';
+import { useCartData } from '@/services/shopping/cart/useCartData';
+import { useCartStore } from '@/services/state_management/useCartStore';
+import { useWishlistData } from '@/services/shopping/wishlsit/useWishlistData';
+import { useAppSettings } from '@/services/settings/useAppSettings';
 
 function ProductCard({className , product , productAfterConvert}) {
     const currentLocale = useLocale();
-    const {profile , cart:cartData , cartLoading} = UserAuth();
-    const {data : {id:cart_id , items , total_price} , deleteItem} = useCartStore()
-    // const {mutate:addTocart , isPending:addTocartLoading} = useAddToCart(profile?.id);
-    const [alreadyInCart , setAlreadyInCart] = useState();
+    const {profile  , session} = UserAuth();
+    const {data} = useWishlistData({userId : session?.user?.id});
     const [alreadyInShishlist , setAlreadyInShishlist] = useState();
-
-    useEffect(() => {
-        if(items) {
-            const alreadyInCart = items?.find(item => item.products.id == product.id)
-            alreadyInCart ? setAlreadyInCart(true) : setAlreadyInCart(false)
-        }
-    },[items])
+    const {addItem , cartData , updateItemQuantity} = useCartStore();
+    const {data:settingsData} = useAppSettings()
+    
     return (
         <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3 max-w-[300px]`}>
             <Link href={`/product-details/${productAfterConvert.slug}`}>
@@ -46,7 +39,11 @@ function ProductCard({className , product , productAfterConvert}) {
             </Link>
             <div className='flex flex-col gap-1 px-2'>
                 <div className='product-info relative flex flex-col gap-1'>
-                    <p className='font-bold line-clamp-1 text-foreground text-center md:text-start'>
+                    <p className='font-bold line-clamp-1 text-foreground text-center md:text-start'
+                    onClick={() => {
+                        addItem({id : 1 , title : "new item"})
+                    }}
+                    >
                         {productAfterConvert.title}
                     </p>
                     {
@@ -61,44 +58,23 @@ function ProductCard({className , product , productAfterConvert}) {
                             <p className='font-bold text-center md:text-start'>{product.price}$</p>
                         </div>
                     }
-                    <p className='text-center line-clamp-2 md:text-start'>
+                    <p className='text-center line-clamp-2 md:text-start'
+                    onClick={() => {
+                        updateItemQuantity(product.id)
+                    }}
+                    >
                         {productAfterConvert.description}
                     </p>
                 </div>
                 {
+                <div className='card-icons relative flex justify-between w-full my-2'>
                     <HandleOutOfStockActions
                     className={"my-1"}
                     item={product}
-                    elements={
-                        cartLoading
-                        ?
-                        <div className='card-icons relative flex justify-between w-full my-2'>
-                            <SelecktonLoading className={"w-[70px] rounded-md"}/>
-                            <SelecktonLoading className={"w-[70px] rounded-md"}/>
-                        </div>
-                        :
-                        <div className='card-icons relative flex justify-between w-full my-2'>
-                            {
-                                alreadyInCart
-                                ?
-                                <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in cart"} page={"shopping"} /></h1>
-                                :
-                                <AddToCartBtn 
-                                // addingFunc = {handleAddToCart}
-                                item={product}
-                                // loading = {addTocartLoading || cartLoading}
-                                />
-                            }
-                            {
-                                alreadyInShishlist
-                                ?
-                                <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in whishlist"} page={"shopping"} /></h1>
-                                :
-                                <AddToWhishlistBtn/>
-                            }
-                        </div>
-                    }
+                    elements={ <AddToCartBtn item={product}/> }
                     />
+                    <AddToWhishlistBtn item={product} />
+                </div>
                 }
             </div>
             {
@@ -109,7 +85,7 @@ function ProductCard({className , product , productAfterConvert}) {
                     {
                         product.discount_type === "fixed"
                         ?
-                        `${product.discount_amount}$`
+                        `${product.discount_amount}${settingsData?.currency}`
                         :
                         `${product.discount_amount}%`
                     }

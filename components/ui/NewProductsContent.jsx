@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import ProductCard from './product-card/ProductCard'
+import ProductCard from './cards/ProductCard'
 import { useLocale } from 'next-intl'
 
 function NewProductsContent({products}) {

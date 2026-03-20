@@ -1,5 +1,5 @@
 export const convertDataHelper = (data , locale , targetIsSub = false) => {
-    // console.log(data)
+    console.log(data)
     // targetIsSub to handle cart data because the cart data for products structure not the same normal products
     try {
         if(data) {
@@ -7,6 +7,7 @@ export const convertDataHelper = (data , locale , targetIsSub = false) => {
             if(Array.from(data)?.length >= 1) {
                 if(targetIsSub) {
                     finalData = data?.map(item => {
+                        console.log(item)
                         const {products:i , quantity , final_price , id} = item;
                         return ({ products : {
                             ...i,
@@ -16,7 +17,10 @@ export const convertDataHelper = (data , locale , targetIsSub = false) => {
                             ...(Object.keys(i.category).length > 1 ? {category : i.category[locale]} : i.category),
                             // attributes : {...(Object.keys(item.attributes?.[locale]) ? item.attributes[locale] : {})}
                         }
-                        , quantity , final_price , id
+                        ,
+                        ...(quantity ? {quantity} : {}) , 
+                        ...(final_price ? {final_price} : {}) ,
+                        ...(id ? {id} : {}) ,
                         })
                     })
                 }else {

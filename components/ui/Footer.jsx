@@ -38,12 +38,13 @@ const FooterColumn = async ({children , title , className , locale}) => {
 }
 async function Footer({locale}) {
     const currentYear = new Date().getFullYear();
-    const {data:categories} = await categoriesData(locale);
+    const res = await categoriesData(locale);
     const [globalT , footerT , homePT] = await Promise.all([
         getTranslations({ locale, namespace: "global" }),
         getTranslations({ locale, namespace: "footer" }),
         getTranslations({ locale, namespace: "home" })
     ])
+    console.log("categories response is: " , res)
     return (
         <footer className='relative mt-[100px]'>
             <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
@@ -69,7 +70,7 @@ async function Footer({locale}) {
                         ?
                         navList.map((item , index) => <Link key={index} href={item.href} label={item.label} className='opacity-70 transition-all duration-300 hover:opacity-100'>{homePT(item.label)}</Link>)
                         :
-                        <span>Will Add Data Soon.</span>
+                        <span>{globalT("No data avilable")}.</span>
                     }
                 </FooterColumn>
                 <FooterColumn
@@ -77,11 +78,17 @@ async function Footer({locale}) {
                 locale={locale}
                 >
                     {
-                        categories?.length >= 1
-                        ?
-                        categories?.slice(0,6)?.map((item , index) => <Link href={`/shop?category=${item.id}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.title}</Link>)
-                        :
-                        <span>Will Add Data Soon.</span>
+                        // !res
+                        // ?
+                        // <span>Something went wrong!</span>
+                        // :
+                        (
+                            res?.data?.length >= 1
+                            ?
+                            res?.data?.slice(0,6)?.map((item , index) => <Link href={`/shop?category=${item.id}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.title}</Link>)
+                            :
+                            <span>{globalT("No data avilable")}.</span>
+                        )
                     }
                 </FooterColumn>
                 <FooterColumn

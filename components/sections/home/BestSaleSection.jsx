@@ -1,8 +1,7 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import Section from '../../ui/section/Section'
-// import { CustomSwiperModule } from '../../ui/CustomSwiperModule'
-import BestSaleCard from '../../ui/product-card/BestSaleCard'
+import BestSaleCard from '../../ui/cards/BestSaleCard'
 import { SwiperSlide } from 'swiper/react'
 import "../../../styles/swiperSection.css";
 import dynamic from 'next/dynamic'

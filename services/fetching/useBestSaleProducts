@@ -1,0 +1,19 @@
+import { supabase }  from "@/app/api/supabase/SupabaseClient";
+import { useQuery } from "@tanstack/react-query";
+
+const getProductsFunc = async () => {
+    try {
+        const {data , error} = await supabase.from("products").select("*").order("sales").limit(10);
+        if (error) throw error
+        return data
+    }catch (error) {
+        console.log("error fetching product from database" , error)
+    }
+}
+
+export const useBestSaleProducts = () => {
+    return useQuery({
+        queryKey : ['featuredProducts'],
+        queryFn : getProductsFunc
+    })
+}

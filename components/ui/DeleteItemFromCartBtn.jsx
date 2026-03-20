@@ -13,12 +13,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { GoTrash } from 'react-icons/go';
+import { useDeleteItemFromCart } from '@/services/shopping/cart/useDeleteItemFromCart';
 
 
-function DeleteItemFromCartBtn({deleteFunc}) {
+function DeleteItemFromCartBtn({deleteFunc , loading}) {
   const [openConfirmation , setOpenConfirmation] = useState(false);
-//   const {mutate:signOut , isPending} = useSignOut();
-    const isPending= false
   const handleDelete = () => {
     deleteFunc();
   }
@@ -43,11 +42,11 @@ function DeleteItemFromCartBtn({deleteFunc}) {
               <HandleTranslate word={"Cancel"} page={"global"} />
             </AlertDialogCancel>
             <AlertDialogAction
-            //   disabled = {isPending}
+              disabled = {loading}
               onClick={handleDelete}
             >
               {
-                isPending
+                loading
                 ?
                 <><HandleTranslate word={"Loading"} page={"global"}/>..</>
                 :

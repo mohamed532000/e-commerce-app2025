@@ -2,11 +2,14 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { CiShoppingCart } from "react-icons/ci";
-import { UserAuth } from '@/context/AuthProvider';
+// import { UserAuth } from '@/context/AuthProvider';
 import { useTranslations } from 'next-intl';
 
 function CartIcon() {
-    const {cart:cartData} = UserAuth();
+    // const {cart:cartData} = UserAuth();
+    const cartData = {
+      products : []
+    }
     const shoppingT = useTranslations("shopping");
   return (
     <Link href={'/user/cart'} className='flex items-center gap-x-1.5'>

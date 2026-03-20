@@ -2,12 +2,12 @@
 import HandleShowPriceAndDiscount from '@/helper/HandleShowPriceAndDiscount';
 import HandleTranslate from '@/helper/HandleTranslate';
 import React, { useEffect, useState } from 'react';
-import AddToWhishlistBtn from '../AddToWhishlistBtn';
-import AddToCartBtn from '../AddToCartBtn';
+import AddToWhishlistBtn from '../../shared/buttons/AddToWhishlistBtn';
+import AddToCartBtn from '../../shared/buttons/AddToCartBtn';
 import DetailsTabs from './DetailsTabs';
 import HandleOutOfStockActions from '@/helper/HandleOutOfStockActions';
 import { UserAuth } from '@/context/AuthProvider';
-import { useAddToCart } from '@/services/shopping/useAddToCart';
+import { useAddToCart } from '@/services/shopping/cart/useAddToCart';
 
 function InfoSide({data , dataAfterConvert}) {
     const {profile , cart:cartData , cartLoading} = UserAuth();

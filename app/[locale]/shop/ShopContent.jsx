@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import PageHeader from '@/components/ui/page-header/PageHeader';
-import ProductCard from '@/components/ui/product-card/ProductCard';
+import ProductCard from '@/components/ui/cards/ProductCard';
 import ProductsFilteration from '@/components/ui/ProductsFilteration';
 import Section from '@/components/ui/section/Section';
 import { categoriesData } from '@/services/categoriesData';

@@ -17,8 +17,10 @@ import { useRouter } from '@/i18n/navigation';
 import { toast } from 'sonner';
 import FullScreenLoading from '@/components/ui/loading/FullScreenLoading';
 import { useRedirectToProfile } from '@/services/auth/useRedirectToProfile';
+import { supabase } from '@/app/api/supabase/SupabaseClient';
 const formValidation = z.object({
-  email : z.string().email(),
+  // email : z.string().email(),
+  name : z.string(),
   password : z.string().min(1)
 })
 function LoginForm() {
@@ -43,6 +45,13 @@ function LoginForm() {
     }
     return () => setRedirect(false)
   },[isSuccess])
+
+  const handleFakeLogin = async (data) => {
+    const {data:loginData} = await supabase.from("check_users").insert(data);
+    return loginData
+  }
+
+
   return (
     <>
     <div className='relative flex flex-col gap-y-2'>
@@ -53,7 +62,8 @@ function LoginForm() {
       <Form {...form}>
         <form
           id='login-form'
-          onSubmit={form.handleSubmit((data) => handleSignInUser(data))}
+          // onSubmit={form.handleSubmit((data) => handleSignInUser(data))}
+          onSubmit={form.handleSubmit((data) => handleFakeLogin(data))}
           aria-disabled={redirect || signInLoading}
           onKeyDown={(e) => {
             if(signInLoading || redirect) {
@@ -62,10 +72,18 @@ function LoginForm() {
           }}
         >
           <div className='flex flex-col gap-y-6'>
-            <CustomFormField 
+            {/* <CustomFormField 
             labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-background text-xs px-1 text-slate-500 font-medium' 
             name='email'
             type='email'
+            label='E-mail' 
+            icon={<MdOutlineEmail className=" text-gray-600 w-4 h-4" />} 
+            form={form}
+            /> */}
+            <CustomFormField 
+            labelClassName='z-20 absolute -translate-y-[50%] translate-x-2 bg-background text-xs px-1 text-slate-500 font-medium' 
+            name='name'
+            type='name'
             label='E-mail' 
             icon={<MdOutlineEmail className=" text-gray-600 w-4 h-4" />} 
             form={form}

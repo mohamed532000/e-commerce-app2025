@@ -29,7 +29,8 @@ function CouponForm() {
         setIsMounted(true)
     },[])
     const handleSubmitCoupon = (data) => {
-        localStorage.setItem("cart_coupon_code" , JSON.stringify(data.coupon))
+        localStorage.setItem("cart_coupon_code" , JSON.stringify(data.coupon));
+        console.log(data)
     }
     const handleClearCoupon = () => {
         form.setValue("coupon" , "");

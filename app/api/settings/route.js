@@ -11,6 +11,8 @@ export async function GET() {
     return Response.json({ error: error.message }, { status: 500 });
   }
   cookiesStore.set("avilable_guests_orders" , data.avilable_guests_orders)
+  cookiesStore.set("tax" , data.tax);
+  cookiesStore.set("currency" , data.currency);
 
   return Response.json({ settings: data });
 }

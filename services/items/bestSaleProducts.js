@@ -5,7 +5,7 @@ export const bestSalePrducts = async () => {
     try {
         const {data , error} = await supabase.from("products").select("*").order("sales" ,{ascending : false}).limit(10);
         if (error) throw error;
-        return {data}
+        return convertDataHelper(data , locale)
     }catch(error) {
         console.log("error fetching best sale data" , error)
     }

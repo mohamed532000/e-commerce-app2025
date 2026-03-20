@@ -13,19 +13,24 @@ import {
 import { Button } from '@/components/ui/button';
 import Counter from '@/components/Counter';
 import SelecktonLoading from '@/components/ui/loading/SelecktonLoading';
-import { useCartStore } from '@/services/client/useCartStore';
 import DeleteItemFromCartBtn from '@/components/ui/DeleteItemFromCartBtn';
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import { CiShoppingCart } from "react-icons/ci";
-import { useUpdateItemQuantity } from '@/services/shopping/useUpdateItemQuantity';
+import { useUpdateItemQuantity } from '@/services/shopping/cart/useUpdateItemQuantity';
 import { useTranslations } from 'next-intl';
+import { useCartData } from '@/services/shopping/cart/useCartData';
+import { useCartStore } from '@/services/state_management/useCartStore';
+import { useDeleteItemFromCart } from '@/services/shopping/cart/useDeleteItemFromCart';
+import { useAppSettings } from '@/services/settings/useAppSettings';
 
 
 const CartRow = ({item : {id , products , quantity:itemQu , final_price}}) => {
   const shoppingT = useTranslations("shopping")
   const [quantity , setQuantity] = useState(itemQu);
-  const {updateItem , deleteItem} = useCartStore();
+  const {updateItemQuantity} = useCartStore();
   const {mutate:updateMutate , isPending:updateLoading} = useUpdateItemQuantity();
+  const {mutate:deleteItemFunc , isPending:deleteItemLoading} = useDeleteItemFromCart();
+  const {data: appSettingsData} = useAppSettings();
   let updateTimeout = useRef(null)
 
   const handleUpdateServerQuantity = (quantity) => {
@@ -42,7 +47,8 @@ const CartRow = ({item : {id , products , quantity:itemQu , final_price}}) => {
         handleUpdateServerQuantity(newQ)
         return newQ
       });
-      updateItem({id , products , final_price , quantity : quantity + 1} , "increase");
+      // updateItem({id , products , final_price , quantity : quantity + 1} , "increase");
+      updateItemQuantity({id , updateType : "increase"})
     }
   }
   const handleDecreaseQu = () => {
@@ -52,28 +58,18 @@ const CartRow = ({item : {id , products , quantity:itemQu , final_price}}) => {
         handleUpdateServerQuantity(newQ)
         return newQ;
       });
-      updateItem({id , products , final_price, quantity : quantity - 1} , "decrease");
+      // updateItem({id , products , final_price, quantity : quantity - 1} , "decrease");
+      updateItemQuantity({id , updateType : "decrease"})
     }
   }
-  // useEffect(() => {
-  //   let updateTimeout;
-  //   const handleUpdate = () => {
-  //     updateTimeout = setTimeout(() => {
-  //       // server action here
-  //       // updateMutate({itemId : id , quantity , translate : shoppingT})
-  //       console.log(`quantity od ${products?.title} is: ` , quantity)
-  //     },500)
-  //   }
-  //   handleUpdate()
-  //   return () => clearTimeout(updateTimeout)
-  // },[quantity])
-
 
 
 
   const handleDeleteProductFromCart = () => {
     if(quantity >= 1) {
-      deleteItem(id , quantity , products.price_after_discount)
+      // deleteItem(id , quantity , products.price_after_discount)
+      deleteItemFunc({item : {id , products , quantity:itemQu , final_price}})
+      console.log("no should delte item which id equal:" , id)
     }
   }
   return (
@@ -87,9 +83,9 @@ const CartRow = ({item : {id , products , quantity:itemQu , final_price}}) => {
               {
                 products?.discount_amount >= 1 
                 && 
-                <span className='line-through text-red-600'>{products?.price}EGP</span>
+                <span className='line-through text-red-600'>{products?.price}{appSettingsData?.currency}</span>
                 }
-                <span className='mx-1'>{products?.price_after_discount}EGP</span>
+                <span className='mx-1'>{products?.price_after_discount}{appSettingsData?.currency}</span>
             </p>
           </div>
         </div>
@@ -122,16 +118,17 @@ const CartRow = ({item : {id , products , quantity:itemQu , final_price}}) => {
           </Button>
         </div>
       </TableCell>
-      <TableCell className="text-center"><span>{final_price}EGP</span></TableCell>
+      <TableCell className="text-center"><span>{final_price}{appSettingsData?.currency}</span></TableCell>
       <TableCell className="text-center">
-        <DeleteItemFromCartBtn deleteFunc={handleDeleteProductFromCart}/>
+        <DeleteItemFromCartBtn deleteFunc={handleDeleteProductFromCart} loading={deleteItemLoading}/>
       </TableCell>
     </TableRow>
   )
 }
-function CartProductsTable({loading}) {
-  const {data:{items}} = useCartStore();
-  if(items?.length >= 1 && !loading) return (
+// function CartProductsTable({products , cartLoading}) {
+function CartProductsTable({cartLoading}) {
+  const {cartData:{products}} = useCartStore();
+  if(products?.length >= 1 && !cartLoading) return (
     <Table>
         <TableCaption>A list of your products.</TableCaption>
         <TableHeader>
@@ -144,7 +141,7 @@ function CartProductsTable({loading}) {
         </TableHeader>
         <TableBody>
           {
-              items?.map((item , index) => (
+              products?.map((item , index) => (
               <CartRow 
                 key={index}
                 item={item}
@@ -155,9 +152,9 @@ function CartProductsTable({loading}) {
         </TableBody>
     </Table>
   )
-  if(items?.length <= 1 && !loading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl'/>}/>
+  if(products?.length <= 1 && !cartLoading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl'/>}/>
   return (
-    <div className='relative w-full flex flex-col gap-y-2.5'>
+    <div className='relative w-full flex flex-col gap-y-3.5'>
       <SelecktonLoading/>
       <SelecktonLoading/>
       <SelecktonLoading/>

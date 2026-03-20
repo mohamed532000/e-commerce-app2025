@@ -97,7 +97,8 @@
         "Logout successfully" : "تم تسجيل الخروج",
         "Should login" : "يجب تسجيل الدخول",
         "Something went wrong" : "حدث خطأ ما",
-        "Try again" : "اعادة المحاولة"
+        "Try again" : "اعادة المحاولة",
+        "What do you want" : "بتدور علي اي"
         
     },
     "home" : {
@@ -128,7 +129,9 @@
         "contact us" : "اتصل بنا",
         "contactPageInfo" : "هنا يمكنكم التواصل معنا وإرسال الرسائل",
         "shop" : "تسوق",
-        "shop page info" : "تقدر تلاقي اللي تحتاجه هنا"
+        "shop page info" : "تقدر تلاقي اللي تحتاجه هنا",
+        "Wishlist" : "المفضلة",
+        "wishlistPageSubText" : "عن المفضلة"
     },
     "sectionsTitles" : {
         "best sale" : "افضل المبيعات",
@@ -164,6 +167,11 @@
         "Already in whishlist" : "فالمفضلة",
         "Cart" : "عربة التسوق",
         "My cart" : "عربة التسوق",
-        "Something went wrong" : "حدث خطأ ما"
+        "Something went wrong" : "حدث خطأ ما",
+        "Wishlist" : "المفضلة",
+        "Your cart is empty" : "عربة التسوق فارغة",
+        "Your wishlist is empty" : "المفضلة فارغة",
+        "Your wishlist" : "المفضلة الخاصة بك",
+        "wishlistPageDescription" : "كل ما تحب، ينتظرك هنا"
     }
 }

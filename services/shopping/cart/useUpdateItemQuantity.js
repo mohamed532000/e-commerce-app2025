@@ -1,5 +1,5 @@
 import { supabase }  from "@/app/api/supabase/SupabaseClient";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 const updateFunc = async ({itemId , quantity , translate}) => {
@@ -8,7 +8,6 @@ const updateFunc = async ({itemId , quantity , translate}) => {
         .from("cart_items")
         .update({quantity})
         .eq("id" , itemId)
-        .set
         .select()
         if (error) {
             error.translate = translate
@@ -22,10 +21,14 @@ const updateFunc = async ({itemId , quantity , translate}) => {
 }
 
 export const useUpdateItemQuantity = () => {
+    const queryClient = useQueryClient();
     return useMutation({
         mutationKey : ['updateItemQuantity'],
         mutationFn : ({itemId , quantity , translate}) => updateFunc({itemId , quantity , translate}),
-        onSuccess : () => {console.log("updated successfully")},
+        onSuccess : () => {
+            queryClient.invalidateQueries(["cartData"])
+            console.log("updated successfully")
+        },
         onError : (error) => {
             toast.error(error.translate("Something went wrong"))
         }

@@ -1,7 +1,7 @@
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData';
 import InfinitItemsLine from '@/components/ui/InfinitItemsLine';
-import ProductCard from '@/components/ui/product-card/ProductCard';
+import ProductCard from '@/components/ui/cards/ProductCard';
 import Section from '@/components/ui/section/Section';
 import { convertDataHelper } from '@/helper/fucntions/convertDataHelper';
 import { productsData } from '@/services/productsData'
