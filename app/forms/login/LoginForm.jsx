@@ -152,10 +152,10 @@ function LoginForm() {
         {/* Facebook-style input field - email */}
         <div className='relative'>
           <CustomFormField 
-            labelClassName='absolute -top-2 left-3 bg-white px-1 text-xs text-gray-500 font-normal z-20'
+            labelClassName='absolute -top-3 left-3 bg-white px-1 text-xs text-gray-500 font-normal z-20'
             name='name'
             type='name'
-            label='Email address or phone number'
+            label='Email'
             icon={<MdOutlineEmail className="text-gray-400 w-5 h-5" />} 
             form={form}
             containerClassName='border border-gray-300 rounded-lg hover:border-gray-400 focus-within:border-[#1877f2] focus-within:shadow-sm transition-all'
@@ -166,7 +166,7 @@ function LoginForm() {
         {/* Facebook-style input field - password */}
         <div className='relative'>
           <CustomFormField 
-            labelClassName='absolute -top-2 left-3 bg-white px-1 text-xs text-gray-500 font-normal z-20'
+            labelClassName='absolute -top-3 left-3 bg-white px-1 text-xs text-gray-500 font-normal z-20'
             name='password'
             type='password'
             label='Password'
