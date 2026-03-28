@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 const SubImageItem = ({image , title , handleShowTargetImage}) => {
   return (
-    <div className='relative min-h-[70px] col-span-1 cursor-pointer group overflow-hidden'
+    <div className='relative min-h-[70px] row-span-2 cursor-pointer group overflow-hidden'
     onClick={() => handleShowTargetImage(image)}
     >
       <Image 
@@ -27,8 +27,19 @@ function ImagesSide({title , mainImage , subImagesList}) {
     setTargetImage(image)
   }
   return (
-    <div className={`images-side relative col-span-2 md:col-span-1 flex flex-col gap-y-1`}>
-      <div className='main-image relative max-h-[400px] aspect-[4/3]'>
+    <div className={`images-side relative grid grid-cols-10 col-span-2 md:col-span-1 gap-x-1`}>
+      {
+        subImagesList?.length >= 1
+        &&
+        <div className='relative col-span-2 grid grid-rows-8 gap-y-1'>
+          <SubImageItem image={mainImage} title={mainImage} handleShowTargetImage={handleChangeTargetImage}/>
+          {
+            subImagesList?.map((image , index) => <SubImageItem key={index} image={image} title={image} handleShowTargetImage={handleChangeTargetImage}/>)
+          }
+  
+        </div>
+      }
+      <div className='main-image col-span-8 relative min-h-full max-h-[500px] aspect-[4/3]'>
           <Image
           src={targetImage} 
           className='absolute top-0 object-cover'
@@ -37,17 +48,6 @@ function ImagesSide({title , mainImage , subImagesList}) {
           fill
           />
       </div>
-      {
-        subImagesList?.length >= 1
-        &&
-        <div className='relative w-full h-[100px] grid grid-cols-4 gap-1'>
-          <SubImageItem image={mainImage} title={mainImage} handleShowTargetImage={handleChangeTargetImage}/>
-          {
-            subImagesList?.map((image , index) => <SubImageItem key={index} image={image} title={image} handleShowTargetImage={handleChangeTargetImage}/>)
-          }
-  
-        </div>
-      }
   </div>
   )
 }

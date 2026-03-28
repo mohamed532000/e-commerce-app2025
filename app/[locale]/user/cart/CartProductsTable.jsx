@@ -155,10 +155,10 @@ function CartProductsTable({cartLoading}) {
   if(products?.length <= 1 && !cartLoading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl'/>}/>
   return (
     <div className='relative w-full flex flex-col gap-y-3.5'>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
+      <SelecktonLoading className={"min-h-16"}A/>
+      <SelecktonLoading className={"min-h-16"}A/>
+      <SelecktonLoading className={"min-h-16"}A/>
+      <SelecktonLoading className={"min-h-16"}A/>
     </div>
   )
 }

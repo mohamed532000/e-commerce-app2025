@@ -52,6 +52,10 @@ export const routing = defineRouting({
       en : "/user/profile",
       ar : "/مستخدم/ملف شخصي"
     },
+    "/product-details/[slug]" : {
+      en : "/product-details/[slug]",
+      ar : "/تفاصيل المنتج/[slug]"
+    },
   },
   localePrefix : "always"
 });

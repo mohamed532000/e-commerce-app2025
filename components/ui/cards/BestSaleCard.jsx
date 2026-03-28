@@ -40,8 +40,8 @@ function BestSaleCard({className , product , productAfterConvert}) {
             discount_amount={product.discount_amount}/>
             <p className='line-clamp-2'>{productAfterConvert.description}</p>
             <div className='flex items-center gap-1'>
-              <AddToCartBtn/>
-              <AddToWhishlistBtn/>
+              <AddToCartBtn item={product}/>
+              <AddToWhishlistBtn item={product}/>
               <Link href={`/product-details/${productAfterConvert.slug}`} aria-label='Show product details' className={`cursor-pointer rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
                   <IoInformationCircle className='text-2xl'/>
               </Link>

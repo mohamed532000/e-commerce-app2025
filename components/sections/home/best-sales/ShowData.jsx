@@ -1,16 +1,16 @@
 "use client"
 import React, { useRef } from 'react'
-import Section from '../../ui/section/Section'
-import BestSaleCard from '../../ui/cards/BestSaleCard'
+import Section from '../../../ui/section/Section'
+import BestSaleCard from '../../../ui/cards/BestSaleCard'
 import { SwiperSlide } from 'swiper/react'
-import "../../../styles/swiperSection.css";
+import "../../../../styles/swiperSection.css";
 import dynamic from 'next/dynamic'
 import EmptyData from '@/components/ui/data-status/EmptyData'
 import FaildLoadingData from '@/components/ui/data-status/FaildLoadingData'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
-function BestSaleSection({products , convertedProducts}) {
+const CustomSwiperModule = dynamic(() => import("../../../ui/CustomSwiperModule"), { ssr: false });
+function BestSaleSection({items}) {
   const sectionRef = useRef(null)
   useGSAP((context) => {
     const bestSaleContainer = context.selector(".best-sale-container");
@@ -32,24 +32,24 @@ function BestSaleSection({products , convertedProducts}) {
       containerClassName={"best-sale-container"}
       sectionRef={sectionRef}
       >
-        {convertedProducts?.length >= 1 && 
+        {items?.length >= 1 && 
         <CustomSwiperModule
           className='relative mt-4'
           slidesPerView={1}
           pagination = {false}
           autoplay={true}
-          children={convertedProducts.map((item , index) => (
+          children={items.map((item , index) => (
             <SwiperSlide className='flex justify-center items-center'>
               <BestSaleCard 
               key={index} 
-              product={products[index]}
+              product={items[index]}
               productAfterConvert={item} 
               />
             </SwiperSlide>
           ))}
         />}
-        {!convertedProducts && <FaildLoadingData/>}
-        {convertedProducts?.length < 1 && <EmptyData/>}
+      {!items && <FaildLoadingData/>}
+      {items?.length < 1 && <EmptyData/>}
     </Section>
   )
 }

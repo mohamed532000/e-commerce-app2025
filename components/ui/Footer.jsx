@@ -44,7 +44,6 @@ async function Footer({locale}) {
         getTranslations({ locale, namespace: "footer" }),
         getTranslations({ locale, namespace: "home" })
     ])
-    console.log("categories response is: " , res)
     return (
         <footer className='relative mt-[100px]'>
             <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>

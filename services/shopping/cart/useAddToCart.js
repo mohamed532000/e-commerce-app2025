@@ -51,9 +51,9 @@ export const useAddToCart = () => {
     return useMutation({
         mutationKey : ['adding-to-cart'],
         mutationFn : ({item , cartId , userId}) => addingFunc({item , cartId , userId}),
-        onSuccess : () => {
+        onSuccess : (data, variables, context) => {
             toast.success("Item added successfully");
-            queryClient.invalidateQueries(["cartData" , "deleteWishlistItem"]);
+            queryClient.invalidateQueries(["cartData"]);
         },
         onError : (error) => {
             console.log(error)

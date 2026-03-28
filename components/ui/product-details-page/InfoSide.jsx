@@ -1,19 +1,47 @@
 "use client"
-import HandleShowPriceAndDiscount from '@/helper/HandleShowPriceAndDiscount';
 import HandleTranslate from '@/helper/HandleTranslate';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AddToWhishlistBtn from '../../shared/buttons/AddToWhishlistBtn';
 import AddToCartBtn from '../../shared/buttons/AddToCartBtn';
-import DetailsTabs from './DetailsTabs';
-import HandleOutOfStockActions from '@/helper/HandleOutOfStockActions';
 import { UserAuth } from '@/context/AuthProvider';
 import { useAddToCart } from '@/services/shopping/cart/useAddToCart';
+import { useAppSettings } from '@/services/settings/useAppSettings';
+import MainBtn from '../MainBtn';
+
+
+const HandleSHowItemPrice = ({price , priceAfterDiscount , discountAmount , discountType , currency}) => {
+    return (
+        <div className='relative flex items-end gap-x-3.5'>
+            <h3 className='relative text-5xl font-bold'>{priceAfterDiscount}{currency}</h3>
+            {
+                discountAmount >= 1
+                &&
+                <>
+                    <h3 className='text-4xl line-through'>{price}{currency}</h3>
+                    <div className="relative rounded-4xl bg-red-600/15 py-1 px-2 text-[12px] text-red-800">
+                        {discountAmount}{discountType == "fixed" ? `${currency} OFF` : "% OFF"}
+                    </div>
+                </>
+            }
+        </div>
+    )
+}
+
+function AttributeItem({attr , value}) {
+    return (
+      <div className={`relative py-2 flex items-center w-full gap-x-1`}>
+          <span>{attr}</span>
+          :
+          <span>{value}</span>
+      </div>
+    )
+  }
+
 
 function InfoSide({data , dataAfterConvert}) {
     const {profile , cart:cartData , cartLoading} = UserAuth();
-    const {mutate:addTocart , isPending:addTocartLoading , isSuccess} = useAddToCart(profile?.id);
-    const [alreadyInCart , setAlreadyInCart] = useState();
-    const [alreadyInShishlist , setAlreadyInShishlist] = useState(true);
+    const {mutate:addTocart , isPending:addTocartLoading} = useAddToCart(profile?.id);
+    const {data:appSettingsData , isPending:appSettingsLoading} = useAppSettings();
     const handleAddToCart = () => {
         addTocart({
             prevItems : cartData?.products ,
@@ -21,46 +49,48 @@ function InfoSide({data , dataAfterConvert}) {
             translate : shoppingT
         })
     }
-    useEffect(() => {
-        if(cartData) setAlreadyInCart(cartData?.products?.some(item => item.id == data.id));
-    },[cartData])
+
     return (
-        <div className={`images-side relative col-span-2 md:col-span-1 flex flex-col gap-y-1`}>
+        <div className={`images-side relative col-span-2 md:col-span-1 flex flex-col gap-y-2.5`}>
             <div className='info-content relative flex flex-col gap-y-2.5 w-full'>
-                <h1 className='font-bold md:text-3xl'>{dataAfterConvert.title}</h1>
-                <div className='relative flex items-center'>
-                    <HandleTranslate word={"Price"} page={"global"}/> : 
-                    <HandleShowPriceAndDiscount price={data.price} discount_amount={data.discount_amount} price_after_discount={data.price_after_discount} currency={"$"}/>
+                <h1 className='font-bold md:text-5xl'>{dataAfterConvert.title}</h1>
+                <div className='relative'>
+                    <HandleTranslate word={"Sales"} page={"global"} /> 
+                    <span className='text-active-text-primary mx-4'>( {data.sales} times )</span>
                 </div>
-                <div className='relative'><HandleTranslate word={"Category"} page={"global"} /> : <span className='text-active-text-primary font-bold'>{dataAfterConvert.category}</span></div>
-                <div className='relative'><HandleTranslate word={"Sales"} page={"global"} /> : <span className='text-active-text-primary font-bold'>{data.sales}</span></div>
+                <HandleSHowItemPrice
+                    price={data.price} 
+                    priceAfterDiscount={data.price_after_discount}
+                    discountAmount={data.discount_amount} 
+                    discountType={data.discount_type} 
+                    currency={appSettingsLoading ? "..." : appSettingsData?.currency}
+                />
+                <div className='relative'>
                 {
-                    <HandleOutOfStockActions
-                    item={data}
-                    elements={
-                        <>
-                            <div className='relative'><HandleTranslate word={"Stock"} page={"global"} /> : <span className='text-active-text-primary font-bold'>{data.stock}</span></div>
-                            <div className='action relative flex items-center gap-x-1.5'>
-                                {
-                                    alreadyInShishlist
-                                    ?
-                                    <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in whishlist"} page={"shopping"} /></h1>
-                                    :
-                                    <AddToWhishlistBtn fullWord={true} className={"font-medium"}/>
-                                }
-                                {
-                                    alreadyInCart
-                                    ?
-                                    <h1 className='text-active-text-primary flex justify-center items-center mx-3'><HandleTranslate word={"Already in cart"} page={"shopping"} /></h1>
-                                    :
-                                    <AddToCartBtn disabled={addTocartLoading || cartLoading} addingFunc={handleAddToCart} loading={addTocartLoading || cartLoading}/>
-                                }
-                            </div>
-                        </>
-                    }
-                    />
+                    Object.keys(dataAfterConvert?.attributes)?.length >= 1
+                    &&
+                    Object.entries(dataAfterConvert?.attributes).map(([key , value] , index) => (
+                        <AttributeItem 
+                            key={index} 
+                            attr={key} 
+                            value={value} 
+                        />
+                        )
+                    )
                 }
-                <DetailsTabs item={dataAfterConvert}/>
+                    <AttributeItem 
+                        attr={<HandleTranslate word={"Category"} page={"global"} />} 
+                        value={dataAfterConvert.category} 
+                    />
+                </div>
+                <p>{dataAfterConvert?.description}</p>
+                <div className='relative flex gap-x-1.5'>
+                    <AddToCartBtn item={data} disabled={addTocartLoading || cartLoading} addingFunc={handleAddToCart} loading={addTocartLoading || cartLoading}/>
+                    <AddToWhishlistBtn item={data} fullWord={true} className={"font-medium"}/>
+                </div>
+                <MainBtn className={"relative w-[80%] bg-transparent hover:bg-active-text-primary hover:text-stone-50 transition-all duration-300 border text-fexable"}>
+                    Express Checkout
+                </MainBtn>
             </div>
         </div>
     )

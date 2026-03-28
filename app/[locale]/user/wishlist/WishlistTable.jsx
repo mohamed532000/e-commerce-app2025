@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Table,
     TableBody,
@@ -19,6 +19,7 @@ import { useDeleteWishlistItem } from '@/services/shopping/wishlsit/useDeleteWis
 import AddToCartBtn from '@/components/shared/buttons/AddToCartBtn';
 import DeleteSomethingbtn from '@/components/ui/actions-buttons/DeleteSomethingBtn';
 import { Spinner } from '@/components/ui/spinner';
+import { Link } from '@/i18n/navigation';
 
 
 const WishlistRow = ({item : {id , products , price_after_discount}}) => {
@@ -34,7 +35,9 @@ const WishlistRow = ({item : {id , products , price_after_discount}}) => {
     <TableRow className={"hover:bg-transparent"}>
       <TableCell className="font-medium">
         <div className='relative flex items-center gap-x-1.5 '>
-          <Image src={products?.image_url} alt='product image' className='rounded-2xl' title={products?.title} width={70} height={70} />
+          <Link href={`/product-details/${products.slug}`}>
+            <Image src={products?.image_url} alt='product image' className='rounded-2xl' title={products?.title} width={70} height={70} />
+          </Link>
           <div className='relative flex flex-col gap-y-1.5'>
             <h1 className='max-w-[200px] overflow-hidden text-ellipsis'>{products?.title}</h1>
             <p className='max-w-[200px] overflow-hidden text-ellipsis font-normal'>{products?.description}</p>
@@ -54,7 +57,7 @@ const WishlistRow = ({item : {id , products , price_after_discount}}) => {
       <TableCell className="">
         <div className='relative flex justify-center gap-x-2.5 '>
           <AddToCartBtn
-            item = {{id , products , price_after_discount}}
+            item = {products}
             itemInfo = {products}
           />
           <DeleteSomethingbtn
@@ -71,6 +74,9 @@ const WishlistRow = ({item : {id , products , price_after_discount}}) => {
 function WishlistTable({wishlistLoading , products}) {
   // const {cartData:{products}} = useCartStore();
   const currentLocale = useLocale()
+  useEffect(() => {
+    console.log("render happen")
+  },[])
   if(products?.length >= 1 && !wishlistLoading) return (
     <Table>
         <TableCaption>A list of your products.</TableCaption>
@@ -97,10 +103,10 @@ function WishlistTable({wishlistLoading , products}) {
   if(products?.length <= 1 && !wishlistLoading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl'/>}/>
   return (
     <div className='relative w-full flex flex-col gap-y-3.5'>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
-      <SelecktonLoading/>
+      <SelecktonLoading className={"min-h-16"}/>
+      <SelecktonLoading className={"min-h-16"}/>
+      <SelecktonLoading className={"min-h-16"}/>
+      <SelecktonLoading className={"min-h-16"}/>
     </div>
   )
 }

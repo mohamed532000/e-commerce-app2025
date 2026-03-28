@@ -10,12 +10,10 @@ import EmptyData from '@/components/ui/data-status/EmptyData';
 import dynamic from 'next/dynamic';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { UserAuth } from '@/context/AuthProvider';
 const CustomSwiperModule = dynamic(() => import("@/components/ui/CustomSwiperModule"), { ssr: false });
 function  ShowData({items}) {
   const containerRef = useRef(null);
-  const {session} = UserAuth();
-  // const {data:cartData , isRefetching:cartReftechLoading , isPending:cartLoading } = useCartData({userId: session?.user?.id});
+
   const breakpoints = {
     640: {
       slidesPerView: 1,
@@ -59,10 +57,11 @@ function  ShowData({items}) {
         items.map((item , index) => {
           return (
             <ProductCard 
-            key={index} 
-            product={items[index]} 
-            productAfterConvert={item} 
-            className={"recommended-card"}
+              key={index} 
+              // product={items[index]} 
+              product={items[index]} 
+              productAfterConvert={item} 
+              className={"recommended-card"}
             />
           )
         })}

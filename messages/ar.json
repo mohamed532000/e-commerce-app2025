@@ -172,6 +172,7 @@
         "Your cart is empty" : "عربة التسوق فارغة",
         "Your wishlist is empty" : "المفضلة فارغة",
         "Your wishlist" : "المفضلة الخاصة بك",
-        "wishlistPageDescription" : "كل ما تحب، ينتظرك هنا"
+        "wishlistPageDescription" : "كل ما تحب، ينتظرك هنا",
+        "OFF" : "خصم"
     }
 }

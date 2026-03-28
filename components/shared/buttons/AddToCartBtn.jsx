@@ -25,10 +25,8 @@ function AddToCartBtn({className , item , itemInfo}) {
     }
     addTocart({item: databaseItem , cartId : cartData?.id , userId : session?.user?.id})
   }
-  useEffect(() => {
-    console.log("item is" , item)
-  },[item])
 
+  
   if(cartLoading || reftechCartLoading) return <SelecktonLoading className={"w-[70px] rounded-md"}/>
   if (cartData?.products?.find(i => i?.products?.id == item?.id)) return (
     <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in cart"} page={"shopping"} /></h1>

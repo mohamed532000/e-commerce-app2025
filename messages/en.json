@@ -173,6 +173,7 @@
         "Your cart is empty" : "Your cart is empty",
         "Your wishlist is empty" : "Your wishlist is empty",
         "Your wishlist" : "Your wishlist",
-        "wishlistPageDescription" : "All the things you love, waiting just for you"
+        "wishlistPageDescription" : "All the things you love, waiting just for you",
+        "OFF" : "OFF"
     }
 }

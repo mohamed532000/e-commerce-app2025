@@ -17,7 +17,7 @@ const handleInsertWishlistItem = async ({item , wId}) => {
 
 // function to create new cart then insert target item inside this cart
 const handleCreateNewWishlistAndAddItem = async ({item , uId}) => {
-    const {data : wishlistData , error : insertCartError} = await supabase.from("wishlist").insert({
+    const {data : wishlistData , error : insertCartError} = await supabase.from("wishlists").insert({
         user_id: uId
     })
     .select().single();

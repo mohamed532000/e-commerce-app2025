@@ -1,24 +1,29 @@
 "use client";
+import React from 'react';
 import SelecktonLoading from '@/components/ui/loading/SelecktonLoading';
 import { Spinner } from '@/components/ui/spinner';
 import { UserAuth } from '@/context/AuthProvider';
 import { useAddToWishlist } from '@/services/shopping/wishlsit/useAddToWishlist';
 import { useWishlistData } from '@/services/shopping/wishlsit/useWishlistData';
 import { useLocale } from 'next-intl'
-import React, { useEffect } from 'react'
 import { CiHeart } from 'react-icons/ci'
+import { useCartData } from '@/services/shopping/cart/useCartData';
 
 function AddToWhishlistBtn({item , className}) {
   const currentLocale = useLocale();
   const {session} = UserAuth();
   const {data , isPending:wishlistLoading , isRefetching:wishlistRefetching} = useWishlistData({userId : session?.user?.id , locale: currentLocale});
+  const {data:cartData} = useCartData({userId : session?.user?.id , locale: currentLocale})
   const {mutate:addingFunc , isPending:addingLoading , variables} = useAddToWishlist();
   const handleAddItemToWishlist = () => {
     addingFunc({item , wishlistId : data?.id , userId: session?.user?.id})
   }
-
-  if(wishlistLoading || wishlistRefetching) return <SelecktonLoading className={"w-[70px] h-[40px]"}/>
-  if(data?.products?.find(i => i.products?.id == item.id)) return (
+  const isInWishlist = data?.products?.find(i => i.products?.id == item.id);
+  const isInCart = cartData?.products?.find(i => i.products?.id == item.id);
+  
+  if((wishlistLoading || wishlistRefetching ) && session?.user) return <SelecktonLoading className={"w-[70px] h-[40px]"}/>
+  if(isInCart) return null
+  if(isInWishlist) return (
     <button className={` pointer-events-none rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
         <CiHeart className='text-2xl text-red-700'/>
       </button>

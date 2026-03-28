@@ -13,22 +13,23 @@ async function SimilerProductsSection({productData , locale}) {
         range : {from : 0 , to : 8}
     })
     const dataAfterConvert = convertDataHelper(data , locale);
-  return (
-    <Section
-        title={"Similer products"}
-        subText={"similerProductsSubText"}
-    >
-        {!dataAfterConvert && <FaildLoadingData/>}
-        {dataAfterConvert?.length < 1 && <EmptyData/>}
-        {
-        dataAfterConvert?.length >= 1 &&
-        <InfinitItemsLine
-            pauseAnimate={true}
-            children={dataAfterConvert.filter(item => item.id !== productData.id).map((item , index) => <ProductCard key={index} product={data[index]} productAfterConvert={item}/>)}
-        />
-        }
-    </Section>
-  )
+
+    return (
+        <Section
+            title={"Similer products"}
+            subText={"similerProductsSubText"}
+        >
+            {!dataAfterConvert && <FaildLoadingData/>}
+            {dataAfterConvert?.length < 1 && <EmptyData/>}
+            {
+            dataAfterConvert?.length >= 1 &&
+            <InfinitItemsLine
+                pauseAnimate={true}
+                children={dataAfterConvert.filter(item => item.id !== productData.id).map((item , index) => <ProductCard key={index} product={data[index]} productAfterConvert={item}/>)}
+            />
+            }
+        </Section>
+    )
 }
 
 export default SimilerProductsSection

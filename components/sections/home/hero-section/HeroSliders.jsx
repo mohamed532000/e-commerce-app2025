@@ -1,17 +1,17 @@
 "use client"
 import React, { useState } from 'react'
 import {SwiperSlide} from "swiper/react";
-import slide1 from "../../../app/media/images/backgrounds/banner.webp"
-import slide2 from "../../../app/media/images/backgrounds/banner-2.webp"
-import slide3 from "../../../app/media/images/backgrounds/banner-3.webp"
-import slide4 from "../../../app/media/images/backgrounds/banner-4.webp"
-import {ImageOverlay} from '../../ui/ImageOverlay';
-import { MainLink } from '../../ui/MainLink';
-import "../../../styles/homeSwiper.css"
+import {ImageOverlay} from '../../../ui/ImageOverlay';
+import { MainLink } from '../../../ui/MainLink';
+import "../../../../styles/homeSwiper.css";
 import HandleTranslate from '@/helper/HandleTranslate';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
-const CustomSwiperModule = dynamic(() => import("../../ui/CustomSwiperModule"), { ssr: false });
+import slide1 from "../../../../app/media/images/backgrounds/banner.webp";
+import slide2 from "../../../../app/media/images/backgrounds/banner-2.webp";
+import slide3 from "../../../../app/media/images/backgrounds/banner-3.webp";
+import slide4 from "../../../../app/media/images/backgrounds/banner-4.webp";
+const CustomSwiperModule = dynamic(() => import("../../../ui/CustomSwiperModule"), { ssr: false });
 function HeroSliders() {
     const [activeSlideIndex , setActiveSlideIndex] = useState(0);
     const {theme} = useTheme()

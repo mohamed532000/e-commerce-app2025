@@ -1,31 +1,24 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
 import AddToCartBtn from '../../shared/buttons/AddToCartBtn';
 import AddToWhishlistBtn from '../../shared/buttons/AddToWhishlistBtn';
 import Image from 'next/image';
 import HandleOutOfStockActions from '@/helper/HandleOutOfStockActions';
-import { UserAuth } from '@/context/AuthProvider';
-import HandleTranslate from '@/helper/HandleTranslate';
-// import { useDeleteItemFromCart } from '@/services/shopping/cart/useDeleteItem';
-import { useCartData } from '@/services/shopping/cart/useCartData';
 import { useCartStore } from '@/services/state_management/useCartStore';
-import { useWishlistData } from '@/services/shopping/wishlsit/useWishlistData';
 import { useAppSettings } from '@/services/settings/useAppSettings';
+import HandleTranslate from '@/helper/HandleTranslate';
 
 function ProductCard({className , product , productAfterConvert}) {
     const currentLocale = useLocale();
-    const {profile  , session} = UserAuth();
-    const {data} = useWishlistData({userId : session?.user?.id});
-    const [alreadyInShishlist , setAlreadyInShishlist] = useState();
-    const {addItem , cartData , updateItemQuantity} = useCartStore();
-    const {data:settingsData} = useAppSettings()
+    const {addItem , updateItemQuantity} = useCartStore();
+    const {data:settingsData , isPending:settingsDataLoading} = useAppSettings()
     
     return (
-        <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3 max-w-[300px]`}>
-            <Link href={`/product-details/${productAfterConvert.slug}`}>
-                <div className='image-div aspect-[4/3] relative rounded-3xl overflow-hidden w-full h-[170px]'>
+        <div className={`product-card relative flex flex-col justify-center items-center ${className} dark:shadow-accent-foreground mt-9 w-fit rounded-3xl bg-white dark:bg-background shadow-flexable-shadow px-2 py-3 max-w-[300px] gap-y-1.5`}>
+            <Link href={`/product-details/${productAfterConvert.slug}`} className='relative w-[90%]'>
+                <div className='image-div aspect-[4/3]  relative rounded-3xl overflow-hidden w-full h-[170px]'>
                     <Image
                         src={product.image_url}
                         alt={`${productAfterConvert.title} product image`} 
@@ -78,16 +71,25 @@ function ProductCard({className , product , productAfterConvert}) {
                 }
             </div>
             {
+
                 product.discount_amount >= 1
                 &&
-                <p className={`absolute inset-y-0 translate-y-4 h-fit ${currentLocale == "ar" ? "right-3" : "left-3"} bg-red-600 text-center md:text-start text-white py-1 px-2`}>
-                    -
+                <p className={`absolute inset-y-0 translate-y-4 h-fit ${currentLocale == "ar" ? "right-3" : "left-3"} bg-red-600 rounded-3xl text-center md:text-start text-white py-1 px-2 text-sm`}>
+                    <span className='mx-1'>
+                        <HandleTranslate word={"OFF"} page={"shopping"}/>
+                    </span>
                     {
-                        product.discount_type === "fixed"
+                        settingsDataLoading
                         ?
-                        `${product.discount_amount}${settingsData?.currency}`
+                        "..."
                         :
-                        `${product.discount_amount}%`
+                        (
+                            product.discount_type === "fixed"
+                            ?
+                            `${product.discount_amount}${settingsData?.currency}`
+                            :
+                            `${product.discount_amount}%`
+                        )
                     }
                 </p>
             }
