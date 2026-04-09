@@ -9,7 +9,7 @@ const handleInsertCartItem = async ({item , cId}) => {
         product_id: item.product_id ,
         quantity : item.quantity , 
         cart_id : cId
-    }).select().single();
+    }).select().maybeSingle();
 
     if (insertCartItemError) throw insertCartItemError
     return data
@@ -22,7 +22,7 @@ const handleCreateNewCartAndAddItem = async ({item , uId}) => {
         user_id: uId,
         status : "pending",
     })
-    .select().single();
+    .select().maybeSingle();
 
     if (insertCartError) throw insertCartError;
     await handleInsertCartItem({item , cId : cartData?.id});

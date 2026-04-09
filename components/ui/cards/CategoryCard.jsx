@@ -23,6 +23,3 @@ function CategoryCard({item}) {
 }
 
 export default CategoryCard
-
-// translate-y-2.5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
-// translate-y-2.5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100

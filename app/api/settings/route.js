@@ -6,7 +6,7 @@ export async function GET() {
   const { data , error } = await supabase
   .from("user_panel_settings")
   .select("*")
-  .single();
+  .maybeSingle();
   if (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }

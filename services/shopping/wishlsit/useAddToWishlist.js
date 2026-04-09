@@ -8,7 +8,7 @@ const handleInsertWishlistItem = async ({item , wId}) => {
     {
         product_id: item.id ,
         wishlist_id : wId
-    }).select().single();
+    }).select().maybeSingle();
 
     if (insertWishlistItemError) throw insertWishlistItemError
     return data
@@ -20,7 +20,7 @@ const handleCreateNewWishlistAndAddItem = async ({item , uId}) => {
     const {data : wishlistData , error : insertCartError} = await supabase.from("wishlists").insert({
         user_id: uId
     })
-    .select().single();
+    .select().maybeSingle();
 
     if (insertCartError) throw insertCartError;
     await handleInsertWishlistItem({item , wId : wishlistData?.id});

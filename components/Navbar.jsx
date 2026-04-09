@@ -82,13 +82,8 @@ export default function Navbar() {
             {/* <header ref={navRef} className={`fixed inset-x-0 inset-y-0 h-fit z-40 ${isScrolling ? "bg-background  shadow-[2px_3px_10px_#c4c4c4] dark:shadow-[2px_3px_10px_black]" : ""} transition-all duration-300`}> */}
             <header ref={navRef} className={`navbar fixed inset-x-0 inset-y-0 h-fit z-40 transition-all duration-300`}>
                 <div className="relative w-full bg-gradient-to-r from-[#3c7165] to-[#031637] overflow-hidden transition-all duration-300" ref={firstNavRef}>
-                    <div className="container flex items-center justify-between py-3.5">
-                        <div className="flex gap-x-2.5">
-                            <NavAuthSide/>
-                            <LangToggeler/>
-                            <ToggelerDarkMode/>
-                        </div>
-                        <div className="relative flex flex-col md:flex-row items-center gap-x-2.5">
+                    <div className="container flex items-center flex-col md:flex-row justify-between py-3.5">
+                        <div className="relative flex items-center gap-x-2.5">
                             {
                                 settingsData
                                 &&
@@ -114,6 +109,11 @@ export default function Navbar() {
                                 </>
                             }
                             <NavSearchForm/>
+                        </div>
+                        <div className="flex gap-x-2.5">
+                            <NavAuthSide/>
+                            <LangToggeler/>
+                            <ToggelerDarkMode/>
                         </div>
                     </div>
                 </div>
