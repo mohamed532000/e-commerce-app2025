@@ -88,7 +88,7 @@ export default function Navbar() {
                             <LangToggeler/>
                             <ToggelerDarkMode/>
                         </div>
-                        <div className="relative flex items-center gap-x-2.5">
+                        <div className="relative flex flex-col md:flex-row items-center gap-x-2.5">
                             {
                                 settingsData
                                 &&
