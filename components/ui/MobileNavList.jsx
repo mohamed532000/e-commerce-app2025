@@ -9,7 +9,9 @@ import CategoriesList from './CategoriesList';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollSmoother } from 'gsap/all';
+import { UserAuth } from '@/context/AuthProvider';
 export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
+    const {session:sessionData , getSessionLoading} = UserAuth();
     const mobileListRef = useRef(null);
     const toggeleThemRef = useRef(null);
     const tl = useRef()
@@ -59,7 +61,7 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
         </div>
         <ul className='flex flex-col justify-center items-center h-fit gap-2'>
             <li>
-                <UserDropdown/>
+                <UserDropdown sessionData={sessionData}/>
             </li>
             {
                 navList.map((item , index) => (

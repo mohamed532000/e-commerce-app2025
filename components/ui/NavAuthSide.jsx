@@ -17,7 +17,7 @@ function NavAuthSide() {
     useEffect(() => setIsMounted(true) , [])
     if(!isMounted) return <SpinLoading/>
     if(!sessionData && !getSessionLoading) return <RegisterBtn/>
-    return <UserDropdown sessionData={sessionData}/>
+    return <UserDropdown/>
 }
 
 export default NavAuthSide

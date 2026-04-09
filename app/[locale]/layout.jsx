@@ -51,10 +51,10 @@ export default async function LocaleLayout({ children , params}) {
             <AuthProvider>
               <AppThemeProvider>
                   <Navbar/>
-                  {/* <SmootherProvider> */}
+                  <SmootherProvider>
                     {children}
                     <Footer locale={locale}/>
-                  {/* </SmootherProvider> */}
+                  </SmootherProvider>
                   {/* <GenerateUUID/> */}
                   <Toaster position={"top-center"}/>
               </AppThemeProvider>

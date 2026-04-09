@@ -27,7 +27,7 @@ function AddToCartBtn({className , item , itemInfo}) {
   }
 
   
-  if(cartLoading || reftechCartLoading) return <SelecktonLoading className={"w-[70px] rounded-md"}/>
+  if(reftechCartLoading) return <SelecktonLoading className={"w-[70px] rounded-md"}/>
   if (cartData?.products?.find(i => i?.products?.id == item?.id)) return (
     <h1 className='text-active-text-primary flex justify-center items-center'><HandleTranslate word={"Already in cart"} page={"shopping"} /></h1>
   );

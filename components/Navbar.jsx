@@ -26,7 +26,6 @@ export default function Navbar() {
     
     const t = useTranslations("home");
     const globalT = useTranslations("global");
-    const [isScrolling , setIsScrolling] = useState(false);
     const [activeMobileNav , setActiveMobileNav] = useState(false);
     const {data:settingsData} = useAppSettings()
     const navRef = useRef(null);

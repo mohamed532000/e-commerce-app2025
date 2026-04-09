@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaRegUser } from "react-icons/fa";
 import Image from 'next/image';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './dropdown-menu';
@@ -8,10 +8,21 @@ import HandleTranslate from '@/helper/HandleTranslate';
 import { Link } from '@/i18n/navigation';
 import CartIcon from './CartIcon';
 import WishlistIcon from './icons/WishlistIcon';
+import { UserAuth } from '@/context/AuthProvider';
 // import { useCartData } from '@/services/shopping/useCartData';
-function UserDropdown({className , sessionData}) {
+
+const UserProfileLink = ({sessionData}) => {
+    return (
+        <Link href={`/user/profile`}>{sessionData?.user?.email}</Link>
+    )
+}
+
+function UserDropdown({className}) {
     const [openDropDown , setOpenDropDown] = useState(false);
     // const {data , error , isPending:cartLoading} = useCartData();
+    const {session:sessionData , getSessionLoading} = UserAuth();
+
+    if(!sessionData?.user) return null
     if(sessionData?.user?.is_anonymous) return (
         <div className={`lang-toggeler-div relative flex justify-center items-center ${className} col-span-1`}>
             <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
@@ -21,12 +32,10 @@ function UserDropdown({className , sessionData}) {
                 <DropdownMenuContent>
                         <DropdownMenuItem>
                             <CartIcon/>
-                            {/* <Link href={`/user/cart`}></Link> */}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <WishlistIcon/>
-                            {/* <Link href={`/user/wishlist`}></Link> */}
                         </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -50,10 +59,14 @@ function UserDropdown({className , sessionData}) {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            <Link href={`/user/profile`}>{sessionData?.user?.email}</Link>
+                            <UserProfileLink sessionData={sessionData}/>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                            <Link href={`/user/cart`}><CartIcon/></Link>
+                            {/* <Link href={`/user/cart`}></Link> */}
+                            <CartIcon/>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <WishlistIcon/>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                         onSelect={(e) => {
