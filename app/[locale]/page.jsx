@@ -5,7 +5,7 @@ import BestSalesitems from "@/components/sections/home/best-sales/BestSalesitems
 import NewItemsSection from "@/components/sections/home/new-items/NewItemsSection";
 export default async function Home({params}) {
   const {locale} = await params;
-  const settings = await axios.get(`${process.env.NEXT_PUBLIC_URL}/${locale}/api/settings`);
+  // const settings = await axios.get(`${process.env.NEXT_PUBLIC_URL}/${locale}/api/settings`);
   return (
     <>
       <HeroSection/>
