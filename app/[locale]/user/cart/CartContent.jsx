@@ -13,6 +13,8 @@ import { useAppSettings } from '@/services/settings/useAppSettings';
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import ClearUserCartBtn from '@/components/ui/ClearUserCartBtn';
 import { CiShoppingCart } from "react-icons/ci";
+import { Button } from '@/components/ui/button';
+import { EstimateShipping } from '@/components/ui/EstimateShipping';
 
 function CartContent() {
     const {session} = UserAuth();
@@ -39,22 +41,25 @@ function CartContent() {
             <div className={`table-side col-span-12 ${data?.products?.length < 1 ? "md:col-span-12" : "md:col-span-8"} flex flex-col gap-y-4.5`}>
                 <h1 className='relative md:text-3xl font-bold'><HandleTranslate word={"Your shopping cart"} page={"shopping"} /></h1>
                 <CartProductsTable 
-                products={data?.products} 
-                cartLoading={cartLoading}
-                appSettingsData = {appSettingsData}
+                  products={data?.products} 
+                  cartLoading={cartLoading}
+                  appSettingsData = {appSettingsData}
                 />
-                <div className='relative'>
+                <EstimateShipping/>
+                <div className='relative flex justify-between items-center'>
                   <ClearUserCartBtn cartId={data?.id} cartLoading={cartLoading || isRefetching}/>
                 </div>
             </div>
             <div className='summary-side relative col-span-12 md:col-span-4'>
                 <CartSummarySide 
-                products = {data?.products} 
-                sub_total = {data?.sub_total} 
-                total_price = {data?.total_price} 
-                cartLoading = {cartLoading || isRefetching}
-                appSettingsData = {appSettingsData}
-                tax = {data?.tax}
+                  products = {data?.products} 
+                  sub_total = {data?.sub_total} 
+                  total_price = {data?.total_price} 
+                  cartLoading = {cartLoading || isRefetching}
+                  appSettingsData = {appSettingsData}
+                  tax = {data?.tax}
+                  taxType = {data?.tax_type}
+                  cartData = {data}
                 />
             </div>
           </div>

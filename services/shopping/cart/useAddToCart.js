@@ -23,7 +23,6 @@ const handleCreateNewCartAndAddItem = async ({item , uId}) => {
         status : "pending",
     })
     .select().maybeSingle();
-
     if (insertCartError) throw insertCartError;
     await handleInsertCartItem({item , cId : cartData?.id});
     return cartData;

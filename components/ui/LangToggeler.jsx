@@ -29,10 +29,10 @@ function LangToggeler({className}) {
         router.push(newPath)
     }
   return (
-    <div className={`lang-toggeler-div relative flex justify-center items-center ${className}`}>
+    <div className={`lang-toggeler-div relative flex justify-center items-center ${className} ${currentLocale === "ar" ? "border-l" : "border-r"} border-stone-200 px-2.5`}>
         <DropdownMenu>
             <DropdownMenuTrigger aria-label="Change language" className="outline-0 flex items-center cursor-pointer">
-                <IoLanguageSharp className='mx-1 dark:text-lime-50' aria-hidden="true"/>
+                <IoLanguageSharp className='mx-1 dark:text-lime-50' aria-hidden="true"/> 
                 {HandleShowFlag()}
             </DropdownMenuTrigger>
             <DropdownMenuContent>

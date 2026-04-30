@@ -9,40 +9,40 @@ import { useLocale } from 'next-intl'
 import { CiHeart } from 'react-icons/ci'
 import { useCartData } from '@/services/shopping/cart/useCartData';
 
-function AddToWhishlistBtn({item , className}) {
+function AddToWhishlistBtn({ item, className }) {
   const currentLocale = useLocale();
-  const {session} = UserAuth();
-  const {data , isPending:wishlistLoading , isRefetching:wishlistRefetching} = useWishlistData({userId : session?.user?.id , locale: currentLocale});
-  const {data:cartData} = useCartData({userId : session?.user?.id , locale: currentLocale})
-  const {mutate:addingFunc , isPending:addingLoading , variables} = useAddToWishlist();
+  const { session } = UserAuth();
+  const { data, isPending: wishlistLoading, isRefetching: wishlistRefetching } = useWishlistData({ userId: session?.user?.id, locale: currentLocale });
+  const { data: cartData } = useCartData({ userId: session?.user?.id, locale: currentLocale })
+  const { mutate: addingFunc, isPending: addingLoading, variables } = useAddToWishlist();
   const handleAddItemToWishlist = () => {
-    addingFunc({item , wishlistId : data?.id , userId: session?.user?.id})
+    addingFunc({ item, wishlistId: data?.id, userId: session?.user?.id })
   }
   const isInWishlist = data?.products?.find(i => i.products?.id == item.id);
   const isInCart = cartData?.products?.find(i => i.products?.id == item.id);
-  
-  if((wishlistLoading || wishlistRefetching ) && session?.user) return <SelecktonLoading className={"w-[70px] h-[40px]"}/>
-  if(isInCart) return null
-  if(isInWishlist) return (
+
+  if ((wishlistLoading || wishlistRefetching) && session?.user) return <SelecktonLoading className={"w-[70px] h-[40px]"} />
+  if (isInCart) return null
+  if (isInWishlist) return (
     <button className={` pointer-events-none rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
-        <CiHeart className='text-2xl text-red-700'/>
-      </button>
+      <CiHeart className='text-2xl text-red-700' />
+    </button>
   )
   return (
     <button onClick={() => {
-        handleAddItemToWishlist()
+      handleAddItemToWishlist()
     }} className={`cursor-pointer rounded-xl py-2 px-3 bg-white dark:bg-background shadow-flexable-shadow flex justify-center items-center group group ${className}`}>
       {
         addingLoading && variables?.item?.id == item?.id
-        ?
-        <Spinner className="size-4"/>
-        :
-        <>
-          <CiHeart className='text-2xl'/>
-          <span className={`relative font-bold transition-all duration-300  opacity-0  ${currentLocale == "ar" ? "-mr-[50%]" : "-ml-[50%]"} group-hover:m-0 group-hover:opacity-100 text-foreground`}>
-            AW
-          </span>
-        </>
+          ?
+          <Spinner className="size-4" />
+          :
+          <>
+            <CiHeart className='text-2xl' />
+            <span className={`relative font-bold transition-all duration-300  opacity-0  ${currentLocale == "ar" ? "-mr-[50%]" : "-ml-[50%]"} group-hover:m-0 group-hover:opacity-100 text-foreground`}>
+              AW
+            </span>
+          </>
       }
     </button>
   )

@@ -29,7 +29,7 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                     ?
                     (
                       <div className='flex items-center relative z-10'>
-                        <Input className={"text-black"} aria-label='input' type={`${showPass ? "text" : "password"}`} {...field} placeholder={placeholder}/>
+                        <Input aria-label='input' type={`${showPass ? "text" : "password"}`} {...field} placeholder={placeholder}/>
                         {
                           showPass
                           ?
@@ -47,11 +47,11 @@ function CustomFormField({className = "" , labelClassName = "" , label = "" , na
                       ?
                       <Textarea aria-label='text area' {...field} placeholder = {placeholder}/>
                       :
-                      <Input className={"text-black"} aria-label='input' type={type} {...field} placeholder={placeholder}/>
+                      <Input aria-label='input' type={type} {...field} placeholder={placeholder}/>
                     )
                     :
                     (
-                      <Input className={"text-black"} aria-label='input' type={"file"} onChnage = {(e) => form.setValue(name , e.target.files[0])}/>
+                      <Input aria-label='input' type={"file"} onChnage = {(e) => form.setValue(name , e.target.files[0])}/>
                     )
                   }
                 </FormControl>

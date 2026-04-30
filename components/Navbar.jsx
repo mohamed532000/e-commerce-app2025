@@ -23,7 +23,7 @@ import { MdOutlineAlternateEmail } from "react-icons/md";
 gsap.registerPlugin(ScrollTrigger)
 export default function Navbar() {
     const {mutate:signInAsGuest} = useSignInAnonimously();
-    
+
     const t = useTranslations("home");
     const globalT = useTranslations("global");
     const [activeMobileNav , setActiveMobileNav] = useState(false);
@@ -51,7 +51,8 @@ export default function Navbar() {
                         "shadow-[2px_3px_10px_#c4c4c4]",
                         "dark:shadow-[2px_3px_10px_black]",);
                     navLinksParentRef.current.classList.remove("border-b");
-                    firstNavRef.current.classList.remove("h-[70px]");
+                    firstNavRef.current.classList.remove("md:h-[70px]");
+                    firstNavRef.current.classList.remove("h-[85px]");
                     firstNavRef.current.classList.add("h-0");
                 }else {
                     navRef?.current?.classList.remove(
@@ -60,7 +61,8 @@ export default function Navbar() {
                         "dark:shadow-[2px_3px_10px_black]",);
                     navLinksParentRef.current.classList.add("border-b");
                     firstNavRef.current.classList.remove("h-0");
-                    firstNavRef.current.classList.add("h-[70px]");
+                    firstNavRef.current.classList.add("md:h-[70px]");
+                    firstNavRef.current.classList.add("h-[85px]");
                 }
             }
         });
@@ -111,9 +113,9 @@ export default function Navbar() {
                             <NavSearchForm/>
                         </div>
                         <div className="flex gap-x-2.5">
-                            <NavAuthSide/>
                             <LangToggeler/>
                             <ToggelerDarkMode/>
+                            <NavAuthSide/>
                         </div>
                     </div>
                 </div>

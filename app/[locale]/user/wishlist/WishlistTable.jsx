@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react';
 import {
   Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-  } from "@/components/ui/table"
-  import Image from 'next/image';
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import Image from 'next/image';
 import SelecktonLoading from '@/components/ui/loading/SelecktonLoading';
 import EmptyData from '@/components/ui/data-status/EmptyData';
 import { CiShoppingCart } from "react-icons/ci";
@@ -22,13 +22,13 @@ import { Spinner } from '@/components/ui/spinner';
 import { Link } from '@/i18n/navigation';
 
 
-const WishlistRow = ({item : {id , products , price_after_discount}}) => {
+const WishlistRow = ({ item: { id, products, price_after_discount } }) => {
   const shoppingT = useTranslations("shopping")
-  const {mutate:deleteItemFunc , isPending:deleteItemLoading , variables} = useDeleteWishlistItem();
-  const {data: appSettingsData} = useAppSettings();
+  const { mutate: deleteItemFunc, isPending: deleteItemLoading, variables } = useDeleteWishlistItem();
+  const { data: appSettingsData } = useAppSettings();
 
   const handleDeleteItemFromWishlist = () => {
-    deleteItemFunc({itemId : id})
+    deleteItemFunc({ itemId: id })
   }
 
   return (
@@ -45,25 +45,25 @@ const WishlistRow = ({item : {id , products , price_after_discount}}) => {
         </div>
       </TableCell>
       <TableCell className="text-center">
-          <p>
-            {
-              products?.discount_amount >= 1 
-              && 
-              <span className='line-through text-red-600'>{products?.price}{appSettingsData?.currency}</span>
-              }
-              <span className='mx-1'>{products?.price_after_discount}{appSettingsData?.currency}</span>
-          </p>
+        <p>
+          {
+            products?.discount_amount >= 1
+            &&
+            <span className='line-through text-red-600'>{products?.price}{appSettingsData?.currency}</span>
+          }
+          <span className='mx-1'>{products?.price_after_discount}{appSettingsData?.currency}</span>
+        </p>
       </TableCell>
       <TableCell className="">
         <div className='relative flex justify-center gap-x-2.5 '>
           <AddToCartBtn
-            item = {products}
-            itemInfo = {products}
+            item={products}
+            itemInfo={products}
           />
           <DeleteSomethingbtn
             deleteFunc={handleDeleteItemFromWishlist}
             loading={variables?.itemId == id && deleteItemLoading}
-            loadingElement={<Spinner className="size-4"/>}
+            loadingElement={<Spinner className="size-4" />}
           />
         </div>
       </TableCell>
@@ -71,42 +71,42 @@ const WishlistRow = ({item : {id , products , price_after_discount}}) => {
   )
 }
 // function WishlistTable({products , wishlistLoading}) {
-function WishlistTable({wishlistLoading , products}) {
+function WishlistTable({ wishlistLoading, products }) {
   // const {cartData:{products}} = useCartStore();
   const currentLocale = useLocale()
   useEffect(() => {
     console.log("render happen")
-  },[])
-  if(products?.length >= 1 && !wishlistLoading) return (
+  }, [])
+  if (products?.length >= 1 && !wishlistLoading) return (
     <Table>
-        <TableCaption>A list of your products.</TableCaption>
-        <TableHeader>
-            <TableRow className={"hover:bg-transparent"}>
-              <TableHead className={currentLocale == "ar" ? "text-right" : ""}>Product</TableHead>
-              <TableHead className="text-center">Price</TableHead>
-              <TableHead className="text-center">Actions</TableHead>
-            </TableRow>
-        </TableHeader>
-        <TableBody>
-          {
-            products?.map((item , index) => (
-            <WishlistRow 
+      <TableCaption>A list of your products.</TableCaption>
+      <TableHeader>
+        <TableRow className={"hover:bg-transparent"}>
+          <TableHead className={currentLocale == "ar" ? "text-right" : ""}>Product</TableHead>
+          <TableHead className="text-center">Price</TableHead>
+          <TableHead className="text-center">Actions</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          products?.map((item, index) => (
+            <WishlistRow
               key={index}
               item={item}
             />
-              )
-            )
-          }
-        </TableBody>
+          )
+          )
+        }
+      </TableBody>
     </Table>
   )
-  if(products?.length <= 1 && !wishlistLoading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl'/>}/>
+  if (products?.length <= 1 && !wishlistLoading) return <EmptyData icon={<CiShoppingCart className='text-4xl md:text-9xl' />} />
   return (
     <div className='relative w-full flex flex-col gap-y-3.5'>
-      <SelecktonLoading className={"min-h-16"}/>
-      <SelecktonLoading className={"min-h-16"}/>
-      <SelecktonLoading className={"min-h-16"}/>
-      <SelecktonLoading className={"min-h-16"}/>
+      <SelecktonLoading className={"min-h-16"} />
+      <SelecktonLoading className={"min-h-16"} />
+      <SelecktonLoading className={"min-h-16"} />
+      <SelecktonLoading className={"min-h-16"} />
     </div>
   )
 }

@@ -25,7 +25,7 @@ function UserDropdown({className}) {
     if(!sessionData?.user) return null
     if(sessionData?.user?.is_anonymous) return (
         <div className={`lang-toggeler-div relative flex justify-center items-center ${className} col-span-1`}>
-            <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
+            <DropdownMenu modal={false} open={openDropDown} onOpenChange={setOpenDropDown}>
                 <DropdownMenuTrigger aria-label="user drop down" className="outline-0 flex items-center cursor-pointer">
                     <FaRegUser className='text-2xl cursor-pointer' aria-hidden="true"/>
                 </DropdownMenuTrigger>
@@ -43,7 +43,7 @@ function UserDropdown({className}) {
     )
     return (
         <div className={`lang-toggeler-div relative flex justify-center items-center ${className} col-span-1`}>
-            <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
+            <DropdownMenu modal={false} open={openDropDown} onOpenChange={setOpenDropDown}>
                 <DropdownMenuTrigger aria-label="user drop down" className="outline-0 flex items-center cursor-pointer">
                     {
                     sessionData?.user?.image

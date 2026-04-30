@@ -98,7 +98,8 @@
         "Should login" : "يجب تسجيل الدخول",
         "Something went wrong" : "حدث خطأ ما",
         "Try again" : "اعادة المحاولة",
-        "What do you want" : "بتدور علي اي"
+        "What do you want" : "بتدور علي اي",
+        "Apply" : "تطبيق"
         
     },
     "home" : {
@@ -173,6 +174,11 @@
         "Your wishlist is empty" : "المفضلة فارغة",
         "Your wishlist" : "المفضلة الخاصة بك",
         "wishlistPageDescription" : "كل ما تحب، ينتظرك هنا",
-        "OFF" : "خصم"
+        "OFF" : "خصم",
+        "Checkout" : "الدفع",
+        "Estimate shipping" : " تقدير الشحن",
+        "Choose governorate" : "اختر المحافظة",
+        "Choose city" : "اختر المدينة",
+        "Available shipping method: Express Courier" : "طريقة الشحن المتاحة: الشحن السريع"
     }
 }

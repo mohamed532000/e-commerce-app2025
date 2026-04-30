@@ -98,7 +98,8 @@
         "Should login" : "Should login",
         "Something went wrong" :"Something went wrong",
         "Try again" : "Try again",
-        "What do you want" : "What do you want"
+        "What do you want" : "What do you want",
+        "Apply" : "Apply"
     },
     "home" : {
         "title" : "title",
@@ -174,6 +175,11 @@
         "Your wishlist is empty" : "Your wishlist is empty",
         "Your wishlist" : "Your wishlist",
         "wishlistPageDescription" : "All the things you love, waiting just for you",
-        "OFF" : "OFF"
+        "OFF" : "OFF",
+        "Checkout" : "Checkout",
+        "Estimate shipping" : "Estimate shipping",
+        "Choose governorate" : "Choose governorate",
+        "Choose city" : "Choose city",
+        "Available shipping method: Express Courier" : "Available shipping method: Express Courier"
     }
 }

@@ -43,7 +43,7 @@ const getDataFunc = async ({userId , local , setItemsFuncInClientStateFunc}) => 
 export const useCartData = ({userId , local}) => {
     const {setItems} = useCartStore()
     return useQuery({
-        queryKey : ["cartData"],
+        queryKey : ["cartData" , userId , local],
         queryFn : () => getDataFunc({userId , local , setItemsFuncInClientStateFunc: setItems}),
         refetchOnWindowFocus : false,
         retry : false,
