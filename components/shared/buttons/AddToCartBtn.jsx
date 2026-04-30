@@ -29,8 +29,12 @@ function AddToCartBtn({ className, item, itemInfo }) {
   }
 
   const disabledBtn = cartLoading || refetchCartLoading || addToCartLoading;
+  useEffect(() => {
+    console.log(cartLoading, refetchCartLoading, addToCartLoading)
+  },[cartLoading, refetchCartLoading, addToCartLoading])
 
-  if (cartLoading) return <SelecktonLoading className={"w-[70px] rounded-md"} />
+  // added user check for cart loading because cartLoading is always true when user is not logged in because this value is anitialiazed to true
+  if (session?.user && cartLoading) return <SelecktonLoading className={"w-[70px] rounded-md"} />
   if (cartData?.products?.find(i => i?.products?.id == item?.id)) return (
     <ItemQuantityCounter
       minusIcon={<BsCartDash/>}
