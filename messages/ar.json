@@ -155,6 +155,16 @@
         "newsletter subtext" : "ابقَ على اطلاع بأحدث منتجاتنا وعروضنا الترويجية.",
         "brand subtext" : "كل ما تحتاجه في مكان واحد - جودة وأسعار مميزة"
     },
+    "aboveFooter" : {
+        "Free Shipping": "شحن مجاني",
+        "Fast & free delivery": "توصيل سريع ومجاني",
+        "90 Day Returns": "إرجاع خلال 90 يوم",
+        "Easy returns & exchanges": "سهولة الإرجاع والاستبدال",
+        "5-Star Care": "رعاية 5 نجوم",
+        "We're here for you anytime": "نحن هنا من أجلك في أي وقت",
+        "Feel Good": "شعور جيد",
+        "Sustainable purchases mean you're doing good for yourself and the planet": "المشتريات المستدامة تعني أنك تفعل خيراً لنفسك وللكوكب"
+    },
     "validations" : {
         "Enter name at least 1 letter" : "ادخل اسم المنتج علي الاقل حرف واحد"
     },

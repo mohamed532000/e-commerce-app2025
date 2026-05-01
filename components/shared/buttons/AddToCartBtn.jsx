@@ -28,7 +28,7 @@ function AddToCartBtn({ className, item, itemInfo }) {
     addTocart({ item: databaseItem, cartId: cartData?.id, userId: session?.user?.id })
   }
 
-  const disabledBtn = cartLoading || refetchCartLoading || addToCartLoading;
+  const disabledBtn = (session?.user && cartLoading) || refetchCartLoading || addToCartLoading;
   useEffect(() => {
     console.log(cartLoading, refetchCartLoading, addToCartLoading)
   },[cartLoading, refetchCartLoading, addToCartLoading])

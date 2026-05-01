@@ -7,6 +7,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { getTranslations } from "next-intl/server";
 import Footer from "@/components/ui/Footer";
+import AboveFooter from "@/components/ui/AboveFooter";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthProvider";
 import ReactQueryContext from "@/context/ReactQueryContext";

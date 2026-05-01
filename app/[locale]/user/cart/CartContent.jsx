@@ -57,7 +57,7 @@ function CartContent() {
                   total_price = {data?.total_price} 
                   cartLoading = {cartLoading || isRefetching}
                   appSettingsData = {appSettingsData}
-                  tax = {data?.tax}
+                  tax = {data?.tax_amount}
                   taxType = {data?.tax_type}
                   cartData = {data}
                 />

@@ -156,6 +156,16 @@
         "newsletter subtext": "Stay up-to-date with our latest products and promotions.",
         "brand subtext" : "Everything you need in one place - quality and great prices."
     },
+    "aboveFooter" : {
+        "Free Shipping": "Free Shipping",
+        "Fast & free delivery": "Fast & free delivery",
+        "90 Day Returns": "90 Day Returns",
+        "Easy returns & exchanges": "Easy returns & exchanges",
+        "5-Star Care": "5-Star Care",
+        "We're here for you anytime": "We're here for you anytime",
+        "Feel Good": "Feel Good",
+        "Sustainable purchases mean you're doing good for yourself and the planet": "Sustainable purchases mean you're doing good for yourself and the planet"
+    },
     "validations" : {
         "Enter name at least 1 letter" : "Enter name at least 1 letter"
     },

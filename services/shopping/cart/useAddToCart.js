@@ -19,8 +19,7 @@ const handleInsertCartItem = async ({item , cId}) => {
 // function to create new cart then insert target item inside this cart
 const handleCreateNewCartAndAddItem = async ({item , uId}) => {
     const {data : cartData , error : insertCartError} = await supabase.from("carts").insert({
-        user_id: uId,
-        status : "pending",
+        user_id: uId
     })
     .select().maybeSingle();
     if (insertCartError) throw insertCartError;

@@ -44,10 +44,14 @@ function CartSummarySide({products , sub_total , total_price , cartLoading , tax
                             <h2>Shipping</h2>
                             <p>avilabel when address..</p>
                         </div> */}
-                        {/* <div className={`${divsClasses}`}>
-                            <h2>Discount</h2>
-                            <p>-300</p>
-                        </div> */}
+                        {
+                            cartData?.discount_amount >= 1
+                            &&
+                            <div className={`${divsClasses}`}>
+                                <h2 className='uppercase text-sm'>Coupon discount</h2>
+                                <p>{cartData?.discount_amount}{appSettingsData?.currency}</p>
+                            </div>
+                        }
                         <div className={`${divsClasses}`}>
                             <h2 className='uppercase text-sm'>Tax</h2>
                             <p>{tax}{taxType == "fixed" ? appSettingsData?.currency : "%"}</p>

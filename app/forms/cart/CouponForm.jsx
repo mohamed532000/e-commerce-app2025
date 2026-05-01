@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import CustomFormField from '@/components/ui/CustomFormField';
@@ -24,8 +24,9 @@ function CouponForm({ cartData }) {
     })
     const [isMounted, setIsMounted] = useState(false);
     const { session } = UserAuth();
-    const { mutate: applyCouponFunc, isPending: applyCouponLoading } = useApplyCouponCode();
-    const coupon = form.watch("coupon")
+    const { data: applyCouponRes, mutate: applyCouponFunc, isPending: applyCouponLoading , error : applyCouponError} = useApplyCouponCode();
+    const coupon = form.watch("coupon");
+    const errorRef = useRef(null);
     useEffect(() => {
         const couponFromStorage = JSON.parse(localStorage.getItem("cart_coupon_code"))
         if (couponFromStorage) {
@@ -41,47 +42,71 @@ function CouponForm({ cartData }) {
         form.setValue("coupon", "");
         localStorage.removeItem("cart_coupon_code");
     }
+    useEffect(() => {
+        if(applyCouponRes) {
+            console.log("applyCouponRes is :" , applyCouponRes);
+        }
+        if(applyCouponError) {
+            console.log("applyCouponError is :" , applyCouponError?.message);
+        }
+    }, [applyCouponRes , applyCouponError])
+    useEffect(() => {
+        let removeErrorElementTimeout;
+        if(applyCouponError) {
+            removeErrorElementTimeout = setTimeout(() => {
+                errorRef?.current?.classList.add("hidden")
+            }, 3000);
+        }
+        return () => {
+            clearTimeout(removeErrorElementTimeout);
+        }
+    }, [applyCouponError])
     return (
         <div className='relative w-full'>
+            {
+                applyCouponError
+                &&
+                <p ref={errorRef} className='col-span-12 text-red-600 py-2 text-sm'>{applyCouponError?.message}</p>
+            }
             <Form {...form}>
                 <form
                     id='coupon-form'
-                    className='relative w-full grid  grid-cols-12 gap-x-2.5 items-center'
+                    className='relative w-full grid grid-cols-12 gap-x-2.5 items-center'
                     onSubmit={form.handleSubmit((data) => handleSubmitCoupon(data))}
                 >
                     {
                         isMounted
-                            ?
-                            <>
-                                <CustomFormField
-                                    type='text'
-                                    name='coupon'
-                                    form={form} 
-                                    placeholder='X X X X..'
-                                    className={`${coupon !== "" ? "col-span-6" : "col-span-12"}`}
-                                />
-                                {
-                                    coupon !== ""
-                                    &&
-                                    <GoTrash className='col-span-2 cursor-pointer' onClick={handleClearCoupon} />
-                                }
-                                {
-                                    coupon !== ""
-                                    &&
-                                    <SubmitButton className={`col-span-4 text-white bg-black hover:bg-black hover:tracking-[4px] transition-all duration-300`} form={'coupon-form'}>
-                                        {
-                                            applyCouponLoading
-                                                ?
-                                                <Spinner className="size-4" />
-                                                :
-                                                <><HandleTranslate word={"Apply"} page={"global"} /></>
+                        ?
+                        <>
+                            <CustomFormField
+                                type='text'
+                                name='coupon'
+                                form={form} 
+                                placeholder='X X X X..'
+                                className={`${coupon !== "" ? "col-span-6" : "col-span-12"}`}
+                            />
+                            {
+                                coupon !== ""
+                                &&
+                                <GoTrash className='col-span-2 cursor-pointer' onClick={handleClearCoupon} />
+                            }
+                            {
+                                coupon !== ""
+                                &&
+                                <SubmitButton className={`col-span-4 text-white bg-black hover:bg-black hover:tracking-[4px] transition-all duration-300`} form={'coupon-form'}>
+                                    {
+                                        applyCouponLoading
+                                        ?
+                                        <Spinner className="size-4" />
+                                        :
+                                        <><HandleTranslate word={"Apply"} page={"global"} /></>
 
-                                        }
-                                    </SubmitButton>
-                                }
-                            </>
-                            :
-                            <p className='col-span-6 py-2'><HandleTranslate word={"Loading"} page={"global"} />..</p>
+                                    }
+                                </SubmitButton>
+                            }
+                        </>
+                        :
+                        <p className='col-span-12 py-2'><HandleTranslate word={"Loading"} page={"global"} />..</p>
                     }
                 </form>
             </Form>

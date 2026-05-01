@@ -10,6 +10,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { categoriesData } from '@/services/categoriesData';
 import { getTranslations } from 'next-intl/server';
+import AboveFooter from './AboveFooter';
 
 
 export const FollowUsIcons = () => {
@@ -45,8 +46,9 @@ async function Footer({locale}) {
         getTranslations({ locale, namespace: "home" })
     ])
     return (
-        <footer className='relative mt-[100px]'>
-            <div className='container border-b border-slate-400 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
+        <footer className='relative mt-12'>
+            <AboveFooter/>
+            <div className='container border-b-[.3px] border-slate-200 dark:border-slate-200 flex flex-col md:flex-row md:justify-between items-center py-5'>
                 <div className='news-letter-content relatie flex flex-col justify-center md:justify-center items-center md:items-start gap-y-1.5'>
                     <h1 className='font-bold text-2xl'>{footerT("Join Our Newsletter")}</h1>
                     <p>{footerT("newsletter subtext")}</p>
@@ -77,17 +79,11 @@ async function Footer({locale}) {
                 locale={locale}
                 >
                     {
-                        // !res
-                        // ?
-                        // <span>Something went wrong!</span>
-                        // :
-                        (
-                            res?.data?.length >= 1
-                            ?
-                            res?.data?.slice(0,6)?.map((item , index) => <Link href={`/shop?category=${item.id}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.title}</Link>)
-                            :
-                            <span>{globalT("No data avilable")}.</span>
-                        )
+                        res?.data?.length >= 1
+                        ?
+                        res?.data?.slice(0,6)?.map((item , index) => <Link href={`/shop?category=${item.id}`} key={index} className='opacity-70 transition-all duration-300 hover:opacity-100'>{item.title}</Link>)
+                        :
+                        <span>{globalT("No data avilable")}.</span>
                     }
                 </FooterColumn>
                 <FooterColumn
@@ -112,7 +108,7 @@ async function Footer({locale}) {
                     </div>
                 </FooterColumn>
             </div>
-            <div className='container border-t border-slate-400 dark:border-slate-200 flex justify-center items-center py-5'>
+            <div className='container border-t-[.3px] border-slate-200 dark:border-slate-200 flex justify-center items-center py-5'>
                 <p>© {currentYear} <span className='text-active-text-primary'>Sochyalizer</span>. {globalT("All rights reserved")}.</p>
             </div>
         </footer>

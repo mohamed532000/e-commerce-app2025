@@ -11,7 +11,8 @@ const getDataFunc = async ({userId , local , setItemsFuncInClientStateFunc}) => 
              id,
              sub_total,
              total_price,
-             tax,
+             tax_amount,
+             tax_type,
              cart_items(
                  id,
                  quantity,
@@ -26,14 +27,13 @@ const getDataFunc = async ({userId , local , setItemsFuncInClientStateFunc}) => 
         return {};
     }
     try {
-        const {data:{id , cart_items , sub_total , total_price , tax} , error} = await query;
+        const {data:{id , cart_items , sub_total , total_price , tax_amount , tax_type} , error} = await query;
         if (error) throw error;
         if(cart_items?.length >= 1) {
-            setItemsFuncInClientStateFunc({id , products : convertDataHelper(cart_items , local , true) , sub_total , total_price , tax})
-            return {id , products : convertDataHelper(cart_items , local , true) , sub_total , total_price , tax}
+            setItemsFuncInClientStateFunc({id , products : convertDataHelper(cart_items , local , true) , sub_total , total_price , tax_amount , tax_type})
+            return {id , products : convertDataHelper(cart_items , local , true) , sub_total , total_price , tax_amount , tax_type}
         }else {
-            // setItemsFuncInClientStateFunc({id , sub_total , total_price , tax})
-            return {id , products : [] , sub_total , total_price , tax}
+            return {id , products : [] , sub_total , total_price , tax_amount , tax_type}
         }
     }catch(error) {
         if (error) throw error
