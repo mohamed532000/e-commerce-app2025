@@ -65,7 +65,7 @@ function CartSummarySide({products , sub_total , total_price , cartLoading , tax
                         <CouponForm cartData={cartData}/>
                     </div> */}
                     {/* <Link href="/user/checkout" className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center"> */}
-                    <Link href="https://wa.me/01142436723" target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
+                    <Link href="https://wa.me/+201142436723" target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
                         <HandleTranslate word={"Place order"} page={"shopping"}/>
                         {
                             currentLocale == "en" 
