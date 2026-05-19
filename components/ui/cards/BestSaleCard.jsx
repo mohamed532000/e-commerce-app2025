@@ -25,6 +25,7 @@ function BestSaleCard({className , product , productAfterConvert}) {
             />
           </div>
         </div>
+        href={`/product-details/${productAfterConvert.slug}`}
         <div className='product-info flex flex-col gap-y-2.5 md:w-[60%]'>
             <Link href={`/product-details/${productAfterConvert.slug}`} className='line-clamp-2'>
               <h1 className='text-6xl line-clamp-2 py-2.5'>

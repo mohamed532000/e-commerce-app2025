@@ -8,10 +8,12 @@ function CategoryCard({item}) {
     <Link href={`/shop?category=${item.id}`} className='hover:-translate-y-1.5 transition-all duration-300 relative group'>
         <div className='relative flex flex-col justify-center items-center gap-y-1.5 px-2 md:px-0 py-3 rounded-3xl dark:shadow-accent-foreground bg-white dark:bg-background shadow-flexable-shadow w-[150px] md:min-w-[200px]'>
             <Image 
-            src={item?.image_url ? item.image_url : defaultSiteImage} 
-            alt='image' 
-            title={item?.name}
-            className='rounded-3xl group-hover:blur-md transition-all duration-300'
+              className='rounded-3xl group-hover:blur-md transition-all duration-300'
+              width={100}
+              height={150}
+              src={item?.image_url ? item.image_url : defaultSiteImage} 
+              alt='image' 
+              title={item?.name}
             />
             <div className='content md:absolute w-full flex flex-col justify-center items-center gap-y-1.5'>
                 <h1 className='text-center transition-all duration-300 md:-translate-y-2.5 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100'>{item.name}</h1>

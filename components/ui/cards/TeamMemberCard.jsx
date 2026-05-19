@@ -9,7 +9,8 @@ function TeamMemberCard({item , className}) {
         <div className='image relative flex justify-center items-center'>
             <div className='relative w-[120px] h-[120px] rounded-[50%] overflow-hidden'>
                 <Image
-                    src={item.image_url}
+                    // src={item.image_url}
+                    src={item.image.src}
                     alt={item.name}
                     title={item.name}
                     fill

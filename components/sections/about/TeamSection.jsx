@@ -5,46 +5,66 @@ import Section from '@/components/ui/section/Section';
 import React from 'react'
 import { SwiperSlide } from 'swiper/react';
 import "../../../styles/swiperSection.css";
-
+import moImage from "../../../app/media/images/team/mo.jpg"
+import walImage from "../../../app/media/images/team/wal.jpg"
 function TeamSection() {
+    // const teamMembers = [
+    //   {
+    //     name: "Sarah Ahmed",
+    //     phone: "+20 100 456 7890",
+    //     email: "sarah.ahmed@example.com",
+    //     info: "UI/UX designer with a passion for creating user-friendly and visually appealing interfaces.",
+    //     age: 28,
+    //     image_url: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg"
+    //   },
+    //   {
+    //     name: "Mohamed Youssef",
+    //     phone: "+20 101 234 5678",
+    //     email: "mohamed.youssef@example.com",
+    //     info: "Full-stack developer specializing in React, Node.js, and scalable web architectures.",
+    //     age: 32,
+    //     image_url: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+    //   },
+    //   {
+    //     name: "Layla Hassan",
+    //     phone: "+20 102 987 6543",
+    //     email: "layla.hassan@example.com",
+    //     info: "Marketing strategist focused on social media campaigns and brand growth.",
+    //     age: 26,
+    //     image_url: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+    //   },
+    // ];      
     const teamMembers = [
-        {
-          name: "Sarah Ahmed",
-          phone: "+20 100 456 7890",
-          email: "sarah.ahmed@example.com",
-          info: "UI/UX designer with a passion for creating user-friendly and visually appealing interfaces.",
-          age: 28,
-          image_url: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg"
-        },
-        {
-          name: "Mohamed Youssef",
-          phone: "+20 101 234 5678",
-          email: "mohamed.youssef@example.com",
-          info: "Full-stack developer specializing in React, Node.js, and scalable web architectures.",
-          age: 32,
-          image_url: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
-        },
-        {
-          name: "Layla Hassan",
-          phone: "+20 102 987 6543",
-          email: "layla.hassan@example.com",
-          info: "Marketing strategist focused on social media campaigns and brand growth.",
-          age: 26,
-          image_url: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
-        },
-
-      ];      
-      const breakpoints = {
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 4,
-        },
-      }
+      {
+        name: "Waleed Salah",
+        phone: "+20 100 456 7890",
+        email: "waleedfahmy42@gmail.com",
+        info: "Founder",
+        age: 26,
+        // image_url: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg"
+        image : walImage
+      },
+      {
+        name: "Mohamed Ezat",
+        phone: "+20 1124485518",
+        email: "mohamed.ezat.rezk@gmail.com",
+        info: "Co-Founder",
+        age: 26,
+        // image_url: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+        image : moImage
+      },
+    ];      
+    const breakpoints = {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    }
   return (
     <Section
     className={"swiper-section "}

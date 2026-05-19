@@ -60,12 +60,13 @@ function CartSummarySide({products , sub_total , total_price , cartLoading , tax
                         <h2 className='uppercase text-sm'>Total</h2>
                         <p>{total_price}{appSettingsData?.currency}</p>
                     </div>
-                    <div className={`${divsClasses} flex justify-start items-start gap-y-1.5 flex-col`}>
+                    {/* <div className={`${divsClasses} flex justify-start items-start gap-y-1.5 flex-col`}>
                         <h2 className='text-sm'>Do you have coupon ?</h2>
                         <CouponForm cartData={cartData}/>
-                    </div>
-                    <Link href="/user/checkout" className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
-                        <HandleTranslate word={"Checkout"} page={"shopping"}/>
+                    </div> */}
+                    {/* <Link href="/user/checkout" className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center"> */}
+                    <Link href="https://wa.me/01142436723" target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
+                        <HandleTranslate word={"Place order"} page={"shopping"}/>
                         {
                             currentLocale == "en" 
                             ?

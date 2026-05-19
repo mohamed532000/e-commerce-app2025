@@ -199,6 +199,7 @@
         "Total amount" : "اجمالي المبلغ",
         "Coupon discount" : "خصم الكوبون",
         "QYT" : "الكمية",
-        "Sub total" : "المجموع الفرعي"
+        "Sub total" : "المجموع الفرعي",
+        "Place order" : "طلب عبر الواتس"
     }
 }
