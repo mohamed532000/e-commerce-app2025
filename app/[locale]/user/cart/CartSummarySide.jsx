@@ -1,5 +1,4 @@
 "use client"
-import React, { useEffect } from 'react';
 import CouponForm from '@/app/forms/cart/CouponForm';
 import SelecktonLoading from '@/components/ui/loading/SelecktonLoading';
 import HandleTranslate from '@/helper/HandleTranslate';

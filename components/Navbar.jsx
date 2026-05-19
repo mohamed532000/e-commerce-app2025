@@ -20,12 +20,14 @@ import { Link } from "@/i18n/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Navbar() {
     const {mutate:signInAsGuest} = useSignInAnonimously();
 
     const t = useTranslations("home");
     const globalT = useTranslations("global");
+    const shoppingT = useTranslations("shopping");
     const [activeMobileNav , setActiveMobileNav] = useState(false);
     const {data:settingsData} = useAppSettings()
     const navRef = useRef(null);
@@ -38,7 +40,8 @@ export default function Navbar() {
         `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(t("login"))}`,
         `/${currentLocale}/${encodeURI(globalT("user"))}/${encodeURI(globalT("profile"))}`,
         `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(globalT("insert-mail-to-reset-password"))}`,
-        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(globalT("reset-password"))}`
+        `/${currentLocale}/${encodeURI(globalT("auth"))}/${encodeURI(globalT("reset-password"))}`,
+        `/${currentLocale}/${encodeURI(globalT("user"))}/${encodeURI(shoppingT("checkout"))}`
     ]);
     const noNav = removeNavWhen.has(pathname);
     useEffect(() => {
@@ -50,19 +53,19 @@ export default function Navbar() {
                         "bg-background",
                         "shadow-[2px_3px_10px_#c4c4c4]",
                         "dark:shadow-[2px_3px_10px_black]",);
-                    navLinksParentRef.current.classList.remove("border-b");
-                    firstNavRef.current.classList.remove("md:h-[70px]");
-                    firstNavRef.current.classList.remove("h-[85px]");
-                    firstNavRef.current.classList.add("h-0");
+                    navLinksParentRef?.current?.classList.remove("border-b");
+                    firstNavRef?.current?.classList.remove("md:h-[70px]");
+                    firstNavRef?.current?.classList.remove("h-[85px]");
+                    firstNavRef?.current?.classList.add("h-0");
                 }else {
                     navRef?.current?.classList.remove(
                         "bg-background",
                         "shadow-[2px_3px_10px_#c4c4c4]",
                         "dark:shadow-[2px_3px_10px_black]",);
-                    navLinksParentRef.current.classList.add("border-b");
-                    firstNavRef.current.classList.remove("h-0");
-                    firstNavRef.current.classList.add("md:h-[70px]");
-                    firstNavRef.current.classList.add("h-[85px]");
+                    navLinksParentRef?.current?.classList.add("border-b");
+                    firstNavRef?.current?.classList.remove("h-0");
+                    firstNavRef?.current?.classList.add("md:h-[70px]");
+                    firstNavRef?.current?.classList.add("h-[85px]");
                 }
             }
         });

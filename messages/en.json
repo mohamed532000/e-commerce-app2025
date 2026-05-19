@@ -99,7 +99,12 @@
         "Something went wrong" :"Something went wrong",
         "Try again" : "Try again",
         "What do you want" : "What do you want",
-        "Apply" : "Apply"
+        "Apply" : "Apply",
+        "Create new address" : "Create new address",
+        "Governorate" : "Governorate",
+        "City" : "City",
+        "Tax" : "Tax",
+        "Encrypted checkout experience" : "Encrypted checkout experience"
     },
     "home" : {
         "title" : "title",
@@ -187,9 +192,15 @@
         "wishlistPageDescription" : "All the things you love, waiting just for you",
         "OFF" : "OFF",
         "Checkout" : "Checkout",
+        "checkout" : "checkout",
         "Estimate shipping" : "Estimate shipping",
         "Choose governorate" : "Choose governorate",
         "Choose city" : "Choose city",
-        "Available shipping method: Express Courier" : "Available shipping method: Express Courier"
+        "Available shipping method: Express Courier" : "Available shipping method: Express Courier",
+        "Complete" : "Complete",
+        "Total amount" : "Total amount",
+        "Coupon discount" : "Coupon discount",
+        "QYT" : "QYT",
+        "Sub total" : "Sub total"
     }
 }
