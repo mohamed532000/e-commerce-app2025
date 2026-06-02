@@ -13,7 +13,7 @@ function CartSummarySide({products , sub_total , total_price , cartLoading , tax
     const currentLocale = useLocale();
     const divsClasses = "relative flex justify-between items-center py-2";
     if(products?.length < 1) return;
-    const whatsappHref = `https://wa.me/+20${appSettingsData?.contact_numbers[0]}/?text=${currentLocale == "en" ? "Order Details:\n" : "تفاصيل الطلب:\n"} ${products?.length >= 1 ? products?.map(p => p.products?.title + " x " + p.quantity).join("\n") : currentLocale == "en" ? "Cart is empty" : "السلة فارغة"} ${currentLocale == "en" ? "\nTotal" : "اجمالي"} : ${total_price}${appSettingsData?.currency}`;
+    const whatsappHref = `https://wa.me/+20${appSettingsData?.contact_numbers[0]}/?text=${currentLocale == "en" ? "Order Details:\n" : "تفاصيل الطلب:\n"} ${products?.length >= 1 ? products?.map(p => p.products?.title + " x " + p.quantity).join("\n") : currentLocale == "en" ? "Cart is empty" : "السلة فارغة"} \n${currentLocale == "en" ? "Total" : "اجمالي"} : ${total_price}${appSettingsData?.currency}`;
     return (
         <div className='relative flex flex-col gap-y-1.5 rounded-sm p-4 border shadow-flexable-shadow'>
              <h1 className='py-2 border-b uppercase'><HandleTranslate word={"Order Summary"} page={"shopping"} /></h1>

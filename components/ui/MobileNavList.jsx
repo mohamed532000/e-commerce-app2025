@@ -2,8 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import MobileNavLink from './MobileNavLink';
-import LangToggeler from './LangToggeler';
-import ToggelerDarkMode from './ToggelerDarkMode';
 import UserDropdown from './UserDropdown';
 import CategoriesList from './CategoriesList';
 import { useGSAP } from '@gsap/react';
@@ -70,11 +68,6 @@ export const MobileNavList = ({active , navList = [] , closeMobileNav}) => {
             }
             <li className={"mobile-nav-link"}><CategoriesList/></li>
         </ul>
-        {/* <div className='absolute bottom-0 flex justify-center items-center gap-x-2.5  py-4 w-full'>
-            <span className='span-border absolute inset-y-0 h-[.5px] bg-slate-500 dark:bg-stone-100'></span>
-            <ToggelerDarkMode className={"list-footer-icon"} toggeleThemRef={toggeleThemRef}/>
-            <LangToggeler className={"list-footer-icon"}/>
-        </div> */}
     </div>
   )
 }
