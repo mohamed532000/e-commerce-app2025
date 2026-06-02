@@ -6,11 +6,14 @@ import { Link } from '@/i18n/navigation';
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useLocale } from 'next-intl';
+import { useEffect } from 'react';
+import { useAppSettings } from '@/services/settings/useAppSettings';
 
 function CartSummarySide({products , sub_total , total_price , cartLoading , tax , taxType, appSettingsData , cartData}) {
     const currentLocale = useLocale();
-    const divsClasses = "relative flex justify-between items-center py-2"
+    const divsClasses = "relative flex justify-between items-center py-2";
     if(products?.length < 1) return;
+    const whatsappHref = `https://wa.me/+20${appSettingsData?.contact_numbers[0]}/?text=${currentLocale == "en" ? "Order Details:\n" : "تفاصيل الطلب:\n"} ${products?.length >= 1 ? products?.map(p => p.products?.title + " x " + p.quantity).join("\n") : currentLocale == "en" ? "Cart is empty" : "السلة فارغة"} \nTotal: ${total_price}`;
     return (
         <div className='relative flex flex-col gap-y-1.5 rounded-sm p-4 border shadow-flexable-shadow'>
              <h1 className='py-2 border-b uppercase'><HandleTranslate word={"Order Summary"} page={"shopping"} /></h1>
@@ -65,7 +68,8 @@ function CartSummarySide({products , sub_total , total_price , cartLoading , tax
                         <CouponForm cartData={cartData}/>
                     </div> */}
                     {/* <Link href="/user/checkout" className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center"> */}
-                    <Link href="https://wa.me/+201142436723" target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
+                    {/* <Link href={`https://wa.me/+201142436723?text=${encodeURIComponent(`I want to order: ${products.map(p => `${p.product_name} x ${p.quantity}`).join(", ")} Total: ${total_price}`)}`} target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center"> */}
+                    <Link href={whatsappHref} target='_blank' className="rounded-3xl group cursor-pointer bg-black text-white uppercase tracking-[5px] text-sm w-full py-3 px-4 transition-all duration-300 hover:tracking-normal flex gap-2 items-center justify-center">
                         <HandleTranslate word={"Place order"} page={"shopping"}/>
                         {
                             currentLocale == "en" 
